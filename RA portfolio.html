@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reez San Gabriel — Automation Specialist</title>
+<meta name="description" content="n8n and Make.com automation specialist. I build workflows that save you hours every week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12141c;
+    --ink-2:#1a1d28;
+    --ink-3:#20232f;
+    --grid-dot: rgba(236,234,227,0.06);
+    --wire: #3a3f52;
+    --text-1:#ece9e1;
+    --text-2:#9a9fb2;
+    --text-3:#666c82;
+    --accent-green:#5fd99b;
+    --accent-amber:#ffb454;
+    --radius:14px;
+    --max-w:920px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      radial-gradient(var(--grid-dot) 1px, transparent 1px) 0 0/22px 22px,
+      var(--ink);
+    color:var(--text-1);
+    font-family:'Inter', -apple-system, sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    font-weight:500;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent-green);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--accent-green);
+    box-shadow:0 0 0 3px rgba(95,217,155,0.18);
+    flex-shrink:0;
+  }
+
+  section{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:96px 28px;
+  }
+
+  a{ color:inherit; }
+
+  :focus-visible{
+    outline:2px solid var(--accent-green);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top:120px;
+    padding-bottom:80px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.5vw, 3.6rem);
+    font-weight:700;
+    color:var(--text-1);
+  }
+  .hero .role{
+    font-size:clamp(1.1rem, 2.4vw, 1.35rem);
+    color:var(--text-2);
+    font-weight:500;
+    margin-top:10px;
+    max-width:540px;
+  }
+
+  .hero-cta{
+    margin-top:36px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    padding:13px 24px;
+    border-radius:999px;
+    border:1px solid transparent;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--accent-green);
+    color:#0c1410;
+  }
+  .btn-primary:hover{ transform:translateY(-1px); }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--wire);
+    color:var(--text-2);
+  }
+  .btn-ghost:hover{ border-color:var(--text-2); color:var(--text-1); }
+
+  /* mini flow diagram in hero */
+  .mini-flow{
+    margin-top:64px;
+    display:flex;
+    align-items:center;
+    gap:0;
+    max-width:560px;
+  }
+  .mini-node{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    font-weight:500;
+    color:var(--text-1);
+    background:var(--ink-2);
+    border:1px solid var(--wire);
+    border-radius:10px;
+    padding:10px 16px;
+    white-space:nowrap;
+    position:relative;
+    z-index:2;
+  }
+  .mini-wire{
+    flex:1;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--wire) 0 6px, transparent 6px 12px);
+    position:relative;
+    min-width:24px;
+  }
+  .mini-wire::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:0;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--accent-amber);
+    transform:translateY(-50%);
+    animation:travel 2.6s linear infinite;
+  }
+  .mini-wire:nth-of-type(2)::after{ animation-delay:1.3s; }
+
+  @keyframes travel{
+    0%{ left:0; opacity:0; }
+    8%{ opacity:1; }
+    92%{ opacity:1; }
+    100%{ left:calc(100% - 6px); opacity:0; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .card{
+    background:var(--ink-2);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:36px;
+  }
+  .about p{
+    color:var(--text-2);
+    font-size:1.02rem;
+    max-width:680px;
+  }
+  .about p + p{ margin-top:16px; }
+  .about strong{ color:var(--text-1); font-weight:600; }
+
+  /* ---------- PROJECT ---------- */
+  .project h2{
+    font-size:clamp(1.5rem, 3vw, 2rem);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .project-caption{
+    color:var(--text-2);
+    max-width:640px;
+    margin-bottom:48px;
+  }
+
+  .flow{
+    display:flex;
+    align-items:stretch;
+    gap:0;
+  }
+  .flow-node{
+    background:var(--ink-2);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:24px 20px;
+    flex:1;
+    min-width:0;
+  }
+  .flow-node .step-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent-amber);
+    margin-bottom:10px;
+    display:block;
+  }
+  .flow-node h3{
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .flow-node p{
+    color:var(--text-2);
+    font-size:0.9rem;
+    margin:0;
+  }
+  .flow-wire{
+    width:48px;
+    flex-shrink:0;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .flow-wire::before{
+    content:"";
+    position:absolute;
+    left:0; right:0; top:50%;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--wire) 0 6px, transparent 6px 12px);
+    transform:translateY(-50%);
+  }
+  .flow-wire::after{
+    content:"";
+    position:absolute;
+    top:50%; left:0;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--accent-green);
+    transform:translateY(-50%);
+    animation:travel 2.2s linear infinite;
+  }
+  .flow-wire.delay::after{ animation-delay:1.1s; }
+
+  .tool-tags{
+    margin-top:36px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    font-weight:500;
+    color:var(--text-2);
+    border:1px solid var(--wire);
+    border-radius:999px;
+    padding:7px 14px;
+  }
+
+  /* ---------- HOW I WORK ---------- */
+  .how-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  .how-card{
+    background:var(--ink-2);
+    border:1px solid var(--wire);
+    border-radius:var(--radius);
+    padding:26px 22px;
+  }
+  .how-card h3{
+    font-size:1.02rem;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .how-card p{
+    color:var(--text-2);
+    font-size:0.92rem;
+    margin:0;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    text-align:left;
+  }
+  .contact h2{
+    font-size:clamp(1.7rem, 4vw, 2.4rem);
+    font-weight:600;
+    max-width:560px;
+    margin-bottom:32px;
+  }
+
+  footer{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:40px 28px 80px;
+    color:var(--text-3);
+    font-size:0.85rem;
+    font-family:'JetBrains Mono', monospace;
+    border-top:1px solid var(--wire);
+  }
+
+  @media (max-width:720px){
+    section{ padding:64px 22px; }
+    .hero{ padding-top:80px; }
+    .flow{ flex-direction:column; }
+    .flow-wire{
+      width:1px; height:32px;
+      margin:0 auto;
+    }
+    .flow-wire::before{
+      left:50%; right:auto; top:0; bottom:0; height:auto; width:1px;
+      transform:translateX(-50%);
+      background:repeating-linear-gradient(180deg, var(--wire) 0 6px, transparent 6px 12px);
+    }
+    .flow-wire::after{
+      left:50%; top:0;
+      transform:translateX(-50%);
+      animation-name:travel-v;
+    }
+    @keyframes travel-v{
+      0%{ top:0; opacity:0; }
+      8%{ opacity:1; }
+      92%{ opacity:1; }
+      100%{ top:calc(100% - 6px); opacity:0; }
+    }
+    .how-grid{ grid-template-columns:1fr; }
+    .mini-flow{ flex-wrap:wrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .mini-wire::after, .flow-wire::after{ animation:none; opacity:0.7; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <p class="eyebrow">Automation Specialist</p>
+    <h1>Reez San Gabriel</h1>
+    <p class="role">I build n8n &amp; Make.com workflows that save you hours every week — mapped, tested, and documented like a proof, not duct-taped together.</p>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:reezsangabriel@gmail.com">Start a trial task →</a>
+      <a class="btn btn-ghost" href="#project">See a workflow</a>
+    </div>
+
+    <div class="mini-flow" aria-hidden="true">
+      <span class="mini-node">capture</span>
+      <span class="mini-wire"></span>
+      <span class="mini-node">score</span>
+      <span class="mini-wire"></span>
+      <span class="mini-node">route</span>
+    </div>
+  </section>
+
+  <section class="about">
+    <p class="eyebrow">About</p>
+    <div class="card">
+      <p>Hi, I'm Reez — I build automation workflows in <strong>n8n</strong> and <strong>Make.com</strong> that take repetitive manual tasks off your plate. My background is in Mathematics, so I approach automation the way I'd approach a proof: map the logic first, test every edge case, then ship something that doesn't break silently.</p>
+      <p>Every workflow comes with documentation, so you're never dependent on me to understand how it works — and I'm comfortable connecting tools via API when there's no native integration available.</p>
+    </div>
+  </section>
+
+  <section class="project" id="project">
+    <p class="eyebrow">Featured workflow</p>
+    <h2>AI Lead Qualification &amp; CRM Routing</h2>
+    <p class="project-caption">Inbound form submissions are scored and categorized by AI, routed to the right CRM pipeline, and the team gets a Slack alert only for high-priority leads — cutting manual triage time to zero.</p>
+
+    <div class="flow">
+      <div class="flow-node">
+        <span class="step-label">01 / Trigger</span>
+        <h3>Capture</h3>
+        <p>A webhook or form submission triggers the workflow the instant a lead comes in.</p>
+      </div>
+      <div class="flow-wire"></div>
+      <div class="flow-node">
+        <span class="step-label">02 / Logic</span>
+        <h3>Score</h3>
+        <p>AI reads the lead and scores it against criteria you define — no generic keyword matching.</p>
+      </div>
+      <div class="flow-wire delay"></div>
+      <div class="flow-node">
+        <span class="step-label">03 / Output</span>
+        <h3>Route</h3>
+        <p>Hot leads hit your CRM with a Slack alert. Cold leads go straight to a nurture list.</p>
+      </div>
+    </div>
+
+    <div class="tool-tags">
+      <span class="tag">n8n</span>
+      <span class="tag">OpenAI / Claude</span>
+      <span class="tag">CRM API</span>
+      <span class="tag">Slack</span>
+    </div>
+  </section>
+
+  <section class="how">
+    <p class="eyebrow">How I work</p>
+    <div class="how-grid">
+      <div class="how-card">
+        <h3>Logic-first</h3>
+        <p>I map the full workflow before building, so automations don't break quietly in week three.</p>
+      </div>
+      <div class="how-card">
+        <h3>Documented</h3>
+        <p>You get a clear breakdown of what each step does. No black box, no single point of failure.</p>
+      </div>
+      <div class="how-card">
+        <h3>Trial-friendly</h3>
+        <p>Happy to start with a small paid test task before any larger commitment — see the work first.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <p class="eyebrow">Let's automate something</p>
+    <h2>Have a workflow you'd like off your plate?</h2>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:reezsangabriel@gmail.com">Email me →</a>
+      <a class="btn btn-ghost" href="https://www.onlinejobs.ph/jobseekers/info/2086703">View OnlineJobs.ph profile</a>
+    </div>
+  </section>
+
+  <footer>
+    reez san gabriel — n8n &amp; make automation
+  </footer>
+
+</body>
+</html>
