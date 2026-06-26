@@ -4,903 +4,1242 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reez San Gabriel — Automation Specialist</title>
-<meta name="description" content="n8n, Make, and Zapier automation specialist. I build workflows that save you hours every week.">
+<meta name="description" content="n8n, Make, and Zapier automation specialist. Workflows mapped, tested, and documented before anything goes live.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#12141c;
-    --ink-2:#1a1d28;
-    --ink-3:#20232f;
-    --grid-dot:rgba(236,234,227,0.06);
-    --wire:#3a3f52;
-    --text-1:#ece9e1;
-    --text-2:#9a9fb2;
-    --text-3:#666c82;
-    --accent-green:#2dd4bf;
-    --accent-amber:#f47c7c;
-    --radius:14px;
-    --max-w:920px;
+    --bg:#0f1623;
+    --bg-2:#161e2e;
+    --bg-3:#1c2537;
+    --border:#243044;
+    --border-strong:#2e3f5c;
+    --text-1:#f1f5f9;
+    --text-2:#94a3b8;
+    --text-3:#546a87;
+    --teal:#2dd4bf;
+    --teal-dark:#14b8a6;
+    --teal-dim:rgba(45,212,191,0.1);
+    --rust:#e05a1e;
+    --radius:12px;
+    --max-w:960px;
   }
 
-  *{ box-sizing:border-box; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
   body{
-    margin:0;
-    background:
-      radial-gradient(var(--grid-dot) 1px, transparent 1px) 0 0/22px 22px,
-      var(--ink);
+    background:var(--bg);
     color:var(--text-1);
-    font-family:'Inter', -apple-system, sans-serif;
+    font-family:'Inter',-apple-system,sans-serif;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3{ font-family:'Space Grotesk', sans-serif; margin:0; letter-spacing:-0.01em; }
-  .mono{ font-family:'JetBrains Mono', monospace; }
-
-  .eyebrow{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.78rem;
-    font-weight:500;
-    letter-spacing:0.12em;
+  h1,h2,h3,h4{
+    font-family:'Outfit',sans-serif;
+    letter-spacing:0.04em;
     text-transform:uppercase;
-    color:var(--accent-green);
-    display:flex;
-    align-items:center;
-    gap:8px;
+  }
+  a{ color:inherit; text-decoration:none; }
+  :focus-visible{ outline:2px solid var(--teal); outline-offset:3px; border-radius:4px; }
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(15,22,35,0.93);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--max-w); margin:0 auto; padding:0 28px;
+    height:58px; display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-logo{
+    font-family:'Outfit',sans-serif;
+    font-size:0.88rem; font-weight:800;
+    color:var(--text-1); letter-spacing:0.08em;
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:10px;
+  }
+  .nav-logo-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem; font-weight:600;
+    letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--bg); background:var(--teal);
+    padding:3px 8px; border-radius:4px;
+  }
+  .nav-links{ display:flex; gap:28px; align-items:center; }
+  .nav-links a{
+    font-size:0.84rem; font-weight:500;
+    color:var(--text-3); transition:color 0.15s;
+    font-family:'Inter',sans-serif;
+    text-transform:none; letter-spacing:0;
+  }
+  .nav-links a:hover{ color:var(--text-1); }
+  .nav-clock{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem; color:var(--text-3); letter-spacing:0.04em;
+  }
+
+  /* LAYOUT */
+  .section{ max-width:var(--max-w); margin:0 auto; padding:72px 28px; }
+  .divider{ max-width:var(--max-w); margin:0 auto; padding:0 28px; }
+  .divider hr{ border:none; border-top:1px solid var(--border); }
+
+  /* EYEBROW — line + text */
+  .eyebrow{
+    display:flex; align-items:center; gap:12px;
     margin-bottom:18px;
   }
-  .eyebrow::before{
-    content:"";
-    width:7px; height:7px;
-    border-radius:50%;
-    background:var(--accent-green);
-    box-shadow:0 0 0 3px rgba(45,212,191,0.18);
-    flex-shrink:0;
+  .eyebrow-line{
+    width:28px; height:1.5px; background:var(--teal); flex-shrink:0;
+  }
+  .eyebrow-text{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem; font-weight:500;
+    letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--teal);
   }
 
-  section{
-    max-width:var(--max-w);
-    margin:0 auto;
-    padding:64px 28px;
-  }
-
-  a{ color:inherit; }
-  :focus-visible{ outline:2px solid var(--accent-green); outline-offset:3px; border-radius:4px; }
-
-  /* ---------- HERO ---------- */
-  .hero{ padding-top:100px; padding-bottom:64px; }
-  .hero h1{
-    font-size:clamp(2.4rem, 5.5vw, 3.6rem);
-    font-weight:700;
-    color:var(--text-1);
-  }
-  .hero .role{
-    font-size:clamp(1rem, 2.2vw, 1.2rem);
-    color:var(--text-2);
-    font-weight:500;
-    margin-top:12px;
-    max-width:540px;
-    line-height:1.7;
-  }
-  .hero-cta{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
-
+  /* BUTTONS */
   .btn{
-    font-family:'Inter', sans-serif;
-    font-weight:600;
-    font-size:0.95rem;
-    padding:13px 24px;
-    border-radius:999px;
-    border:1px solid transparent;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:0.9rem;
+    padding:12px 22px; border-radius:999px; border:1.5px solid transparent;
+    cursor:pointer; display:inline-flex; align-items:center;
+    gap:7px; transition:all 0.15s ease; text-decoration:none;
+    text-transform:none; letter-spacing:0;
   }
-  .btn-primary{ background:var(--accent-green); color:#072824; }
-  .btn-primary:hover{ transform:translateY(-1px); }
-  .btn-ghost{ background:transparent; border-color:var(--wire); color:var(--text-2); }
+  .btn-primary{
+    background:var(--teal); color:var(--bg); border-color:var(--teal);
+  }
+  .btn-primary:hover{
+    background:var(--teal-dark); border-color:var(--teal-dark);
+    transform:translateY(-1px);
+  }
+  .btn-ghost{
+    background:transparent; border-color:var(--border-strong); color:var(--text-2);
+  }
   .btn-ghost:hover{ border-color:var(--text-2); color:var(--text-1); }
+  .btn-rust{
+    background:transparent; border-color:var(--rust);
+    color:var(--rust); font-size:0.85rem; padding:10px 18px;
+  }
+  .btn-rust:hover{ background:var(--rust); color:#fff; }
 
-  .mini-flow{
-    margin-top:52px;
-    display:flex;
-    align-items:center;
-    gap:0;
-    max-width:520px;
-  }
-  .mini-node{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.82rem;
-    font-weight:500;
-    color:var(--text-1);
-    background:var(--ink-2);
-    border:1px solid var(--wire);
-    border-radius:10px;
-    padding:10px 16px;
-    white-space:nowrap;
-    position:relative;
-    z-index:2;
-  }
-  .mini-wire{
-    flex:1;
-    height:1px;
-    background:repeating-linear-gradient(90deg, var(--wire) 0 6px, transparent 6px 12px);
-    position:relative;
-    min-width:24px;
-  }
-  .mini-wire::after{
-    content:"";
-    position:absolute;
-    top:50%; left:0;
-    width:6px; height:6px;
-    border-radius:50%;
-    background:var(--accent-amber);
-    transform:translateY(-50%);
-    animation:travel 2.6s linear infinite;
-  }
-  .mini-wire:nth-of-type(4)::after{ animation-delay:1.3s; }
-  .mini-wire:nth-of-type(6)::after{ animation-delay:2.6s; }
-
-  @keyframes travel{
-    0%{ left:0; opacity:0; }
-    8%{ opacity:1; }
-    92%{ opacity:1; }
-    100%{ left:calc(100% - 6px); opacity:0; }
+  /* HERO */
+  .hero{ padding-top:88px; padding-bottom:72px; }
+  .hero-inner{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:48px; align-items:center;
   }
 
-  /* ---------- ABOUT ---------- */
-  .card{
-    background:var(--ink-2);
-    border:1px solid var(--wire);
-    border-radius:var(--radius);
-    padding:32px;
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--teal-dim); border:1px solid rgba(45,212,191,0.25);
+    border-radius:999px; padding:6px 14px; margin-bottom:24px;
+    font-family:'JetBrains Mono',monospace; font-size:0.68rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--teal);
   }
-  .about p{ color:var(--text-2); font-size:1rem; max-width:680px; margin:0; }
-  .about p + p{ margin-top:14px; }
-  .about strong{ color:var(--text-1); font-weight:600; }
-
-  /* ---------- PROJECTS ---------- */
-  .projects-section h2{
-    font-size:clamp(1.5rem, 3vw, 2rem);
-    font-weight:600;
-    margin-bottom:10px;
+  .badge-dot{
+    width:6px; height:6px; border-radius:50%; background:var(--teal);
+    animation:blink 2s ease infinite; flex-shrink:0;
   }
-  .projects-caption{ color:var(--text-2); max-width:620px; margin-bottom:36px; font-size:0.97rem; }
+  @keyframes blink{ 0%,100%{opacity:1} 50%{opacity:0.3} }
 
+  .hero h1{
+    font-size:clamp(2rem,4vw,2.9rem);
+    font-weight:800; color:var(--text-1);
+    line-height:1.12; margin-bottom:20px;
+  }
+  .hero h1 .hl{ color:var(--teal); }
+  .hero-sub{
+    font-size:0.97rem; color:var(--text-2);
+    line-height:1.75; margin-bottom:32px;
+    font-family:'Inter',sans-serif;
+    text-transform:none; letter-spacing:0;
+    font-weight:400;
+  }
+  .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+
+  /* TERMINAL */
+  .terminal{
+    background:var(--bg-2); border:1px solid var(--border);
+    border-radius:var(--radius); overflow:hidden; font-family:'JetBrains Mono',monospace;
+  }
+  .terminal-bar{
+    background:var(--bg-3); border-bottom:1px solid var(--border);
+    padding:10px 16px; display:flex; align-items:center; gap:8px;
+  }
+  .t-dot{
+    width:10px; height:10px; border-radius:50%;
+  }
+  .t-dot-r{ background:#ff5f57; }
+  .t-dot-y{ background:#febc2e; }
+  .t-dot-g{ background:#28c840; }
+  .terminal-title{
+    font-size:0.7rem; color:var(--text-3);
+    letter-spacing:0.06em; margin-left:6px;
+    text-transform:none;
+  }
+  .terminal-body{ padding:20px; min-height:240px; }
+  .t-line{
+    font-size:0.75rem; line-height:1.8; display:flex; gap:10px;
+    opacity:0; transition:opacity 0.3s ease;
+  }
+  .t-line.visible{ opacity:1; }
+  .t-prefix{ color:var(--teal); flex-shrink:0; }
+  .t-text{ color:var(--text-2); }
+  .t-text.success{ color:#4ade80; }
+  .t-text.label{ color:var(--text-1); }
+  .t-text.dim{ color:var(--text-3); }
+  .t-cursor{
+    display:inline-block; width:7px; height:13px;
+    background:var(--teal); margin-left:2px; vertical-align:middle;
+    animation:cursor-blink 1s step-end infinite;
+  }
+  @keyframes cursor-blink{ 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* SERVICES + PROCESS */
+  .sp-grid{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:32px; margin-top:40px;
+  }
+  .services-list{ display:flex; flex-direction:column; gap:12px; }
+  .service-item{
+    display:flex; align-items:flex-start; gap:14px;
+    padding:20px; background:var(--bg-2);
+    border:1px solid var(--border); border-radius:10px;
+    transition:border-color 0.15s;
+  }
+  .service-item:hover{ border-color:var(--teal); }
+  .si-icon{
+    width:34px; height:34px; border-radius:8px;
+    background:var(--teal-dim); display:flex;
+    align-items:center; justify-content:center;
+    flex-shrink:0; font-size:0.95rem;
+    border:1px solid rgba(45,212,191,0.2);
+  }
+  .si-title{
+    font-family:'Outfit',sans-serif;
+    font-size:0.85rem; font-weight:700;
+    color:var(--text-1); margin-bottom:4px;
+    text-transform:uppercase; letter-spacing:0.04em;
+  }
+  .si-desc{
+    font-size:0.82rem; color:var(--text-2);
+    line-height:1.55; font-family:'Inter',sans-serif;
+    text-transform:none; letter-spacing:0; font-weight:400;
+  }
+
+  .process-col{ padding-top:4px; }
+  .process-col-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.66rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--text-3);
+    margin-bottom:20px; font-weight:500;
+    display:flex; align-items:center; gap:10px;
+  }
+  .process-col-label::before{
+    content:""; display:inline-block;
+    width:20px; height:1px; background:var(--border-strong);
+  }
+  .process-steps{ display:flex; flex-direction:column; }
+  .ps{
+    display:flex; gap:16px; padding:20px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .ps:last-child{ border-bottom:none; }
+  .ps-num{
+    font-family:'JetBrains Mono',monospace; font-size:0.65rem;
+    color:var(--teal); font-weight:600; letter-spacing:0.08em;
+    padding-top:3px; flex-shrink:0;
+  }
+  .ps-title{
+    font-family:'Outfit',sans-serif;
+    font-size:0.88rem; font-weight:700;
+    color:var(--text-1); margin-bottom:6px;
+    text-transform:uppercase; letter-spacing:0.04em;
+  }
+  .ps-desc{
+    font-size:0.83rem; color:var(--text-2);
+    line-height:1.6; font-family:'Inter',sans-serif;
+    text-transform:none; letter-spacing:0; font-weight:400;
+  }
+
+  /* PROJECTS */
+  .projects-grid{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    gap:16px; margin-top:32px;
+  }
   .project-card{
-    background:var(--ink-2);
-    border:1px solid var(--wire);
-    border-radius:var(--radius);
-    margin-bottom:20px;
-    overflow:hidden;
+    background:var(--bg-2); border:1px solid var(--border);
+    border-radius:var(--radius); overflow:hidden; cursor:pointer;
+    transition:border-color 0.15s, transform 0.15s;
+  }
+  .project-card:hover{ border-color:var(--border-strong); transform:translateY(-3px); }
+  .project-card.expanded{ border-color:var(--teal); transform:none; }
+
+  .card-thumb{
+    width:100%; height:138px; overflow:hidden;
+    background:var(--bg-3); border-bottom:1px solid var(--border);
+    position:relative;
+  }
+  .card-thumb img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform 0.3s ease;
+  }
+  .project-card:hover .card-thumb img{ transform:scale(1.05); }
+  .card-badge{
+    position:absolute; top:8px; left:8px;
+    font-family:'JetBrains Mono',monospace; font-size:0.6rem;
+    letter-spacing:0.04em;
+    background:rgba(15,22,35,0.88); color:var(--teal);
+    padding:4px 8px; border-radius:4px; backdrop-filter:blur(4px);
   }
 
-  .project-card-header{
-    padding:24px 28px 18px;
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
+  .card-body{ padding:16px 18px 18px; }
+  .card-num{
+    font-family:'JetBrains Mono',monospace; font-size:0.62rem;
+    color:var(--rust); font-weight:600; letter-spacing:0.08em; margin-bottom:5px;
+  }
+  .card-title{
+    font-family:'Outfit',sans-serif;
+    font-size:0.88rem; font-weight:700;
+    color:var(--text-1); margin-bottom:7px; line-height:1.3;
+    text-transform:uppercase; letter-spacing:0.03em;
+  }
+  .card-desc{
+    font-size:0.8rem; color:var(--text-2); line-height:1.6;
+    font-family:'Inter',sans-serif; text-transform:none;
+    letter-spacing:0; font-weight:400;
+  }
+  .card-expand{
+    font-family:'JetBrains Mono',monospace; font-size:0.66rem;
+    color:var(--text-3); margin-top:12px;
+    display:flex; align-items:center; gap:5px; transition:color 0.15s;
+    text-transform:none; letter-spacing:0;
+  }
+  .project-card:hover .card-expand{ color:var(--teal); }
+
+  .detail-panel{
+    display:none; grid-column:1/-1;
+    background:var(--bg-2); border:1px solid var(--teal);
+    border-radius:var(--radius); padding:28px;
+  }
+  .detail-panel.open{ display:block; }
+
+  .dp-header{
+    display:flex; justify-content:space-between;
+    align-items:flex-start; margin-bottom:22px;
+    padding-bottom:18px; border-bottom:1px solid var(--border);
     gap:16px;
-    flex-wrap:wrap;
-    cursor:pointer;
-    user-select:none;
   }
-  .project-card-header:hover .project-title{ color:var(--accent-green); }
-  .project-meta{ flex:1; }
-  .project-number{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.75rem;
-    color:var(--accent-amber);
-    font-weight:600;
-    margin-bottom:4px;
+  .dp-title{
+    font-family:'Outfit',sans-serif;
+    font-size:1rem; font-weight:800;
+    color:var(--text-1); margin-bottom:8px;
+    text-transform:uppercase; letter-spacing:0.04em;
   }
-  .project-title{
-    font-size:1.1rem;
-    font-weight:600;
-    margin-bottom:5px;
-    transition:color 0.15s;
+  .dp-tags{ display:flex; gap:6px; flex-wrap:wrap; }
+  .dp-tag{
+    font-family:'JetBrains Mono',monospace; font-size:0.65rem;
+    color:var(--teal); background:var(--teal-dim);
+    border-radius:5px; padding:4px 9px; letter-spacing:0.04em;
+    text-transform:lowercase;
   }
-  .project-industry{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.72rem;
-    color:var(--text-3);
-    letter-spacing:0.07em;
+  .dp-close{
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem;
+    color:var(--text-3); cursor:pointer; background:none;
+    border:1px solid var(--border); padding:6px 12px;
+    border-radius:6px; transition:all 0.15s; white-space:nowrap;
+    flex-shrink:0; text-transform:none;
   }
-  .project-toggle{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.8rem;
-    color:var(--text-3);
-    white-space:nowrap;
-    padding-top:4px;
-    transition:color 0.15s;
-  }
-  .project-card-header:hover .project-toggle{ color:var(--accent-green); }
+  .dp-close:hover{ border-color:var(--text-2); color:var(--text-1); }
 
-  /* collapsed summary */
-  .project-summary{
-    padding:0 28px 20px;
-    color:var(--text-2);
-    font-size:0.93rem;
-    max-width:680px;
+  .dp-cols{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .dp-section{ margin-bottom:22px; }
+  .dp-section:last-child{ margin-bottom:0; }
+  .dp-label{
+    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
+    letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--teal); display:flex; align-items:center;
+    gap:8px; margin-bottom:12px;
+  }
+  .dp-label::before{
+    content:""; display:inline-block;
+    width:16px; height:1px; background:var(--teal); flex-shrink:0;
   }
 
-  /* expanded detail panel */
-  .project-detail{
-    display:none;
-    border-top:1px solid var(--wire);
-  }
-  .project-detail.open{ display:block; }
-
-  .detail-body{ padding:28px; }
-  .detail-body p{ color:var(--text-2); font-size:0.95rem; margin:0 0 20px 0; max-width:700px; }
-
-  .detail-section{ margin-bottom:28px; }
-  .detail-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--accent-green);
-    margin-bottom:12px;
-    display:block;
-  }
-
-  .steps-list{ list-style:none; padding:0; margin:0; }
+  .steps-list{ list-style:none; }
   .steps-list li{
-    display:flex;
-    gap:14px;
-    padding:10px 0;
-    border-bottom:1px solid var(--wire);
-    font-size:0.93rem;
-    color:var(--text-2);
+    display:flex; gap:12px; padding:9px 0;
+    border-bottom:1px solid var(--border);
+    font-size:0.84rem; color:var(--text-2); line-height:1.5;
+    font-family:'Inter',sans-serif; font-weight:400;
   }
   .steps-list li:last-child{ border-bottom:none; }
-  .step-num{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.72rem;
-    color:var(--accent-amber);
-    font-weight:600;
-    padding-top:2px;
-    flex-shrink:0;
-    width:28px;
+  .sn{
+    font-family:'JetBrains Mono',monospace; font-size:0.62rem;
+    color:var(--rust); font-weight:600; padding-top:2px;
+    flex-shrink:0; width:20px;
   }
 
-  .results-list{ list-style:none; padding:0; margin:0; }
+  .results-list{ list-style:none; }
   .results-list li{
-    display:flex;
-    gap:10px;
-    padding:8px 0;
-    font-size:0.93rem;
-    color:var(--text-2);
-    border-bottom:1px solid var(--wire);
+    display:flex; gap:10px; padding:8px 0;
+    font-size:0.84rem; color:var(--text-2);
+    border-bottom:1px solid var(--border); line-height:1.5;
+    font-family:'Inter',sans-serif; font-weight:400;
   }
   .results-list li:last-child{ border-bottom:none; }
-  .result-dot{ color:var(--accent-green); flex-shrink:0; margin-top:1px; }
+  .rd{ color:var(--teal); flex-shrink:0; font-weight:700; }
 
-  .project-screenshots{
+  .ss-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px;
+  }
+  .ss-item{
+    border-radius:8px; overflow:hidden;
+    border:1px solid var(--border); cursor:pointer; background:var(--bg-3);
+  }
+  .ss-item img{
+    width:100%; height:100px; object-fit:cover;
+    display:block; transition:transform 0.2s;
+  }
+  .ss-item:hover img{ transform:scale(1.04); }
+  .ss-label{
+    font-family:'JetBrains Mono',monospace; font-size:0.6rem;
+    color:var(--text-3); padding:5px 7px;
+    letter-spacing:0.05em; text-transform:uppercase;
+  }
+
+  /* TECH STACK */
+  .stack-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
-    gap:10px;
-    margin-top:4px;
+    grid-template-columns:repeat(auto-fill,minmax(96px,1fr));
+    gap:10px; margin-top:28px;
   }
-  .screenshot-item{
-    border-radius:10px;
-    overflow:hidden;
-    border:1px solid var(--wire);
-    background:var(--ink-3);
-    cursor:pointer;
+  .stack-item{
+    background:var(--bg-2); border:1px solid var(--border);
+    border-radius:10px; padding:16px 8px 14px;
+    text-align:center; transition:border-color 0.15s, transform 0.15s;
   }
-  .screenshot-item img{
-    width:100%;
-    height:150px;
-    object-fit:cover;
-    display:block;
-    transition:transform 0.2s ease;
+  .stack-item:hover{ border-color:var(--teal); transform:translateY(-2px); }
+  .stack-logo{
+    width:36px; height:36px; margin:0 auto 8px;
+    display:flex; align-items:center; justify-content:center;
   }
-  .screenshot-item:hover img{ transform:scale(1.03); }
-  .screenshot-label{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.68rem;
-    color:var(--text-3);
-    padding:7px 10px;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
+  .stack-logo img{
+    width:32px; height:32px; object-fit:contain;
+    filter:brightness(0) invert(1); opacity:0.85;
+    transition:opacity 0.15s;
   }
-
-  .tool-tags{ display:flex; gap:8px; flex-wrap:wrap; }
-  .tag{
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.76rem;
-    font-weight:500;
-    color:var(--text-2);
-    border:1px solid var(--wire);
-    border-radius:999px;
-    padding:6px 14px;
+  .stack-item:hover .stack-logo img{ opacity:1; }
+  .stack-mono{
+    width:34px; height:34px; border-radius:7px;
+    background:var(--bg-3); border:1px solid var(--border-strong);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-size:0.6rem;
+    font-weight:600; color:var(--text-1); letter-spacing:0.01em;
+    text-transform:none;
+  }
+  .stack-name{
+    font-family:'JetBrains Mono',monospace; font-size:0.63rem;
+    color:var(--text-2); letter-spacing:0.05em; text-transform:uppercase;
   }
 
-  /* ---------- HOW I WORK ---------- */
-  .how-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+  /* HOW + CONTACT */
+  .wc-grid{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:24px; margin-top:36px;
+  }
+  .how-cards{ display:flex; flex-direction:column; gap:12px; }
   .how-card{
-    background:var(--ink-2);
-    border:1px solid var(--wire);
-    border-radius:var(--radius);
-    padding:24px 20px;
+    background:var(--bg-2); border:1px solid var(--border);
+    border-radius:10px; padding:22px;
+    transition:border-color 0.15s;
   }
-  .how-card h3{ font-size:1rem; font-weight:600; margin-bottom:8px; }
-  .how-card p{ color:var(--text-2); font-size:0.9rem; margin:0; }
+  .how-card:hover{ border-color:var(--border-strong); }
+  .how-card h3{
+    font-size:0.88rem; font-weight:700;
+    color:var(--text-1); margin-bottom:6px;
+  }
+  .how-card p{
+    font-size:0.83rem; color:var(--text-2); line-height:1.6;
+    font-family:'Inter',sans-serif; text-transform:none;
+    letter-spacing:0; font-weight:400;
+  }
 
-  /* ---------- CONTACT ---------- */
-  .contact h2{
-    font-size:clamp(1.6rem, 3.5vw, 2.2rem);
-    font-weight:600;
-    max-width:520px;
-    margin-bottom:28px;
+  .cta-box{
+    background:var(--bg-2); border:1px solid var(--border);
+    border-radius:var(--radius); padding:32px;
+    display:flex; flex-direction:column; justify-content:center;
   }
-  .email-fallback{
-    margin-top:14px;
-    font-family:'JetBrains Mono', monospace;
-    font-size:0.85rem;
-    color:var(--text-3);
+  .cta-box h2{
+    font-size:1.2rem; font-weight:800;
+    color:var(--text-1); margin-bottom:10px; line-height:1.25;
   }
-  .email-fallback a{
-    color:var(--accent-green);
-    text-decoration:none;
+  .cta-box p{
+    font-size:0.86rem; color:var(--text-2); margin-bottom:22px;
+    line-height:1.65; font-family:'Inter',sans-serif;
+    text-transform:none; letter-spacing:0; font-weight:400;
+  }
+  .cta-btns{ display:flex; flex-direction:column; gap:10px; }
+  .cta-note{
+    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
+    color:var(--text-3); margin-top:8px; line-height:1.5;
+    text-transform:none; letter-spacing:0;
+  }
+  .email-line{
+    font-family:'JetBrains Mono',monospace; font-size:0.72rem;
+    color:var(--text-3); margin-top:14px; text-transform:none;
+  }
+  .email-line a{
+    color:var(--teal);
     border-bottom:1px solid rgba(45,212,191,0.3);
+    transition:border-color 0.15s;
   }
-  .email-fallback a:hover{ border-color:var(--accent-green); }
+  .email-line a:hover{ border-color:var(--teal); }
 
+  /* ABOUT */
+  .about-grid{
+    display:grid; grid-template-columns:1.2fr 1fr;
+    gap:32px; margin-top:36px; align-items:start;
+  }
+  .about-text p{
+    font-size:0.95rem; color:var(--text-2); line-height:1.8;
+    font-family:'Inter',sans-serif; text-transform:none;
+    letter-spacing:0; font-weight:400;
+  }
+  .about-text p + p{ margin-top:14px; }
+  .about-text strong{ color:var(--text-1); font-weight:600; }
+
+  .about-card{
+    background:var(--bg-2); border:1px solid var(--border);
+    border-radius:var(--radius); padding:24px;
+  }
+  .about-card h3{
+    font-size:0.82rem; font-weight:700;
+    color:var(--text-1); margin-bottom:14px;
+  }
+  .bg-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .bg-tag{
+    font-family:'JetBrains Mono',monospace; font-size:0.68rem;
+    color:var(--teal); background:var(--teal-dim);
+    border-radius:5px; padding:5px 10px; letter-spacing:0.02em;
+    text-transform:none;
+  }
+  .resume-block{
+    margin-top:16px; padding-top:16px;
+    border-top:1px solid var(--border);
+  }
+  .resume-note{
+    font-family:'JetBrains Mono',monospace; font-size:0.63rem;
+    color:var(--text-3); margin-top:8px; text-align:center;
+    text-transform:none; letter-spacing:0;
+  }
+
+  /* FOOTER */
   footer{
-    max-width:var(--max-w);
-    margin:0 auto;
-    padding:32px 28px 64px;
-    color:var(--text-3);
-    font-size:0.82rem;
-    font-family:'JetBrains Mono', monospace;
-    border-top:1px solid var(--wire);
+    max-width:var(--max-w); margin:0 auto;
+    padding:24px 28px 52px;
+    border-top:1px solid var(--border);
+    display:flex; justify-content:space-between;
+    align-items:center; flex-wrap:wrap; gap:12px;
+  }
+  footer span{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem; color:var(--text-3);
+    text-transform:none; letter-spacing:0;
   }
 
-  /* ---------- LIGHTBOX ---------- */
+  /* LIGHTBOX */
   .lightbox{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(18,20,28,0.93);
-    z-index:999;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
+    display:none; position:fixed; inset:0;
+    background:rgba(0,0,0,0.92); z-index:999;
+    align-items:center; justify-content:center; padding:24px;
   }
   .lightbox.open{ display:flex; }
   .lightbox img{
-    max-width:90vw;
-    max-height:88vh;
-    border-radius:10px;
-    object-fit:contain;
-    box-shadow:0 24px 64px rgba(0,0,0,0.6);
+    max-width:90vw; max-height:88vh;
+    border-radius:10px; object-fit:contain;
+    box-shadow:0 32px 80px rgba(0,0,0,0.5);
   }
-  .lightbox-close{
-    position:fixed;
-    top:20px; right:24px;
-    font-size:1.6rem;
-    color:var(--text-2);
-    cursor:pointer;
-    background:none;
-    border:none;
-    line-height:1;
-    font-family:'JetBrains Mono', monospace;
+  .lb-close{
+    position:fixed; top:20px; right:24px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:1.3rem; color:#fff; cursor:pointer;
+    background:none; border:none; opacity:0.7;
+    text-transform:none;
   }
-  .lightbox-close:hover{ color:var(--text-1); }
+  .lb-close:hover{ opacity:1; }
 
-  @media (max-width:720px){
-    section{ padding:48px 20px; }
-    .hero{ padding-top:72px; }
-    .how-grid{ grid-template-columns:1fr; }
-    .mini-flow{ flex-wrap:wrap; }
-    .project-card-header{ flex-direction:column; }
-    .project-screenshots{ grid-template-columns:repeat(auto-fill, minmax(150px,1fr)); }
-    .detail-body{ padding:20px; }
-    .project-summary, .project-card-header{ padding-left:20px; padding-right:20px; }
+  /* RESPONSIVE */
+  @media(max-width:760px){
+    .section{ padding:52px 20px; }
+    .hero{ padding-top:64px; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .terminal{ display:none; }
+    .sp-grid,.wc-grid,.about-grid,.dp-cols{ grid-template-columns:1fr; }
+    .projects-grid{ grid-template-columns:1fr 1fr; }
+    .nav-clock{ display:none; }
+    footer{ flex-direction:column; align-items:flex-start; }
   }
-
-  @media (prefers-reduced-motion:reduce){
-    .mini-wire::after{ animation:none; opacity:0.7; }
+  @media(max-width:480px){
+    .projects-grid{ grid-template-columns:1fr; }
+  }
+  @media(prefers-reduced-motion:reduce){
     html{ scroll-behavior:auto; }
-    .screenshot-item:hover img{ transform:none; }
+    .badge-dot,.t-cursor{ animation:none; }
+    .project-card:hover,.service-item:hover,.stack-item:hover{ transform:none; }
   }
 </style>
 </head>
 <body>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
-    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
-    <img id="lightbox-img" src="" alt="">
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      Reez San Gabriel
+      <span class="nav-logo-badge">Automation</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <span class="nav-clock" id="clock"></span>
+    </div>
   </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <p class="eyebrow">Automation Specialist</p>
-    <h1>Reez San Gabriel</h1>
-    <p class="role">I build workflows in <strong style="color:var(--text-1)">n8n, Make, and Zapier</strong> that take the repetitive stuff off your plate — so you stop doing manually what a computer can handle in seconds.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:reezsangabriel@gmail.com">Start a trial task →</a>
-      <a class="btn btn-ghost" href="#projects">See my work</a>
-    </div>
-    <div class="mini-flow" aria-hidden="true">
-      <span class="mini-node">form submit</span>
-      <span class="mini-wire"></span>
-      <span class="mini-node">AI logic</span>
-      <span class="mini-wire"></span>
-      <span class="mini-node">notify</span>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about">
-    <p class="eyebrow">About</p>
-    <div class="card">
-      <p>I'm Reez. I got into automation through a Mathematics degree, which means I tend to treat every workflow like a proof — map the logic before writing a single node, test every edge case, and make sure nothing breaks silently three weeks after handoff.</p>
-      <p>I work across <strong>n8n, Make, and Zapier</strong>, and I'm comfortable reaching into an API when there's no native connector available. Every build comes with documentation, so you're never stuck wondering how it works or calling me every time something needs updating.</p>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="projects-section" id="projects">
-    <p class="eyebrow">Projects</p>
-    <h2>Workflows I've built</h2>
-    <p class="projects-caption">Six real builds — not mockups. Each one was tested end-to-end with live data. Click any card to see how it was built.</p>
-
-    <!-- P01 -->
-    <div class="project-card">
-      <div class="project-card-header" onclick="toggleProject('p01')">
-        <div class="project-meta">
-          <div class="project-number">01</div>
-          <div class="project-title">Internal Ops Request &amp; Triage Engine</div>
-          <div class="project-industry">n8n · Slack · Google Gemini · Google Sheets</div>
-        </div>
-        <div class="project-toggle" id="p01-toggle">expand ↓</div>
+<!-- HERO -->
+<div class="section hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for new projects
       </div>
-      <div class="project-summary">Staff post requests to a Slack channel. Gemini AI reads each one, classifies it, assigns a priority, and logs everything to Google Sheets — no one has to sort or follow up manually.</div>
-      <div class="project-detail" id="p01">
-        <div class="detail-body">
-          <div class="detail-section">
-            <span class="detail-label">How it works</span>
-            <ul class="steps-list">
-              <li><span class="step-num">01</span>A new message posted to the #ops-requests Slack channel triggers the workflow</li>
-              <li><span class="step-num">02</span>Google Gemini AI reads the message and classifies it into one of five categories (IT, HR, Finance, Facilities, General)</li>
-              <li><span class="step-num">03</span>Gemini assigns a priority level: High, Medium, or Low</li>
-              <li><span class="step-num">04</span>n8n routes the request through a 5-branch Switch node based on category</li>
-              <li><span class="step-num">05</span>A structured acknowledgment is posted back to the Slack channel automatically</li>
-              <li><span class="step-num">06</span>Every request is logged to Google Sheets with full metadata — timestamp, category, priority, and original message</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Tools used</span>
-            <div class="tool-tags">
-              <span class="tag">n8n</span><span class="tag">Slack</span><span class="tag">Google Gemini AI</span><span class="tag">Google Sheets</span>
-            </div>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Results</span>
-            <ul class="results-list">
-              <li><span class="result-dot">→</span>Zero manual sorting or follow-up needed from the ops team</li>
-              <li><span class="result-dot">→</span>Every request acknowledged within seconds of being posted</li>
-              <li><span class="result-dot">→</span>Full request history tracked automatically in Google Sheets</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Screenshots</span>
-            <div class="project-screenshots">
-              <div class="screenshot-item" onclick="openLightbox('assets/P1_n8n_canvas.png','n8n canvas')">
-                <img src="assets/P1_n8n_canvas.png" alt="n8n canvas" loading="lazy">
-                <div class="screenshot-label">n8n canvas</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P1_slack.png','Slack output')">
-                <img src="assets/P1_slack.png" alt="Slack output" loading="lazy">
-                <div class="screenshot-label">Slack channel</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P1_google_sheet.png','Google Sheet log')">
-                <img src="assets/P1_google_sheet.png" alt="Google Sheet log" loading="lazy">
-                <div class="screenshot-label">Google Sheet log</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <h1>
+        Automation built right.<br>
+        <span class="hl">Mapped, tested,<br>and documented.</span>
+      </h1>
+      <p class="hero-sub">I build workflows in n8n, Make, and Zapier that take the repetitive work off your plate. Every build is tested end to end and handed over with full documentation.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Book a discovery call</a>
+        <a class="btn btn-ghost" href="#projects">See my work</a>
+        <a class="btn btn-rust" href="assets/resume.pdf" target="_blank" id="resume-hero">Resume ↗</a>
       </div>
     </div>
 
-    <!-- P02 -->
-    <div class="project-card">
-      <div class="project-card-header" onclick="toggleProject('p02')">
-        <div class="project-meta">
-          <div class="project-number">02</div>
-          <div class="project-title">AI Client Intake &amp; Sales Pipeline</div>
-          <div class="project-industry">Zapier · Google Forms · Notion · Gmail · GPT-4o mini</div>
-        </div>
-        <div class="project-toggle" id="p02-toggle">expand ↓</div>
+    <!-- TERMINAL -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="t-dot t-dot-r"></span>
+        <span class="t-dot t-dot-y"></span>
+        <span class="t-dot t-dot-g"></span>
+        <span class="terminal-title">workflow.log</span>
       </div>
-      <div class="project-summary">A lead submits a form and within two minutes they have a personalized reply in their inbox, their record is in the CRM, and the business owner gets an alert if it's a hot lead — without touching anything.</div>
-      <div class="project-detail" id="p02">
-        <div class="detail-body">
-          <div class="detail-section">
-            <span class="detail-label">How it works</span>
-            <ul class="steps-list">
-              <li><span class="step-num">01</span>A form submission triggers the Zapier workflow instantly</li>
-              <li><span class="step-num">02</span>GPT-4o mini reads the submission and scores the lead based on defined criteria</li>
-              <li><span class="step-num">03</span>Lead record is created in Notion CRM with score, category, and all form data</li>
-              <li><span class="step-num">04</span>A personalized reply is sent to the lead via Gmail</li>
-              <li><span class="step-num">05</span>If the lead scores as high-priority, the business owner gets an immediate alert email</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Tools used</span>
-            <div class="tool-tags">
-              <span class="tag">Zapier</span><span class="tag">Google Forms</span><span class="tag">Notion</span><span class="tag">Gmail</span><span class="tag">GPT-4o mini</span>
-            </div>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Results</span>
-            <ul class="results-list">
-              <li><span class="result-dot">→</span>Lead response time dropped from hours to under 2 minutes</li>
-              <li><span class="result-dot">→</span>Every lead automatically scored and logged — no manual CRM entry</li>
-              <li><span class="result-dot">→</span>Owner only gets notified for leads that actually matter</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Screenshots</span>
-            <div class="project-screenshots">
-              <div class="screenshot-item" onclick="openLightbox('assets/P2_zapier.png','Zapier canvas')">
-                <img src="assets/P2_zapier.png" alt="Zapier canvas" loading="lazy">
-                <div class="screenshot-label">Zapier canvas</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P2_notion_crm.png','Notion CRM')">
-                <img src="assets/P2_notion_crm.png" alt="Notion CRM" loading="lazy">
-                <div class="screenshot-label">Notion CRM</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P2_gmail.png','Lead email')">
-                <img src="assets/P2_gmail.png" alt="Lead email" loading="lazy">
-                <div class="screenshot-label">Gmail — lead reply</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P2_gmail_owner_notification.png','Owner alert')">
-                <img src="assets/P2_gmail_owner_notification.png" alt="Owner alert" loading="lazy">
-                <div class="screenshot-label">Gmail — owner alert</div>
-              </div>
-            </div>
-          </div>
+      <div class="terminal-body" id="terminal-body">
+        <div class="t-line" id="tl-0">
+          <span class="t-prefix">$</span>
+          <span class="t-text dim">initializing workflow...</span>
+        </div>
+        <div class="t-line" id="tl-1">
+          <span class="t-prefix">✓</span>
+          <span class="t-text success">trigger received — tally form submission</span>
+        </div>
+        <div class="t-line" id="tl-2">
+          <span class="t-prefix">→</span>
+          <span class="t-text">logging to google sheets... done</span>
+        </div>
+        <div class="t-line" id="tl-3">
+          <span class="t-prefix">→</span>
+          <span class="t-text">sending confirmation email... done</span>
+        </div>
+        <div class="t-line" id="tl-4">
+          <span class="t-prefix">→</span>
+          <span class="t-text">checking appointment window...</span>
+        </div>
+        <div class="t-line" id="tl-5">
+          <span class="t-prefix">✓</span>
+          <span class="t-text success">appointment is 48hrs away — wait node set</span>
+        </div>
+        <div class="t-line" id="tl-6">
+          <span class="t-prefix">→</span>
+          <span class="t-text dim">workflow paused — resuming in 24hrs</span>
+        </div>
+        <div class="t-line" id="tl-7">
+          <span class="t-prefix">✓</span>
+          <span class="t-text success">reminder sent to patient</span>
+        </div>
+        <div class="t-line" id="tl-8">
+          <span class="t-prefix">✓</span>
+          <span class="t-text label">workflow complete — 0 manual steps</span>
+        </div>
+        <div class="t-line" id="tl-9">
+          <span class="t-prefix">$</span>
+          <span class="t-text dim">waiting for next trigger<span class="t-cursor"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- SERVICES + PROCESS -->
+<div class="section" id="services">
+  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">What I build and how</span></div>
+  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Services</h2>
+  <p style="color:var(--text-2);font-size:0.9rem;max-width:500px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Four things clients hire me for most. If yours does not fit neatly into one, most real problems do not.</p>
+  <div class="sp-grid">
+    <div class="services-list">
+      <div class="service-item">
+        <div class="si-icon">⚙️</div>
+        <div>
+          <div class="si-title">Workflow Automation</div>
+          <p class="si-desc">End-to-end workflows in n8n, Make, or Zapier. I connect your tools so tasks move automatically without anyone pushing them along.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="si-icon">🤖</div>
+        <div>
+          <div class="si-title">AI Integration</div>
+          <p class="si-desc">Add AI to your workflow for scoring, classifying, routing, or generating content. Works with Gemini, GPT-4o, and Claude.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="si-icon">🔌</div>
+        <div>
+          <div class="si-title">API Connections</div>
+          <p class="si-desc">Connect tools that have no native integration. If it has an API, it can talk to your other tools through webhooks or HTTP requests.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="si-icon">📋</div>
+        <div>
+          <div class="si-title">CRM Automation</div>
+          <p class="si-desc">Automate lead capture, contact creation, pipeline updates, and follow-up sequences inside HubSpot, Notion, or your existing CRM.</p>
         </div>
       </div>
     </div>
 
-    <!-- P03 -->
-    <div class="project-card">
-      <div class="project-card-header" onclick="toggleProject('p03')">
-        <div class="project-meta">
-          <div class="project-number">03</div>
-          <div class="project-title">Automated Client Onboarding Sequence</div>
-          <div class="project-industry">Zapier · Notion · Gmail</div>
+    <div class="process-col">
+      <div class="process-col-label">How it works</div>
+      <div class="process-steps">
+        <div class="ps">
+          <div class="ps-num">01</div>
+          <div>
+            <div class="ps-title">You tell me what's eating your time</div>
+            <p class="ps-desc">We walk through the manual process together. What triggers it, what the steps are, where things tend to fall apart. No technical background needed on your side.</p>
+          </div>
         </div>
-        <div class="project-toggle" id="p03-toggle">expand ↓</div>
-      </div>
-      <div class="project-summary">When a lead is marked as a paying client in Notion, they get a welcome email, a personalized onboarding checklist is created, and a follow-up sequence runs over the next three days — the business owner does nothing.</div>
-      <div class="project-detail" id="p03">
-        <div class="detail-body">
-          <div class="detail-section">
-            <span class="detail-label">How it works</span>
-            <ul class="steps-list">
-              <li><span class="step-num">01</span>A Notion database trigger fires when a lead's status is updated to "Client"</li>
-              <li><span class="step-num">02</span>A personalized welcome email is sent to the client via Gmail</li>
-              <li><span class="step-num">03</span>A tailored onboarding checklist page is created in Notion automatically</li>
-              <li><span class="step-num">04</span>A follow-up email sequence runs over the next 3 days with relevant next steps</li>
-            </ul>
+        <div class="ps">
+          <div class="ps-num">02</div>
+          <div>
+            <div class="ps-title">I map the fix before building anything</div>
+            <p class="ps-desc">Full logic map first. Every edge case gets thought through on paper before a single node gets placed. If it does not hold on paper it will not hold in production.</p>
           </div>
-          <div class="detail-section">
-            <span class="detail-label">Tools used</span>
-            <div class="tool-tags">
-              <span class="tag">Zapier</span><span class="tag">Notion</span><span class="tag">Gmail</span>
-            </div>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Results</span>
-            <ul class="results-list">
-              <li><span class="result-dot">→</span>New clients feel taken care of immediately — welcome email arrives within seconds of conversion</li>
-              <li><span class="result-dot">→</span>Onboarding checklist ready before the client even opens their inbox</li>
-              <li><span class="result-dot">→</span>Zero manual follow-up needed from the business owner</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Screenshots</span>
-            <div class="project-screenshots">
-              <div class="screenshot-item" onclick="openLightbox('assets/P3_zapier.png','Zapier canvas')">
-                <img src="assets/P3_zapier.png" alt="Zapier canvas" loading="lazy">
-                <div class="screenshot-label">Zapier canvas</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P3_notion_onboarding_checklist.png','Notion checklist')">
-                <img src="assets/P3_notion_onboarding_checklist.png" alt="Notion checklist" loading="lazy">
-                <div class="screenshot-label">Notion checklist</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P3_gmail_notification.png','Welcome email')">
-                <img src="assets/P3_gmail_notification.png" alt="Welcome email" loading="lazy">
-                <div class="screenshot-label">Gmail — welcome email</div>
-              </div>
-            </div>
+        </div>
+        <div class="ps">
+          <div class="ps-num">03</div>
+          <div>
+            <div class="ps-title">You stop doing it manually</div>
+            <p class="ps-desc">I build, test, and hand it over with documentation. You own the workflow completely and can understand how it runs without needing to call me.</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- P04 -->
-    <div class="project-card">
-      <div class="project-card-header" onclick="toggleProject('p04')">
-        <div class="project-meta">
-          <div class="project-number">04</div>
-          <div class="project-title">Content Repurposing Engine</div>
-          <div class="project-industry">Make · Google Gemini · Notion · Gmail</div>
-        </div>
-        <div class="project-toggle" id="p04-toggle">expand ↓</div>
+<div class="divider"><hr></div>
+
+<!-- PROJECTS -->
+<div class="section" id="projects">
+  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Work</span></div>
+  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Projects</h2>
+  <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:0;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Six real builds across healthcare, real estate, operations, sales, and content. Click any card to see the full breakdown.</p>
+
+  <div class="projects-grid" id="pgrid">
+    <div class="project-card" onclick="toggleCard('p01',this)" data-id="p01">
+      <div class="card-thumb">
+        <img src="assets/P1_n8n_canvas.png" alt="Ops Triage" loading="lazy">
+        <span class="card-badge">n8n · slack · gemini</span>
       </div>
-      <div class="project-summary">Drop a raw content idea into a Notion table. The workflow picks it up, sends it to Gemini AI, and comes back with a LinkedIn post, an X thread, and a newsletter blurb — organized and ready to review.</div>
-      <div class="project-detail" id="p04">
-        <div class="detail-body">
-          <div class="detail-section">
-            <span class="detail-label">How it works</span>
-            <ul class="steps-list">
-              <li><span class="step-num">01</span>A new row added to the Notion Content Ideas table triggers the Make scenario</li>
-              <li><span class="step-num">02</span>The raw idea is sent to Google Gemini AI with separate prompts for each platform</li>
-              <li><span class="step-num">03</span>Gemini returns three drafts: a LinkedIn post, an X thread, and a newsletter blurb</li>
-              <li><span class="step-num">04</span>Each draft is saved to a Notion Content Drafts table, organized by platform and status</li>
-              <li><span class="step-num">05</span>A Gmail notification is sent when the drafts are ready for review</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Tools used</span>
-            <div class="tool-tags">
-              <span class="tag">Make</span><span class="tag">Google Gemini AI</span><span class="tag">Notion</span><span class="tag">Gmail</span>
-            </div>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Results</span>
-            <ul class="results-list">
-              <li><span class="result-dot">→</span>One idea becomes three platform-ready drafts in under 90 seconds</li>
-              <li><span class="result-dot">→</span>Content backlog organized automatically — no copy-pasting between tools</li>
-              <li><span class="result-dot">→</span>Writer only needs to review and post, not write from scratch</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Screenshots</span>
-            <div class="project-screenshots">
-              <div class="screenshot-item" onclick="openLightbox('assets/P4_make.png','Make canvas')">
-                <img src="assets/P4_make.png" alt="Make canvas" loading="lazy">
-                <div class="screenshot-label">Make canvas</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P4_notion_content_ideas_table.png','Content Ideas')">
-                <img src="assets/P4_notion_content_ideas_table.png" alt="Content ideas table" loading="lazy">
-                <div class="screenshot-label">Content Ideas table</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P4_content_drafts_table.png','Content Drafts')">
-                <img src="assets/P4_content_drafts_table.png" alt="Content drafts table" loading="lazy">
-                <div class="screenshot-label">Content Drafts table</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P4_gmail_notification.png','Gmail notification')">
-                <img src="assets/P4_gmail_notification.png" alt="Gmail notification" loading="lazy">
-                <div class="screenshot-label">Gmail — notification</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 01</div>
+        <div class="card-title">Internal Ops Request Triage</div>
+        <p class="card-desc">Staff post a message. AI reads it, classifies it, assigns a priority, and logs it. Nobody sorts manually.</p>
+        <div class="card-expand"><span id="p01-arr">↓</span>&nbsp;<span id="p01-lbl">See how it works</span></div>
       </div>
     </div>
 
-    <!-- P05 -->
-    <div class="project-card">
-      <div class="project-card-header" onclick="toggleProject('p05')">
-        <div class="project-meta">
-          <div class="project-number">05</div>
-          <div class="project-title">Real Estate Speed-to-Lead System</div>
-          <div class="project-industry">Tally · Make · Google Gemini · HubSpot · Gmail</div>
-        </div>
-        <div class="project-toggle" id="p05-toggle">expand ↓</div>
+    <div class="project-card" onclick="toggleCard('p02',this)" data-id="p02">
+      <div class="card-thumb">
+        <img src="assets/P2_zapier.png" alt="AI Intake" loading="lazy">
+        <span class="card-badge">zapier · notion · gpt-4o</span>
       </div>
-      <div class="project-summary">A property inquiry comes in and within 60 seconds it's been scored by AI, saved to HubSpot with a tier label (Hot / Warm / Cold), and the prospect has a personalized reply in their inbox.</div>
-      <div class="project-detail" id="p05">
-        <div class="detail-body">
-          <div class="detail-section">
-            <span class="detail-label">How it works</span>
-            <ul class="steps-list">
-              <li><span class="step-num">01</span>A Tally form submission triggers the Make scenario via webhook</li>
-              <li><span class="step-num">02</span>Google Gemini AI reads the inquiry and scores it 0–100 based on budget, timeline, and intent signals</li>
-              <li><span class="step-num">03</span>Score is translated to a tier label: Hot, Warm, or Cold</li>
-              <li><span class="step-num">04</span>A new contact record is created in HubSpot CRM with score, tier, and all form data</li>
-              <li><span class="step-num">05</span>A personalized email reply is sent to the prospect via Gmail within 60 seconds of submission</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Tools used</span>
-            <div class="tool-tags">
-              <span class="tag">Tally</span><span class="tag">Make</span><span class="tag">Google Gemini AI</span><span class="tag">HubSpot CRM</span><span class="tag">Gmail</span>
-            </div>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Results</span>
-            <ul class="results-list">
-              <li><span class="result-dot">→</span>Response time under 60 seconds — before any agent has even seen the inquiry</li>
-              <li><span class="result-dot">→</span>Every lead scored and tiered automatically — agents know where to focus</li>
-              <li><span class="result-dot">→</span>HubSpot CRM stays current with zero manual data entry</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Screenshots</span>
-            <div class="project-screenshots">
-              <div class="screenshot-item" onclick="openLightbox('assets/P5_Make.png','Make canvas')">
-                <img src="assets/P5_Make.png" alt="Make canvas" loading="lazy">
-                <div class="screenshot-label">Make canvas</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P5_tally.png','Tally form')">
-                <img src="assets/P5_tally.png" alt="Tally form" loading="lazy">
-                <div class="screenshot-label">Tally form</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 02</div>
+        <div class="card-title">AI Client Intake Pipeline</div>
+        <p class="card-desc">A lead submits a form. Two minutes later they have a personalized reply and the owner has an alert if it matters.</p>
+        <div class="card-expand"><span id="p02-arr">↓</span>&nbsp;<span id="p02-lbl">See how it works</span></div>
       </div>
     </div>
 
-    <!-- P06 -->
-    <div class="project-card">
-      <div class="project-card-header" onclick="toggleProject('p06')">
-        <div class="project-meta">
-          <div class="project-number">06</div>
-          <div class="project-title">Dental Clinic Appointment Automation</div>
-          <div class="project-industry">Tally · n8n · Gmail · Google Sheets</div>
-        </div>
-        <div class="project-toggle" id="p06-toggle">expand ↓</div>
+    <div class="project-card" onclick="toggleCard('p03',this)" data-id="p03">
+      <div class="card-thumb">
+        <img src="assets/P3_zapier.png" alt="Onboarding" loading="lazy">
+        <span class="card-badge">zapier · notion · gmail</span>
       </div>
-      <div class="project-summary">Two workflows that handle the full patient appointment lifecycle — instant confirmation, a 24-hour reminder that only fires when it makes sense, and automatic no-show follow-up to both the admin and the patient.</div>
-      <div class="project-detail" id="p06">
-        <div class="detail-body">
-          <div class="detail-section">
-            <span class="detail-label">Workflow 1 — Booking &amp; Reminder</span>
-            <ul class="steps-list">
-              <li><span class="step-num">01</span>Patient submits a Tally booking form — name, email, date, time, appointment type</li>
-              <li><span class="step-num">02</span>n8n logs the record to a Google Sheets CRM instantly</li>
-              <li><span class="step-num">03</span>A confirmation email goes out to the patient straight away</li>
-              <li><span class="step-num">04</span>An IF node checks whether the appointment is more than 24 hours away</li>
-              <li><span class="step-num">05</span>If yes — a Wait node pauses the workflow until exactly 24 hours before the appointment, then fires a reminder email</li>
-              <li><span class="step-num">06</span>If no (same-day booking) — workflow stops cleanly, no duplicate email sent</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Workflow 2 — No-Show Detection</span>
-            <ul class="steps-list">
-              <li><span class="step-num">01</span>Admin manually marks a patient as "No-Show" in the Google Sheet Status column</li>
-              <li><span class="step-num">02</span>Google Sheets Trigger detects the row update</li>
-              <li><span class="step-num">03</span>An Edit Fields node reformats date and time values from Sheets serial format to readable text</li>
-              <li><span class="step-num">04</span>An IF node confirms the status is exactly "No-Show"</li>
-              <li><span class="step-num">05</span>Two Gmail nodes fire simultaneously — an alert to the admin with patient details, and a warm rebooking email to the patient</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Tools used</span>
-            <div class="tool-tags">
-              <span class="tag">Tally</span><span class="tag">n8n</span><span class="tag">Gmail</span><span class="tag">Google Sheets</span>
-            </div>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Results</span>
-            <ul class="results-list">
-              <li><span class="result-dot">→</span>Zero manual effort from admin for confirmations and reminders</li>
-              <li><span class="result-dot">→</span>Same-day bookings handled correctly — no unnecessary duplicate emails</li>
-              <li><span class="result-dot">→</span>No-shows trigger follow-up within minutes of the admin updating the sheet</li>
-              <li><span class="result-dot">→</span>Patients get a warm rebooking email automatically — fewer lost appointments</li>
-              <li><span class="result-dot">→</span>Entire stack runs on free-tier tools — no ongoing software cost to the clinic</li>
-            </ul>
-          </div>
-          <div class="detail-section">
-            <span class="detail-label">Screenshots</span>
-            <div class="project-screenshots">
-              <div class="screenshot-item" onclick="openLightbox('assets/P6_n8n_WF1.png','n8n Workflow 1')">
-                <img src="assets/P6_n8n_WF1.png" alt="n8n Workflow 1" loading="lazy">
-                <div class="screenshot-label">n8n — Workflow 1</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P6_n8n_WF2.png','n8n Workflow 2')">
-                <img src="assets/P6_n8n_WF2.png" alt="n8n Workflow 2" loading="lazy">
-                <div class="screenshot-label">n8n — Workflow 2</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P6_google_sheet.png','Google Sheet CRM')">
-                <img src="assets/P6_google_sheet.png" alt="Google Sheet CRM" loading="lazy">
-                <div class="screenshot-label">Google Sheet CRM</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P6_gmail_confirmation.png','Confirmation email')">
-                <img src="assets/P6_gmail_confirmation.png" alt="Confirmation email" loading="lazy">
-                <div class="screenshot-label">Gmail — confirmation</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P6_gmail_reminder.png','Reminder email')">
-                <img src="assets/P6_gmail_reminder.png" alt="Reminder email" loading="lazy">
-                <div class="screenshot-label">Gmail — reminder</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P6_gmail_admin-alert.png','Admin alert')">
-                <img src="assets/P6_gmail_admin-alert.png" alt="Admin alert" loading="lazy">
-                <div class="screenshot-label">Gmail — admin alert</div>
-              </div>
-              <div class="screenshot-item" onclick="openLightbox('assets/P6_gmail_patient_rebooking.png','Patient rebooking')">
-                <img src="assets/P6_gmail_patient_rebooking.png" alt="Patient rebooking email" loading="lazy">
-                <div class="screenshot-label">Gmail — rebooking</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 03</div>
+        <div class="card-title">Client Onboarding Sequence</div>
+        <p class="card-desc">Mark someone as a client in Notion. Welcome email, checklist, and 3-day follow-up run without you touching anything.</p>
+        <div class="card-expand"><span id="p03-arr">↓</span>&nbsp;<span id="p03-lbl">See how it works</span></div>
       </div>
     </div>
 
-  </section>
+    <div class="detail-panel" id="panel-p01" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p02" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p03" style="display:none;grid-column:1/-1"></div>
 
-  <!-- HOW I WORK -->
-  <section class="how">
-    <p class="eyebrow">How I work</p>
-    <div class="how-grid">
+    <div class="project-card" onclick="toggleCard('p04',this)" data-id="p04">
+      <div class="card-thumb">
+        <img src="assets/P4_make.png" alt="Content Engine" loading="lazy">
+        <span class="card-badge">make · gemini · notion</span>
+      </div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 04</div>
+        <div class="card-title">Content Repurposing Engine</div>
+        <p class="card-desc">One raw idea becomes a LinkedIn post, X thread, and newsletter blurb in under 90 seconds.</p>
+        <div class="card-expand"><span id="p04-arr">↓</span>&nbsp;<span id="p04-lbl">See how it works</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleCard('p05',this)" data-id="p05">
+      <div class="card-thumb">
+        <img src="assets/P5_Make.png" alt="Real Estate" loading="lazy">
+        <span class="card-badge">make · gemini · hubspot</span>
+      </div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 05</div>
+        <div class="card-title">Real Estate Speed-to-Lead</div>
+        <p class="card-desc">Inquiry comes in. Within 60 seconds it is scored, saved to HubSpot, and the prospect has a reply waiting.</p>
+        <div class="card-expand"><span id="p05-arr">↓</span>&nbsp;<span id="p05-lbl">See how it works</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="toggleCard('p06',this)" data-id="p06">
+      <div class="card-thumb">
+        <img src="assets/P6_n8n_WF1.png" alt="Clinic" loading="lazy">
+        <span class="card-badge">n8n · sheets · gmail</span>
+      </div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 06</div>
+        <div class="card-title">Dental Clinic Appointment System</div>
+        <p class="card-desc">Confirmation, 24-hour reminder, and no-show follow-up all run automatically. Admin updates one column, two emails fire.</p>
+        <div class="card-expand"><span id="p06-arr">↓</span>&nbsp;<span id="p06-lbl">See how it works</span></div>
+      </div>
+    </div>
+
+    <div class="detail-panel" id="panel-p04" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p05" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p06" style="display:none;grid-column:1/-1"></div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- TECH STACK -->
+<div class="section" id="stack">
+  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Tools</span></div>
+  <h2 style="font-size:clamp(1.3rem,2.5vw,1.7rem);color:var(--text-1);margin-bottom:6px;">Tech stack</h2>
+  <p style="color:var(--text-2);font-size:0.88rem;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Platforms I work with regularly across client builds.</p>
+  <div class="stack-grid">
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/n8n.svg" alt="n8n" onerror="this.outerHTML='<div class=\'stack-mono\'>n8n</div>'"></div>
+      <div class="stack-name">n8n</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/make.svg" alt="Make" onerror="this.outerHTML='<div class=\'stack-mono\'>MK</div>'"></div>
+      <div class="stack-name">Make</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/zapier.svg" alt="Zapier" onerror="this.outerHTML='<div class=\'stack-mono\'>ZP</div>'"></div>
+      <div class="stack-name">Zapier</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/notion.svg" alt="Notion" onerror="this.outerHTML='<div class=\'stack-mono\'>NT</div>'"></div>
+      <div class="stack-name">Notion</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/gmail.svg" alt="Gmail" onerror="this.outerHTML='<div class=\'stack-mono\'>GM</div>'"></div>
+      <div class="stack-name">Gmail</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlesheets.svg" alt="Sheets" onerror="this.outerHTML='<div class=\'stack-mono\'>GS</div>'"></div>
+      <div class="stack-name">Sheets</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/hubspot.svg" alt="HubSpot" onerror="this.outerHTML='<div class=\'stack-mono\'>HS</div>'"></div>
+      <div class="stack-name">HubSpot</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg" alt="Slack" onerror="this.outerHTML='<div class=\'stack-mono\'>SL</div>'"></div>
+      <div class="stack-name">Slack</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><div class="stack-mono">TL</div></div>
+      <div class="stack-name">Tally</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlegemini.svg" alt="Gemini" onerror="this.outerHTML='<div class=\'stack-mono\'>GEM</div>'"></div>
+      <div class="stack-name">Gemini</div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg" alt="GPT-4o" onerror="this.outerHTML='<div class=\'stack-mono\'>OAI</div>'"></div>
+      <div class="stack-name">GPT-4o</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- HOW I WORK + CONTACT -->
+<div class="section" id="contact">
+  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Work with me</span></div>
+  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">How I work</h2>
+  <p style="color:var(--text-2);font-size:0.9rem;max-width:440px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Three things that shape every build I deliver.</p>
+  <div class="wc-grid">
+    <div class="how-cards">
       <div class="how-card">
         <h3>Logic first</h3>
-        <p>I map the full flow before touching any nodes. If the logic doesn't hold on paper it won't hold in production.</p>
+        <p>I map the full flow before placing a single node. If the logic has a gap on paper, it will break in production.</p>
       </div>
       <div class="how-card">
-        <h3>Documented</h3>
-        <p>Every build comes with a clear breakdown of what each step does — no black box, no dependency on me to keep it running.</p>
+        <h3>Documented handoff</h3>
+        <p>You get a breakdown of what every step does. No black box, no dependency on me to keep it running.</p>
       </div>
       <div class="how-card">
-        <h3>Trial-friendly</h3>
-        <p>Happy to start with a small paid test task before any bigger commitment. See how I work before deciding.</p>
+        <h3>You own it completely</h3>
+        <p>Built inside your accounts, handed over clean. No ongoing lock-in. The workflow is yours from day one.</p>
       </div>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact">
-    <p class="eyebrow">Let's work together</p>
-    <h2>Have something you'd like automated?</h2>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:reezsangabriel@gmail.com">Email me →</a>
-      <a class="btn btn-ghost" href="https://www.onlinejobs.ph/jobseekers/info/2086703">View OnlineJobs.ph profile</a>
+    <div class="cta-box">
+      <h2>Have something you want automated?</h2>
+      <p>Book a free 30-minute call and we can figure out if automation is the right fix and what it would take to build it.</p>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="YOUR_CALENDLY_LINK_HERE" target="_blank">Book a discovery call</a>
+        <a class="btn btn-ghost" href="https://www.onlinejobs.ph/jobseekers/info/2086703" target="_blank">View OnlineJobs.ph profile</a>
+      </div>
+      <p class="cta-note">Replace YOUR_CALENDLY_LINK_HERE with your Calendly URL once your account is ready.</p>
+      <p class="email-line">Prefer email? <a href="mailto:reezsangabriel@gmail.com">reezsangabriel@gmail.com</a></p>
     </div>
-    <p class="email-fallback">Or reach me directly at <a href="mailto:reezsangabriel@gmail.com">reezsangabriel@gmail.com</a></p>
-  </section>
+  </div>
+</div>
 
-  <footer>
-    reez san gabriel — n8n · make · zapier automation
-  </footer>
+<div class="divider"><hr></div>
 
-  <script>
-    function toggleProject(id) {
-      const panel = document.getElementById(id);
-      const toggle = document.getElementById(id + '-toggle');
-      const isOpen = panel.classList.contains('open');
-      panel.classList.toggle('open', !isOpen);
-      toggle.textContent = isOpen ? 'expand ↓' : 'collapse ↑';
-    }
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">About</span></div>
+  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Reez San Gabriel</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I build automation workflows in n8n, Make, and Zapier for small businesses looking to take repetitive tasks off their plate.</p>
+      <p>My background in <strong>Mathematics</strong> and <strong>real estate analytics</strong> shapes how I work. I tend to look at a process and spot the logic gaps before picking a tool, which means I spend more time mapping than building and less time fixing things after the fact.</p>
+      <p>What I enjoy most is seeing a workflow run clean for the first time. That is what keeps me testing carefully and not handing anything over until it actually works the way it should.</p>
+      <p>Every build comes with documentation so you can understand how it runs without needing to call me.</p>
+    </div>
+    <div class="about-card">
+      <h3>Background</h3>
+      <div class="bg-tags">
+        <span class="bg-tag">BS Mathematics</span>
+        <span class="bg-tag">Real Estate Analytics</span>
+        <span class="bg-tag">Performance Analysis</span>
+        <span class="bg-tag">Workflow Automation</span>
+        <span class="bg-tag">AI Integration</span>
+      </div>
+      <div class="resume-block">
+        <a class="btn btn-rust" href="assets/resume.pdf" target="_blank" id="resume-about"
+          style="width:100%;justify-content:center;text-transform:none;letter-spacing:0;">View full resume ↗</a>
+        <p class="resume-note">Resume will be added shortly</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    function openLightbox(src, alt) {
-      const lb = document.getElementById('lightbox');
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-img').alt = alt || '';
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+<footer>
+  <span>Reez San Gabriel — Automation Specialist</span>
+  <span id="footer-clock"></span>
+</footer>
 
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
-    }
+<script>
+// Terminal animation
+const lines = document.querySelectorAll('.t-line');
+let i = 0;
+function showNext(){
+  if(i < lines.length){
+    lines[i].classList.add('visible');
+    i++;
+    setTimeout(showNext, i === 1 ? 400 : 600);
+  }
+}
+setTimeout(showNext, 800);
 
-    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-      if (e.target === this) closeLightbox();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
+// Project data
+const projects = {
+  p01:{
+    title:"Internal Ops Request Triage Engine",
+    tools:["n8n","slack","google gemini","google sheets"],
+    steps:[
+      "New message in the ops-requests Slack channel triggers the workflow",
+      "Gemini AI classifies it: IT, HR, Finance, Facilities, or General",
+      "Priority assigned: High, Medium, or Low",
+      "n8n routes through a 5-branch Switch node by category",
+      "Structured acknowledgment posted back to Slack automatically",
+      "Full record logged to Google Sheets with timestamp and metadata"
+    ],
+    results:[
+      "Zero manual sorting needed from the ops team",
+      "Every request acknowledged within seconds of posting",
+      "Full request history tracked automatically in Google Sheets"
+    ],
+    screenshots:[
+      {src:"assets/P1_n8n_canvas.png",label:"n8n canvas"},
+      {src:"assets/P1_slack.png",label:"slack output"},
+      {src:"assets/P1_google_sheet.png",label:"sheet log"}
+    ]
+  },
+  p02:{
+    title:"AI Client Intake and Sales Pipeline",
+    tools:["zapier","google forms","notion","gmail","gpt-4o mini"],
+    steps:[
+      "Form submission triggers Zapier instantly",
+      "GPT-4o mini scores the lead against defined criteria",
+      "Lead record created in Notion CRM with score and all form data",
+      "Personalized reply sent to the lead via Gmail",
+      "High-priority leads trigger an immediate owner alert email"
+    ],
+    results:[
+      "Lead response time under 2 minutes",
+      "Every lead scored and logged with no manual CRM entry",
+      "Owner only notified for leads that actually matter"
+    ],
+    screenshots:[
+      {src:"assets/P2_zapier.png",label:"zapier canvas"},
+      {src:"assets/P2_notion_crm.png",label:"notion crm"},
+      {src:"assets/P2_gmail.png",label:"lead reply"},
+      {src:"assets/P2_gmail_owner_notification.png",label:"owner alert"}
+    ]
+  },
+  p03:{
+    title:"Automated Client Onboarding Sequence",
+    tools:["zapier","notion","gmail"],
+    steps:[
+      "Notion trigger fires when status updates to Client",
+      "Welcome email sent via Gmail immediately",
+      "Personalized onboarding checklist created in Notion automatically",
+      "Follow-up email sequence runs over the next 3 days"
+    ],
+    results:[
+      "Welcome email arrives within seconds of conversion",
+      "Onboarding checklist ready before client opens their inbox",
+      "Zero manual follow-up needed from the business owner"
+    ],
+    screenshots:[
+      {src:"assets/P3_zapier.png",label:"zapier canvas"},
+      {src:"assets/P3_notion_onboarding_checklist.png",label:"notion checklist"},
+      {src:"assets/P3_gmail_notification.png",label:"welcome email"}
+    ]
+  },
+  p04:{
+    title:"Content Repurposing Engine",
+    tools:["make","google gemini","notion","gmail"],
+    steps:[
+      "New row in Notion Content Ideas table triggers the Make scenario",
+      "Raw idea sent to Gemini with separate prompts per platform",
+      "Three drafts returned: LinkedIn post, X thread, newsletter blurb",
+      "Each draft saved to Notion Content Drafts table organized by platform",
+      "Gmail notification sent when drafts are ready to review"
+    ],
+    results:[
+      "One idea becomes three platform-ready drafts in under 90 seconds",
+      "Content backlog organized without copy-pasting between tools",
+      "Writer reviews and posts rather than writing from scratch"
+    ],
+    screenshots:[
+      {src:"assets/P4_make.png",label:"make canvas"},
+      {src:"assets/P4_notion_content_ideas_table.png",label:"content ideas"},
+      {src:"assets/P4_content_drafts_table.png",label:"content drafts"},
+      {src:"assets/P4_gmail_notification.png",label:"gmail notification"}
+    ]
+  },
+  p05:{
+    title:"Real Estate Speed-to-Lead System",
+    tools:["tally","make","google gemini","hubspot","gmail"],
+    steps:[
+      "Tally form submission triggers the Make scenario via webhook",
+      "Gemini scores the inquiry 0 to 100 on budget, timeline, and intent",
+      "Score converted to a tier label: Hot, Warm, or Cold",
+      "Contact record created in HubSpot CRM with full data and tier",
+      "Personalized email reply sent to the prospect within 60 seconds"
+    ],
+    results:[
+      "Response time under 60 seconds before any agent sees the lead",
+      "Every lead scored and tiered so agents know where to focus",
+      "HubSpot stays current with zero manual data entry"
+    ],
+    screenshots:[
+      {src:"assets/P5_Make.png",label:"make canvas"},
+      {src:"assets/P5_tally.png",label:"tally form"}
+    ]
+  },
+  p06:{
+    title:"Dental Clinic Appointment Automation",
+    tools:["tally","n8n","gmail","google sheets"],
+    steps:[
+      "Patient submits Tally booking form with name, email, date, time, and type",
+      "n8n logs the record to Google Sheets CRM instantly",
+      "Confirmation email sent to patient immediately",
+      "IF node checks whether the appointment is more than 24 hours away",
+      "If yes: Wait node pauses until 24 hours before then fires reminder email",
+      "If no (same-day booking): workflow stops cleanly with no duplicate email",
+      "Admin marks patient as No-Show in Google Sheets Status column",
+      "Google Sheets Trigger detects the update and fires two Gmail nodes simultaneously: admin alert and patient rebooking email"
+    ],
+    results:[
+      "Zero manual effort from admin for confirmations and reminders",
+      "Same-day bookings handled correctly with no unnecessary emails",
+      "No-shows trigger follow-up within minutes of admin updating the sheet",
+      "Patients receive a warm rebooking email automatically",
+      "Entire stack runs on free-tier tools"
+    ],
+    screenshots:[
+      {src:"assets/P6_n8n_WF1.png",label:"n8n wf1"},
+      {src:"assets/P6_n8n_WF2.png",label:"n8n wf2"},
+      {src:"assets/P6_google_sheet.png",label:"google sheet"},
+      {src:"assets/P6_gmail_confirmation.png",label:"confirmation"},
+      {src:"assets/P6_gmail_reminder.png",label:"reminder"},
+      {src:"assets/P6_gmail_admin-alert.png",label:"admin alert"},
+      {src:"assets/P6_gmail_patient_rebooking.png",label:"rebooking"}
+    ]
+  }
+};
 
+function buildPanel(id){
+  const d = projects[id];
+  const steps = d.steps.map((s,i)=>`<li><span class="sn">0${i+1}</span>${s}</li>`).join('');
+  const results = d.results.map(r=>`<li><span class="rd">+</span>${r}</li>`).join('');
+  const shots = d.screenshots.map(s=>`
+    <div class="ss-item" onclick="openLb('${s.src}','${s.label}');event.stopPropagation()">
+      <img src="${s.src}" alt="${s.label}" loading="lazy">
+      <div class="ss-label">${s.label}</div>
+    </div>`).join('');
+  const tags = d.tools.map(t=>`<span class="dp-tag">${t}</span>`).join('');
+  return `
+    <div class="dp-header">
+      <div>
+        <div class="dp-title">${d.title}</div>
+        <div class="dp-tags">${tags}</div>
+      </div>
+      <button class="dp-close" onclick="closePanel('${id}');event.stopPropagation()">close ✕</button>
+    </div>
+    <div class="dp-cols">
+      <div>
+        <div class="dp-section">
+          <span class="dp-label">How it works</span>
+          <ul class="steps-list">${steps}</ul>
+        </div>
+        <div class="dp-section">
+          <span class="dp-label">Results</span>
+          <ul class="results-list">${results}</ul>
+        </div>
+      </div>
+      <div>
+        <div class="dp-section">
+          <span class="dp-label">Screenshots</span>
+          <div class="ss-grid">${shots}</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+let active = null;
+function toggleCard(id, el){
+  const panel = document.getElementById('panel-'+id);
+  if(active && active !== id){
+    const prev = document.getElementById('panel-'+active);
+    if(prev){ prev.style.display='none'; prev.classList.remove('open'); }
+    const pc = document.querySelector('[data-id="'+active+'"]');
+    if(pc) pc.classList.remove('expanded');
+    document.getElementById(active+'-arr').textContent='↓';
+    document.getElementById(active+'-lbl').textContent='See how it works';
+  }
+  if(!panel.classList.contains('open')){
+    panel.innerHTML = buildPanel(id);
+    panel.style.display='block';
+    panel.classList.add('open');
+    el.classList.add('expanded');
+    document.getElementById(id+'-arr').textContent='↑';
+    document.getElementById(id+'-lbl').textContent='Close';
+    active = id;
+    setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),60);
+  } else {
+    closePanel(id);
+  }
+}
+function closePanel(id){
+  const panel = document.getElementById('panel-'+id);
+  panel.style.display='none'; panel.classList.remove('open');
+  const c = document.querySelector('[data-id="'+id+'"]');
+  if(c) c.classList.remove('expanded');
+  document.getElementById(id+'-arr').textContent='↓';
+  document.getElementById(id+'-lbl').textContent='See how it works';
+  if(active===id) active=null;
+}
+
+function updateClock(){
+  const t = new Date().toLocaleTimeString('en-US',{timeZone:'Asia/Manila',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  const el=document.getElementById('clock');
+  const fl=document.getElementById('footer-clock');
+  if(el) el.textContent='LOCAL '+t+' GMT+8';
+  if(fl) fl.textContent=t+' GMT+8';
+}
+updateClock(); setInterval(updateClock,1000);
+
+document.querySelectorAll('#resume-hero,#resume-about').forEach(b=>{
+  b.addEventListener('click',e=>{
+    e.preventDefault();
+    alert('Resume coming soon. Reach out at reezsangabriel@gmail.com in the meantime.');
+  });
+});
+
+function openLb(src,alt){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb-img').alt=alt||'';
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('lb-close').addEventListener('click',closeLb);
+document.getElementById('lightbox').addEventListener('click',e=>{
+  if(e.target===document.getElementById('lightbox')) closeLb();
+});
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLb(); });
+</script>
 </body>
 </html>
