@@ -108,11 +108,9 @@
   }
   .btn-primary{
     background:var(--accent); color:var(--bg); border-color:var(--accent);
-    box-shadow:0 0 18px rgba(45,212,191,0.25);
   }
   .btn-primary:hover{
     background:var(--primary); border-color:var(--primary);
-    box-shadow:0 0 28px rgba(45,212,191,0.4);
     transform:translateY(-1px);
   }
   .btn-ghost{
@@ -143,7 +141,6 @@
   .badge-dot{
     width:6px; height:6px; border-radius:50%; background:var(--accent);
     animation:blink 2s ease infinite; flex-shrink:0;
-    box-shadow:0 0 6px var(--accent);
   }
   @keyframes blink{ 0%,100%{opacity:1} 50%{opacity:0.3} }
 
@@ -156,7 +153,6 @@
   }
   .hero h1 .hl{
     color:var(--accent);
-    text-shadow:0 0 32px rgba(45,212,191,0.4);
   }
   .hero-sub{
     font-size:0.97rem; color:var(--text-2);
@@ -173,7 +169,6 @@
     border:1px solid var(--border);
     border-radius:var(--radius); overflow:hidden;
     font-family:'JetBrains Mono',monospace;
-    box-shadow:0 0 40px rgba(45,212,191,0.08), 0 0 80px rgba(103,232,249,0.04);
   }
   .terminal-bar{
     background:var(--bg-3); border-bottom:1px solid var(--border);
@@ -198,14 +193,12 @@
   .t-text.success{ color:#4ade80; }
   .t-text.label{
     color:var(--text-1); font-weight:600;
-    text-shadow:0 0 12px rgba(103,232,249,0.3);
   }
   .t-text.dim{ color:var(--text-3); }
   .t-cursor{
     display:inline-block; width:7px; height:13px;
     background:var(--accent); margin-left:2px; vertical-align:middle;
     animation:cursor-blink 1s step-end infinite;
-    box-shadow:0 0 6px var(--accent);
   }
   @keyframes cursor-blink{ 0%,100%{opacity:1} 50%{opacity:0} }
 
@@ -216,11 +209,10 @@
     display:flex; align-items:flex-start; gap:14px;
     padding:20px; background:var(--bg-2);
     border:1px solid var(--border); border-radius:10px;
-    transition:border-color 0.15s, box-shadow 0.15s;
+    transition:border-color 0.15s;
   }
   .service-item:hover{
     border-color:var(--accent);
-    box-shadow:0 0 20px rgba(45,212,191,0.08);
   }
   .si-icon{
     width:34px; height:34px; border-radius:8px;
@@ -273,15 +265,13 @@
   .project-card{
     background:var(--bg-2); border:1px solid var(--border);
     border-radius:var(--radius); overflow:hidden; cursor:pointer;
-    transition:border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    transition:border-color 0.15s, transform 0.15s;
   }
   .project-card:hover{
     border-color:var(--border-strong); transform:translateY(-3px);
-    box-shadow:0 8px 32px rgba(0,0,0,0.3);
   }
   .project-card.expanded{
     border-color:var(--accent);
-    box-shadow:0 0 24px rgba(45,212,191,0.12);
     transform:none;
   }
 
@@ -324,7 +314,6 @@
     display:none; grid-column:1/-1;
     background:var(--bg-2); border:1px solid var(--accent);
     border-radius:var(--radius); padding:28px;
-    box-shadow:0 0 32px rgba(45,212,191,0.08);
   }
   .detail-panel.open{ display:block; }
 
@@ -407,11 +396,10 @@
   .stack-item{
     background:var(--bg-2); border:1px solid var(--border);
     border-radius:10px; padding:16px 8px 14px; text-align:center;
-    transition:border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    transition:border-color 0.15s, transform 0.15s;
   }
   .stack-item:hover{
     border-color:var(--accent); transform:translateY(-2px);
-    box-shadow:0 0 16px rgba(45,212,191,0.1);
   }
   .stack-logo{ width:36px; height:36px; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; }
   .stack-logo img{
@@ -451,7 +439,6 @@
     background:var(--bg-2); border:1px solid var(--border);
     border-radius:var(--radius); padding:32px;
     display:flex; flex-direction:column; justify-content:center;
-    box-shadow:0 0 40px rgba(45,212,191,0.06);
   }
   .cta-box h2{
     font-size:1.2rem; font-weight:800; color:var(--text-1);
@@ -472,6 +459,26 @@
   }
   .email-line a{ color:var(--accent); border-bottom:1px solid rgba(45,212,191,0.3); transition:border-color 0.15s; }
   .email-line a:hover{ border-color:var(--accent); }
+
+  /* INQUIRY FORM */
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .form-group{ display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+  .form-label{
+    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--text-3);
+  }
+  .form-input, .form-textarea{
+    background:var(--bg-3); border:1px solid var(--border); border-radius:8px;
+    padding:11px 14px; color:var(--text-1); font-family:'Inter',sans-serif;
+    font-size:0.87rem; font-weight:400; transition:border-color 0.15s; width:100%;
+  }
+  .form-input::placeholder, .form-textarea::placeholder{ color:var(--text-3); }
+  .form-input:focus, .form-textarea:focus{ outline:none; border-color:var(--accent); }
+  .form-textarea{ resize:vertical; min-height:104px; font-family:'Inter',sans-serif; }
+  .form-note{
+    font-family:'JetBrains Mono',monospace; font-size:0.62rem;
+    color:var(--text-3); margin-top:10px; line-height:1.5;
+  }
 
   /* ABOUT */
   .about-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:32px; margin-top:36px; align-items:start; }
@@ -535,6 +542,7 @@
     .terminal{ display:none; }
     .sp-grid,.wc-grid,.about-grid,.dp-cols{ grid-template-columns:1fr; }
     .projects-grid{ grid-template-columns:1fr 1fr; }
+    .form-row{ grid-template-columns:1fr; }
     .nav-clock{ display:none; }
     footer{ flex-direction:column; align-items:flex-start; }
   }
@@ -544,31 +552,6 @@
     .badge-dot,.t-cursor{ animation:none; }
     .project-card:hover,.service-item:hover,.stack-item:hover{ transform:none; }
   }
-
-  /* BACKGROUND GLOWS */
-  .glow-hero{
-    position:absolute; width:600px; height:600px;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(45,212,191,0.12) 0%, rgba(20,184,166,0.06) 40%, transparent 70%);
-    pointer-events:none; z-index:0;
-    top:-100px; left:-100px; filter:blur(40px);
-  }
-  .glow-projects{
-    position:absolute; width:500px; height:500px;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(103,232,249,0.08) 0%, rgba(45,212,191,0.04) 40%, transparent 70%);
-    pointer-events:none; z-index:0;
-    top:50%; right:-150px; transform:translateY(-50%); filter:blur(50px);
-  }
-  .glow-contact{
-    position:absolute; width:500px; height:500px;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(45,212,191,0.1) 0%, rgba(20,184,166,0.05) 40%, transparent 70%);
-    pointer-events:none; z-index:0;
-    bottom:-100px; left:50%; transform:translateX(-50%); filter:blur(45px);
-  }
-  .glow-wrap{ position:relative; overflow:hidden; }
-  .glow-wrap > *:not(.glow-hero):not(.glow-projects):not(.glow-contact){ position:relative; z-index:1; }
 
   /* TWO-SIZE HERO TITLE */
   .hero-line1{
@@ -584,7 +567,6 @@
     font-weight:700; color:var(--accent);
     line-height:1.15; letter-spacing:0.04em;
     text-transform:uppercase; display:block; margin-bottom:20px;
-    
   }
 
   /* PROBLEM CONTEXT */
@@ -634,8 +616,6 @@
 </nav>
 
 <!-- HERO -->
-<div class="glow-wrap">
-<div class="glow-hero"></div>
 <div class="section hero">
   <div class="hero-inner">
     <div>
@@ -649,7 +629,6 @@
       <div class="hero-cta">
         <a class="btn btn-primary" href="#contact">Book a discovery call</a>
         <a class="btn btn-ghost" href="#projects">See my work</a>
-        <a class="btn btn-rust" href="assets/resume.pdf" target="_blank" id="resume-hero">Resume ↗</a>
       </div>
     </div>
 
@@ -671,7 +650,6 @@
     </div>
   </div>
 </div>
-</div><!-- end glow-wrap hero -->
 
 <div class="divider"><hr></div>
 
@@ -743,12 +721,10 @@
 <div class="divider"><hr></div>
 
 <!-- PROJECTS -->
-<div class="glow-wrap">
-<div class="glow-projects"></div>
 <div class="section" id="projects">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Work</span></div>
   <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Projects</h2>
-  <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:0;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Six real builds across healthcare, real estate, operations, sales, and content. Click any card to see the full breakdown.</p>
+  <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:0;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Seven real builds across healthcare, real estate, operations, sales, content, and insurance. Click any card to see the full breakdown.</p>
   <div class="projects-grid" id="pgrid">
     <div class="project-card" onclick="toggleCard('p01',this)" data-id="p01">
       <div class="card-thumb"><img src="assets/P1_n8n_canvas.png" alt="Ops Triage" loading="lazy"><span class="card-badge">n8n · Slack · Gemini</span></div>
@@ -807,12 +783,21 @@
         <div class="card-expand"><span id="p06-arr">↓</span>&nbsp;<span id="p06-lbl">See how it works</span></div>
       </div>
     </div>
+    <div class="project-card" onclick="toggleCard('p07',this)" data-id="p07">
+      <div class="card-thumb"><img src="assets/p7_make.png" alt="Renewal Pipeline" loading="lazy"><span class="card-badge">Make · Sheets · Gmail</span></div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 07</div>
+        <div class="card-title">Insurance Renewal Reminder Pipeline</div>
+        <p class="card-desc">A 7-stage countdown from 120 days to renewal day that emails clients and agents automatically, updates status in Sheets, and flags missing data before it becomes a problem.</p>
+        <div class="card-expand"><span id="p07-arr">↓</span>&nbsp;<span id="p07-lbl">See how it works</span></div>
+      </div>
+    </div>
     <div class="detail-panel" id="panel-p04" style="display:none;grid-column:1/-1"></div>
     <div class="detail-panel" id="panel-p05" style="display:none;grid-column:1/-1"></div>
     <div class="detail-panel" id="panel-p06" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p07" style="display:none;grid-column:1/-1"></div>
   </div>
 </div>
-</div><!-- end glow-wrap projects -->
 
 <div class="divider"><hr></div>
 
@@ -839,8 +824,6 @@
 <div class="divider"><hr></div>
 
 <!-- HOW + CONTACT -->
-<div class="glow-wrap">
-<div class="glow-contact"></div>
 <div class="section" id="contact">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Work with me</span></div>
   <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">How I work</h2>
@@ -867,12 +850,38 @@
         <a class="btn btn-primary" href="https://calendly.com/reezsangabriel" target="_blank">Book a discovery call</a>
         <a class="btn btn-ghost" href="https://www.onlinejobs.ph/jobseekers/info/2086703" target="_blank">View OnlineJobs.ph profile</a>
       </div>
-      <p class="cta-note">Replace https://calendly.com/reezsangabriel with your Calendly URL once your account is ready.</p>
       <p class="email-line">Prefer email? <a href="mailto:reezsangabriel@gmail.com">reezsangabriel@gmail.com</a></p>
     </div>
   </div>
+
+  <!-- INQUIRY FORM -->
+  <div class="cta-box" style="margin-top:16px;">
+    <h2>Prefer to just send the details?</h2>
+    <p>Fill this out and I'll reply directly by email — no call needed to get the conversation started.</p>
+    <form id="inquiry-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="inq-name">Name</label>
+          <input class="form-input" type="text" id="inq-name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inq-email">Email</label>
+          <input class="form-input" type="email" id="inq-email" name="email" placeholder="you@company.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inq-company">Company (optional)</label>
+        <input class="form-input" type="text" id="inq-company" name="company" placeholder="Your company">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inq-detail">What would you like to automate?</label>
+        <textarea class="form-textarea" id="inq-detail" name="details" placeholder="Describe your workflow challenges, the tools you currently use, and what you'd like to achieve." required></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit" id="inquiry-submit-btn" style="width:100%;justify-content:center;">Send inquiry</button>
+      <p class="form-note" id="inquiry-status" style="display:none;"></p>
+    </form>
+  </div>
 </div>
-</div><!-- end glow-wrap contact -->
 
 <div class="divider"><hr></div>
 
@@ -929,7 +938,8 @@ const projects = {
   p03:{title:"Automated Client Onboarding Sequence",industry:"B2B Services",problem:"New clients were falling through the cracks in the first week. Welcome emails were delayed, onboarding steps were inconsistent, and the owner was doing it all by hand every single time.",tools:["Zapier","Notion","Gmail"],steps:["Notion trigger fires when status updates to Client","Welcome email sent via Gmail immediately","Personalized onboarding checklist created in Notion automatically","Follow-up email sequence runs over the next 3 days"],results:["Welcome email arrives within seconds of conversion","Onboarding checklist ready before client opens their inbox","Zero manual follow-up needed from the business owner"],screenshots:[{src:"assets/P3_zapier.png",label:"zapier canvas"},{src:"assets/P3_notion_onboarding_checklist.png",label:"notion checklist"},{src:"assets/P3_gmail_notification.png",label:"welcome email"}]},
   p04:{title:"Content Repurposing Engine",industry:"Content / Marketing",problem:"A content creator had ideas but no bandwidth to turn one piece into multiple formats. Writing the same concept three different ways for three different platforms was eating hours every week.",tools:["Make","Google Gemini","Notion","Gmail"],steps:["New row in Notion Content Ideas table triggers the Make scenario","Raw idea sent to Gemini with separate prompts per platform","Three drafts returned: LinkedIn post, X thread, newsletter blurb","Each draft saved to Notion Content Drafts table organized by platform","Gmail notification sent when drafts are ready to review"],results:["One idea becomes three platform-ready drafts in under 90 seconds","Content backlog organized without copy-pasting between tools","Writer reviews and posts rather than writing from scratch"],screenshots:[{src:"assets/P4_make.png",label:"make canvas"},{src:"assets/P4_notion_content_ideas_table.png",label:"content ideas"},{src:"assets/P4_content_drafts_table.png",label:"content drafts"},{src:"assets/P4_gmail_notification.png",label:"gmail notification"}]},
   p05:{title:"Real Estate Speed-to-Lead System",industry:"Real Estate",problem:"Property inquiries were sitting unanswered for hours while agents were out on viewings. By the time someone followed up, the lead had already moved on.",tools:["Tally","Make","Google Gemini","HubSpot","Gmail"],steps:["Tally form submission triggers the Make scenario via webhook","Gemini scores the inquiry 0 to 100 on budget, timeline, and intent","Score converted to a tier label: Hot, Warm, or Cold","Contact record created in HubSpot CRM with full data and tier","Personalized email reply sent to the prospect within 60 seconds"],results:["Response time under 60 seconds before any agent sees the lead","Every lead scored and tiered so agents know where to focus","HubSpot stays current with zero manual data entry"],screenshots:[{src:"assets/P5_Make.png",label:"make canvas"},{src:"assets/P5_tally.png",label:"tally form"}]},
-  p06:{title:"Dental Clinic Appointment Automation",industry:"Healthcare / Clinic Operations",problem:"A small dental clinic was losing patients to no-shows. Reminders were sent manually when the admin remembered, confirmations were inconsistent, and missed appointments had no follow-up process.",tools:["Tally","n8n","Gmail","Google Sheets"],steps:["Patient submits Tally booking form with name, email, date, time, and type","n8n logs the record to Google Sheets CRM instantly","Confirmation email sent to patient immediately","IF node checks whether the appointment is more than 24 hours away","If yes: Wait node pauses until 24 hours before then fires reminder email","If no (same-day booking): workflow stops cleanly with no duplicate email","Admin marks patient as No-Show in Google Sheets Status column","Google Sheets Trigger detects the update and fires two Gmail nodes simultaneously: admin alert and patient rebooking email"],results:["Zero manual effort from admin for confirmations and reminders","Same-day bookings handled correctly with no unnecessary emails","No-shows trigger follow-up within minutes of admin updating the sheet","Patients receive a warm rebooking email automatically","Entire stack runs on free-tier tools"],screenshots:[{src:"assets/P6_n8n_WF1.png",label:"n8n wf1"},{src:"assets/P6_n8n_WF2.png",label:"n8n wf2"},{src:"assets/P6_google_sheet.png",label:"google sheet"},{src:"assets/P6_gmail_confirmation.png",label:"confirmation"},{src:"assets/P6_gmail_reminder.png",label:"reminder"},{src:"assets/P6_gmail_admin-alert.png",label:"admin alert"},{src:"assets/P6_gmail_patient_rebooking.png",label:"rebooking"}]}
+  p06:{title:"Dental Clinic Appointment Automation",industry:"Healthcare / Clinic Operations",problem:"A small dental clinic was losing patients to no-shows. Reminders were sent manually when the admin remembered, confirmations were inconsistent, and missed appointments had no follow-up process.",tools:["Tally","n8n","Gmail","Google Sheets"],steps:["Patient submits Tally booking form with name, email, date, time, and type","n8n logs the record to Google Sheets CRM instantly","Confirmation email sent to patient immediately","IF node checks whether the appointment is more than 24 hours away","If yes: Wait node pauses until 24 hours before then fires reminder email","If no (same-day booking): workflow stops cleanly with no duplicate email","Admin marks patient as No-Show in Google Sheets Status column","Google Sheets Trigger detects the update and fires two Gmail nodes simultaneously: admin alert and patient rebooking email"],results:["Zero manual effort from admin for confirmations and reminders","Same-day bookings handled correctly with no unnecessary emails","No-shows trigger follow-up within minutes of admin updating the sheet","Patients receive a warm rebooking email automatically","Entire stack runs on free-tier tools"],screenshots:[{src:"assets/P6_n8n_WF1.png",label:"n8n wf1"},{src:"assets/P6_n8n_WF2.png",label:"n8n wf2"},{src:"assets/P6_google_sheet.png",label:"google sheet"},{src:"assets/P6_gmail_confirmation.png",label:"confirmation"},{src:"assets/P6_gmail_reminder.png",label:"reminder"},{src:"assets/P6_gmail_admin-alert.png",label:"admin alert"},{src:"assets/P6_gmail_patient_rebooking.png",label:"rebooking"}]},
+  p07:{title:"Insurance Renewal Reminder Pipeline",industry:"Insurance / Independent Brokers",problem:"Independent brokers lose renewals every year not because clients do not want to renew, but because follow-up is manual and inconsistent. A lapsed renewal is lost commission, permanently.",tools:["Make","Google Sheets","Gmail"],steps:["Google Sheets Search Rows pulls the full client list once daily","Router splits every row into 7 branches, each checking today's date against a trigger window: 120, 90, 60, 30, 14, 7, and 0 days out","Matching rows fire the right email automatically: internal alerts to the agent at day 120 and day 0, client touchpoints in between","Pipeline Stage and Last Contacted columns update on the sheet after every send","Rows missing required data are diverted to a separate branch that emails the agent a specific alert instead of failing silently","Every Gmail and Sheets module has a Resume error handler so one bad row never crashes the run for everyone else"],results:["Zero renewals missed across a full 120-day cycle","Agent gets an early heads-up 4 months out and an urgent flag on renewal day itself","Missing data flagged automatically instead of failing silently","Runs daily, fully unattended, no manual chasing required"],screenshots:[{src:"assets/p7_make.png",label:"make scenario"},{src:"assets/p7_google_sheet.png",label:"tracking sheet"},{src:"assets/p7_gmail_day60.png",label:"day 60 email"},{src:"assets/p7_gmail_day0.png",label:"day 0 escalation"},{src:"assets/p7_gmail_missing_data.png",label:"missing data alert"}]}
 };
 
 function buildPanel(id){
@@ -983,10 +993,41 @@ function updateClock(){
 }
 updateClock();setInterval(updateClock,1000);
 
-document.querySelectorAll('#resume-hero,#resume-about').forEach(b=>{
+document.querySelectorAll('#resume-about').forEach(b=>{
   b.addEventListener('click',e=>{
     e.preventDefault();
     alert('Resume coming soon. Reach out at reezsangabriel@gmail.com in the meantime.');
+  });
+});
+
+document.getElementById('inquiry-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('inquiry-submit-btn');
+  const status = document.getElementById('inquiry-status');
+  const formData = new FormData(form);
+
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch('https://script.google.com/macros/s/AKfycby-9hhobbgZcYUpoDXnKaakahQIljVjV7bE2SVBHJph2ndmiBx1sZFZHo59uPGUqmHO/exec', {
+    method: 'POST',
+    body: formData
+  })
+  .then(() => {
+    form.reset();
+    btn.textContent = 'Send inquiry';
+    btn.disabled = false;
+    status.textContent = "Thanks — that's been sent. You'll get a reply by email shortly.";
+    status.style.display = 'block';
+    status.style.color = 'var(--accent)';
+  })
+  .catch(() => {
+    btn.textContent = 'Send inquiry';
+    btn.disabled = false;
+    status.textContent = "Something went wrong sending that. Please email reezsangabriel@gmail.com directly instead.";
+    status.style.display = 'block';
+    status.style.color = 'var(--rust)';
   });
 });
 
