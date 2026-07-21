@@ -85,7 +85,7 @@
   }
 
   /* LAYOUT */
-  .section{ max-width:var(--max-w); margin:0 auto; padding:72px 28px; }
+  .section{ max-width:var(--max-w); margin:0 auto; padding:44px 28px; }
   .divider{ max-width:var(--max-w); margin:0 auto; padding:0 28px; }
   .divider hr{ border:none; border-top:1px solid var(--border); }
 
@@ -122,9 +122,19 @@
     color:var(--rust); font-size:0.85rem; padding:10px 18px;
   }
   .btn-rust:hover{ background:var(--rust); color:#fff; }
+  .btn-secondary{
+    background:var(--rust); color:#fff; border-color:var(--rust);
+  }
+  .btn-secondary:hover{
+    background:#c94e18; border-color:#c94e18;
+    transform:translateY(-1px);
+  }
+
+  .eyebrow-line.rust{ background:var(--rust); }
+  .eyebrow-text.rust{ color:var(--rust); }
 
   /* HERO */
-  .hero{ padding-top:88px; padding-bottom:72px; }
+  .hero{ padding-top:56px; padding-bottom:44px; }
   .hero-inner{
     display:grid; grid-template-columns:1.1fr 0.9fr;
     gap:48px; align-items:center;
@@ -330,7 +340,7 @@
   .dp-tag{
     font-family:'JetBrains Mono',monospace; font-size:0.65rem;
     color:var(--accent); background:var(--primary-dim);
-    border-radius:5px; padding:4px 9px; letter-spacing:0.04em; text-transform:lowercase;
+    border-radius:5px; padding:4px 9px; letter-spacing:0.04em; text-transform:none;
   }
   .dp-close{
     font-family:'JetBrains Mono',monospace; font-size:0.72rem;
@@ -536,8 +546,8 @@
 
   /* RESPONSIVE */
   @media(max-width:760px){
-    .section{ padding:52px 20px; }
-    .hero{ padding-top:64px; }
+    .section{ padding:32px 20px; }
+    .hero{ padding-top:44px; }
     .hero-inner{ grid-template-columns:1fr; }
     .terminal{ display:none; }
     .sp-grid,.wc-grid,.about-grid,.dp-cols{ grid-template-columns:1fr; }
@@ -619,10 +629,6 @@
 <div class="section hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Available for new projects
-      </div>
       <div class="hero-line1">Automation built right</div>
       <div class="hero-line2">Mapped, tested, and documented.</div>
       <p class="hero-sub">I build workflows in n8n, Make, and Zapier that take the repetitive work off your plate. Every build is tested end to end and handed over with full documentation.</p>
@@ -702,15 +708,15 @@
         <div class="ps">
           <div class="ps-num">02</div>
           <div>
-            <div class="ps-title">I map the fix before building anything</div>
-            <p class="ps-desc">Full logic map first. Every edge case gets thought through on paper before a single node gets placed. If it does not hold on paper it will not hold in production.</p>
+            <div class="ps-title">I map the logic before building anything</div>
+            <p class="ps-desc">Every edge case gets worked out on paper first. If the logic has a gap here, it'll break in production, so nothing gets built until it genuinely holds up.</p>
           </div>
         </div>
         <div class="ps">
           <div class="ps-num">03</div>
           <div>
-            <div class="ps-title">You stop doing it manually</div>
-            <p class="ps-desc">I build, test, and hand it over with documentation. You own the workflow completely and can understand how it runs without needing to call me.</p>
+            <div class="ps-title">You get a documented system you fully own</div>
+            <p class="ps-desc">I build it, test it end to end, and hand it over with a breakdown of what every step does. It lives inside your own accounts, no black box, no ongoing dependency on me to keep it running.</p>
           </div>
         </div>
       </div>
@@ -722,7 +728,7 @@
 
 <!-- PROJECTS -->
 <div class="section" id="projects">
-  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Work</span></div>
+  <div class="eyebrow"><span class="eyebrow-line rust"></span><span class="eyebrow-text rust">Work</span></div>
   <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Projects</h2>
   <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:0;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Seven real builds across healthcare, real estate, operations, sales, content, and insurance. Click any card to see the full breakdown.</p>
   <div class="projects-grid" id="pgrid">
@@ -825,24 +831,10 @@
 
 <!-- HOW + CONTACT -->
 <div class="section" id="contact">
-  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Work with me</span></div>
-  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">How I work</h2>
-  <p style="color:var(--text-2);font-size:0.9rem;max-width:440px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Three things that shape every build I deliver.</p>
+  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Get started</span></div>
+  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Let's talk automation</h2>
+  <p style="color:var(--text-2);font-size:0.9rem;max-width:440px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Book a call, or send the details below.</p>
   <div class="wc-grid">
-    <div class="how-cards">
-      <div class="how-card">
-        <h3>Logic first</h3>
-        <p>I map the full flow before placing a single node. If the logic has a gap on paper, it will break in production.</p>
-      </div>
-      <div class="how-card">
-        <h3>Documented handoff</h3>
-        <p>You get a breakdown of what every step does. No black box, no dependency on me to keep it running.</p>
-      </div>
-      <div class="how-card">
-        <h3>You own it completely</h3>
-        <p>Built inside your accounts, handed over clean. No ongoing lock-in. The workflow is yours from day one.</p>
-      </div>
-    </div>
     <div class="cta-box">
       <h2>Have something you want automated?</h2>
       <p>Book a free 30-minute call and we can figure out if automation is the right fix and what it would take to build it.</p>
@@ -852,34 +844,34 @@
       </div>
       <p class="email-line">Prefer email? <a href="mailto:reezsangabriel@gmail.com">reezsangabriel@gmail.com</a></p>
     </div>
-  </div>
 
-  <!-- INQUIRY FORM -->
-  <div class="cta-box" style="margin-top:16px;">
-    <h2>Prefer to just send the details?</h2>
-    <p>Fill this out and I'll reply directly by email — no call needed to get the conversation started.</p>
-    <form id="inquiry-form">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label" for="inq-name">Name</label>
-          <input class="form-input" type="text" id="inq-name" name="name" placeholder="Your name" required>
+    <!-- INQUIRY FORM -->
+    <div class="cta-box">
+      <h2>Prefer to just send the details?</h2>
+      <p>Fill this out and I'll reply directly by email, no call needed to get the conversation started.</p>
+      <form id="inquiry-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inq-name">Name</label>
+            <input class="form-input" type="text" id="inq-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inq-email">Email</label>
+            <input class="form-input" type="email" id="inq-email" name="email" placeholder="you@company.com" required>
+          </div>
         </div>
         <div class="form-group">
-          <label class="form-label" for="inq-email">Email</label>
-          <input class="form-input" type="email" id="inq-email" name="email" placeholder="you@company.com" required>
+          <label class="form-label" for="inq-company">Company (optional)</label>
+          <input class="form-input" type="text" id="inq-company" name="company" placeholder="Your company">
         </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="inq-company">Company (optional)</label>
-        <input class="form-input" type="text" id="inq-company" name="company" placeholder="Your company">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="inq-detail">What would you like to automate?</label>
-        <textarea class="form-textarea" id="inq-detail" name="details" placeholder="Describe your workflow challenges, the tools you currently use, and what you'd like to achieve." required></textarea>
-      </div>
-      <button class="btn btn-primary" type="submit" id="inquiry-submit-btn" style="width:100%;justify-content:center;">Send inquiry</button>
-      <p class="form-note" id="inquiry-status" style="display:none;"></p>
-    </form>
+        <div class="form-group">
+          <label class="form-label" for="inq-detail">What would you like to automate?</label>
+          <textarea class="form-textarea" id="inq-detail" name="details" placeholder="Describe your workflow challenges, the tools you currently use, and what you'd like to achieve." required></textarea>
+        </div>
+        <button class="btn btn-secondary" type="submit" id="inquiry-submit-btn" style="width:100%;justify-content:center;">Send inquiry</button>
+        <p class="form-note" id="inquiry-status" style="display:none;"></p>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -887,7 +879,7 @@
 
 <!-- ABOUT -->
 <div class="section" id="about">
-  <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">About</span></div>
+  <div class="eyebrow"><span class="eyebrow-line rust"></span><span class="eyebrow-text rust">About</span></div>
   <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Reez San Gabriel</h2>
   <div class="about-grid">
     <div class="about-text">
