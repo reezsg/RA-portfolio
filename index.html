@@ -663,7 +663,6 @@
 <div class="section" id="services">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">What I build and how</span></div>
   <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Services</h2>
-  <p style="color:var(--text-2);font-size:0.9rem;max-width:500px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Four things clients hire me for most. If yours does not fit neatly into one, most real problems do not.</p>
   <div class="sp-grid">
     <div class="services-list">
       <div class="service-item">
@@ -701,22 +700,22 @@
         <div class="ps">
           <div class="ps-num">01</div>
           <div>
-            <div class="ps-title">You tell me what's eating your time</div>
-            <p class="ps-desc">We walk through the manual process together. What triggers it, what the steps are, where things tend to fall apart. No technical background needed on your side.</p>
+            <div class="ps-title">You tell me what's slowing you down</div>
+            <p class="ps-desc">We talk through the manual process. What triggers it, what the steps are, and where it tends to break down. No technical background needed on your side.</p>
           </div>
         </div>
         <div class="ps">
           <div class="ps-num">02</div>
           <div>
-            <div class="ps-title">I map the logic before building anything</div>
-            <p class="ps-desc">Every edge case gets worked out on paper first. If the logic has a gap here, it'll break in production, so nothing gets built until it genuinely holds up.</p>
+            <div class="ps-title">I map it out before building anything</div>
+            <p class="ps-desc">I plan the full logic first, including edge cases. If it holds up on paper, it holds up once it's live.</p>
           </div>
         </div>
         <div class="ps">
           <div class="ps-num">03</div>
           <div>
-            <div class="ps-title">You get a documented system you fully own</div>
-            <p class="ps-desc">I build it, test it end to end, and hand it over with a breakdown of what every step does. It lives inside your own accounts, no black box, no ongoing dependency on me to keep it running.</p>
+            <div class="ps-title">You get a working system you own</div>
+            <p class="ps-desc">I build it, test it, and hand it over with clear documentation. It lives inside your own accounts, with no ongoing dependency on me.</p>
           </div>
         </div>
       </div>
@@ -811,7 +810,7 @@
 <div class="section" id="stack">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Tools</span></div>
   <h2 style="font-size:clamp(1.3rem,2.5vw,1.7rem);color:var(--text-1);margin-bottom:6px;">Tech stack</h2>
-  <p style="color:var(--text-2);font-size:0.88rem;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Platforms I work with regularly across client builds.</p>
+  <p style="color:var(--text-2);font-size:0.88rem;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Platforms I work with regularly across workflow builds.</p>
   <div class="stack-grid">
     <div class="stack-item"><div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/n8n.svg" alt="n8n" onerror="this.outerHTML='<div class=\'stack-mono\'>n8n</div>'"></div><div class="stack-name">n8n</div></div>
     <div class="stack-item"><div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/make.svg" alt="Make" onerror="this.outerHTML='<div class=\'stack-mono\'>MK</div>'"></div><div class="stack-name">Make</div></div>
@@ -832,7 +831,7 @@
 <!-- HOW + CONTACT -->
 <div class="section" id="contact">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Get started</span></div>
-  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Let's talk automation</h2>
+  <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Get in touch</h2>
   <p style="color:var(--text-2);font-size:0.9rem;max-width:440px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Book a call, or send the details below.</p>
   <div class="wc-grid">
     <div class="cta-box">
@@ -840,9 +839,8 @@
       <p>Book a free 30-minute call and we can figure out if automation is the right fix and what it would take to build it.</p>
       <div class="cta-btns">
         <a class="btn btn-primary" href="https://calendly.com/reezsangabriel" target="_blank">Book a discovery call</a>
-        <a class="btn btn-ghost" href="https://www.onlinejobs.ph/jobseekers/info/2086703" target="_blank">View OnlineJobs.ph profile</a>
+        <a class="btn btn-ghost" href="mailto:reezsangabriel@gmail.com">Send an email instead</a>
       </div>
-      <p class="email-line">Prefer email? <a href="mailto:reezsangabriel@gmail.com">reezsangabriel@gmail.com</a></p>
     </div>
 
     <!-- INQUIRY FORM -->
@@ -899,7 +897,7 @@
       </div>
       <div class="resume-block">
         <a class="btn btn-rust" href="assets/resume.pdf" target="_blank" id="resume-about" style="width:100%;justify-content:center;text-transform:none;letter-spacing:0;">View full resume ↗</a>
-        <p class="resume-note">Resume will be added shortly</p>
+        <a class="btn btn-rust" href="https://www.onlinejobs.ph/jobseekers/info/2086703" target="_blank" style="width:100%;justify-content:center;text-transform:none;letter-spacing:0;margin-top:10px;">View OnlineJobs.ph profile ↗</a>
       </div>
     </div>
   </div>
@@ -984,13 +982,6 @@ function updateClock(){
   if(fl)fl.textContent=t+' GMT+8';
 }
 updateClock();setInterval(updateClock,1000);
-
-document.querySelectorAll('#resume-about').forEach(b=>{
-  b.addEventListener('click',e=>{
-    e.preventDefault();
-    alert('Resume coming soon. Reach out at reezsangabriel@gmail.com in the meantime.');
-  });
-});
 
 document.getElementById('inquiry-form').addEventListener('submit', function(e){
   e.preventDefault();
