@@ -599,6 +599,64 @@
     line-height:1.65; font-family:'Inter',sans-serif;
     font-weight:400; text-transform:none; letter-spacing:0;
   }
+
+  /* FEATURED PROJECT */
+  .featured-wrap{
+    background:linear-gradient(180deg, rgba(45,212,191,0.06), transparent 60%);
+    border:1px solid var(--accent);
+    border-radius:16px;
+    padding:28px;
+    margin-bottom:36px;
+    position:relative;
+  }
+  .featured-kicker{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:0.66rem;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--accent);
+    background:var(--primary-dim); border:1px solid rgba(45,212,191,0.25);
+    border-radius:999px; padding:5px 12px; margin-bottom:16px;
+  }
+  .featured-kicker .badge-dot{ width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease infinite; }
+  .featured-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px; align-items:start;
+  }
+  .featured-title{
+    font-family:'Outfit',sans-serif; font-weight:800;
+    font-size:clamp(1.2rem,2.4vw,1.6rem);
+    color:var(--text-1); line-height:1.25;
+    text-transform:none; letter-spacing:0.01em;
+    margin-bottom:12px;
+  }
+  .featured-desc{
+    font-size:0.92rem; color:var(--text-2); line-height:1.7;
+    font-family:'Inter',sans-serif; font-weight:400;
+    margin-bottom:18px;
+  }
+  .featured-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
+  .featured-highlights{ list-style:none; margin-bottom:22px; }
+  .featured-highlights li{
+    display:flex; gap:10px; padding:7px 0;
+    font-size:0.85rem; color:var(--text-2); line-height:1.5;
+    font-family:'Inter',sans-serif; font-weight:400;
+  }
+  .featured-highlights li .rd{ color:var(--accent); flex-shrink:0; font-weight:700; }
+  .featured-video{
+    position:relative; width:100%;
+    padding-top:56.25%; /* 16:9 */
+    border-radius:12px; overflow:hidden;
+    border:1px solid var(--border); background:var(--bg-3);
+  }
+  .featured-video iframe{
+    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+  }
+  .featured-video-cap{
+    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
+    color:var(--text-3); margin-top:10px; text-align:center;
+    letter-spacing:0.04em; text-transform:none;
+  }
+  @media(max-width:760px){
+    .featured-grid{ grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -729,7 +787,39 @@
 <div class="section" id="projects">
   <div class="eyebrow"><span class="eyebrow-line rust"></span><span class="eyebrow-text rust">Work</span></div>
   <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Projects</h2>
-  <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:0;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Nine real builds across healthcare, real estate, operations, sales, content, insurance, and home services. Click any card to see the full breakdown.</p>
+  <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:28px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Nine real builds across healthcare, real estate, operations, sales, content, insurance, and home services. Click any card to see the full breakdown.</p>
+
+  <!-- FEATURED PROJECT -->
+  <div class="featured-wrap">
+    <div class="featured-kicker"><span class="badge-dot"></span>Featured Build</div>
+    <div class="featured-grid">
+      <div>
+        <div class="featured-title">Automated Client Follow-Up System — A Law Firm Case Study<br>(Adaptable to Any Appointment-Based Business)</div>
+        <p class="featured-desc">The most complete system I've built to date: six connected automation sequences covering the full client journey, plus a one-click way for the business owner to report outcomes without ever logging into the CRM.</p>
+        <div class="featured-tags">
+          <span class="dp-tag">GoHighLevel</span>
+          <span class="dp-tag">Trigger Links</span>
+          <span class="dp-tag">Calendars & Booking Sync</span>
+          <span class="dp-tag">Workflow Automation</span>
+        </div>
+        <ul class="featured-highlights">
+          <li><span class="rd">+</span>6 sequences: lead follow-up, reminders, no-show recovery, post-consult nurture, long-term nurture, review requests</li>
+          <li><span class="rd">+</span>Zero-login design — the owner responds to outcomes with a single email click</li>
+          <li><span class="rd">+</span>Reminder timing verified against a real, live booking via execution logs</li>
+        </ul>
+        <div class="card-expand" onclick="toggleCard('p11',this.closest('.featured-wrap'))" style="cursor:pointer;font-size:0.72rem;">
+          <span id="p11-arr">↓</span>&nbsp;<span id="p11-lbl">See how it works</span>
+        </div>
+      </div>
+      <div>
+        <div class="featured-video">
+          <iframe src="https://www.youtube.com/embed/qvbCiZtn1Cw" title="Automated Client Follow-Up System — Case Study" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="detail-panel" id="panel-p11" style="display:none;margin-top:22px;"></div>
+  </div>
+
   <div class="projects-grid" id="pgrid">
     <div class="project-card" onclick="toggleCard('p01',this)" data-id="p01">
       <div class="card-thumb"><img src="assets/P1_n8n_canvas.png" alt="Ops Triage" loading="lazy"><span class="card-badge">n8n · Slack · Gemini</span></div>
@@ -964,6 +1054,7 @@ const projects = {
   p07:{title:"Insurance Renewal Reminder Pipeline",industry:"Insurance / Independent Brokers",problem:"Independent brokers lose renewals every year not because clients do not want to renew, but because follow-up is manual and inconsistent. A lapsed renewal is lost commission, permanently.",tools:["Make","Google Sheets","Gmail"],steps:["Google Sheets Search Rows pulls the full client list once daily","Router splits every row into 7 branches, each checking today's date against a trigger window: 120, 90, 60, 30, 14, 7, and 0 days out","Matching rows fire the right email automatically: internal alerts to the agent at day 120 and day 0, client touchpoints in between","Pipeline Stage and Last Contacted columns update on the sheet after every send","Rows missing required data are diverted to a separate branch that emails the agent a specific alert instead of failing silently","Every Gmail and Sheets module has a Resume error handler so one bad row never crashes the run for everyone else"],results:["Zero renewals missed across a full 120-day cycle","Agent gets an early heads-up 4 months out and an urgent flag on renewal day itself","Missing data flagged automatically instead of failing silently","Runs daily, fully unattended, no manual chasing required"],screenshots:[{src:"assets/p7_make.png",label:"make scenario"},{src:"assets/p7_google_sheet.png",label:"tracking sheet"},{src:"assets/p7_gmail_day60.png",label:"day 60 email"},{src:"assets/p7_gmail_day0.png",label:"day 0 escalation"},{src:"assets/p7_gmail_missing_data.png",label:"missing data alert"}]},
   p08:{title:"GHL Speed-to-Lead Automation",industry:"Insurance / Independent Brokers",problem:"Prospects who fill out a form expect an acknowledgment right away. When that doesn't happen inside the CRM itself, trust drops and the lead moves on to whoever responds first. Most GHL setups stop at a canned autoresponder with no record kept outside the CRM.",tools:["GoHighLevel","n8n","Google Sheets"],steps:["Trigger fires the instant a new contact is created in GHL","Branded email reply sent immediately using a merge field for personalization","In parallel, full contact data sent via webhook to n8n","n8n appends the lead to a live Google Sheets tracker outside the CRM"],results:["New lead to acknowledged and logged in under a few seconds","Zero manual steps required from the business owner","Proves GHL can hand data off to any external tool the moment something happens"],screenshots:[{src:"assets/p8_GHL_workflow.png",label:"GHL workflow"},{src:"assets/p8_n8n.png",label:"n8n webhook"},{src:"assets/p8_gmail.png",label:"instant reply"},{src:"assets/p8_google_sheet.png",label:"lead tracker"}]},
   p09:{title:"AI Lead Qualification & Routing",industry:"Home Services / HVAC",problem:"Not every lead deserves the same response. A no-heat emergency needs a callback in minutes; a pricing question can wait. Most CRMs, GHL included, treat every new lead identically with no sense of urgency built in.",tools:["GoHighLevel","n8n","Google Gemini","Google Sheets"],steps:["GHL form captures the request with an open-text field describing the issue","Form submission triggers a webhook to n8n with the full message","Gemini reads the message and classifies it HOT, WARM, or COLD with a reason","Switch node routes to a different outcome per classification","Hot and Warm trigger internal notification emails with the AI's reasoning attached","All three tiers logged to a tracker and tagged back onto the GHL contact via API"],results:["Urgent leads flagged and alerted within seconds, no manual reading required","Cold leads logged silently instead of triggering unnecessary noise","GHL contact record reflects the AI's classification directly, closing the loop back into the CRM"],screenshots:[{src:"assets/p9_GHL_form.png",label:"GHL intake form"},{src:"assets/p9_n8n_workflow.png",label:"n8n routing"},{src:"assets/p9_AI_agent_output.png",label:"AI classification"},{src:"assets/p9_gmail.png",label:"hot lead alert"},{src:"assets/p9_google_sheet.png",label:"lead tracker"},{src:"assets/p9_GHL_contact_list.png",label:"tagged in GHL"}]},
+  p11:{title:"Automated Client Follow-Up System — Law Firm Case Study",industry:"Legal / Any Appointment-Based Business",problem:"Law firms lose potential clients to slow, inconsistent follow-up — leads go unanswered, appointments go unconfirmed, no-shows go unrecovered, and satisfied clients are never asked for reviews. The firm owner doesn't have time to manage this manually, and doesn't want to learn new software to try.",tools:["GoHighLevel","Trigger Links","Calendars & Booking Sync","Custom Fields & Pipelines"],steps:["Built 6 interconnected sequences covering the full client lifecycle: lead follow-up, appointment reminders, no-show recovery, post-consultation nurture, long-term relationship nurture, and review requests","Built a booking-sync workflow that automatically tags and updates contact records the instant a real appointment is booked — no manual data entry anywhere in the system","Solved the core constraint — the owner never logs into GoHighLevel — using GHL Trigger Links: one email after each appointment, one click to report the outcome, CRM updates automatically behind the scenes","Engineered a workaround for GoHighLevel's lack of native workflow looping using a tag re-trigger pattern, running an indefinite long-term nurture sequence","Tested reminder timing against a real, live booking rather than simulated data — confirmed via execution logs that both 24-hour and 2-hour reminders fired at the correct times"],results:["A fully automated, zero-login follow-up system requiring no ongoing manual work from the business owner","Reminder accuracy verified with real execution logs, not just workflow logic assumed to work","Built around a tag-and-pipeline architecture that generalizes to any appointment-based business, not just law firms"],screenshots:[]},
   p10:{title:"Med Spa Retention & Reputation System",industry:"Health & Beauty / Med Spa",problem:"Med spas live and die on repeat visits and reviews, but both fall through the cracks once the front desk gets busy. Clients who had a great visit never get asked for a review at the right moment, and clients who quietly stop booking don't get flagged until months later, if at all.",tools:["GoHighLevel"],steps:["6-stage pipeline built to mirror the real client journey: New Inquiry, Booked, Active Client, Review Requested, Lapsed-Reactivation, VIP/Member","Custom fields and tags track service type, last visit date, lifecycle status, and review status in real time","Booking calendar fires confirmation, 24hr/1hr reminder, and post-visit notifications across Email and SMS","Workflow 1 triggers when an appointment is marked Showed, waits 2 hours, checks if a review has been given, and sends a review request with a second softer ask 3 days later if needed","Workflow 2 triggers when a client is tagged as lapsed 60+ days, sends an immediate win-back SMS, waits 5 days, then checks if they rebooked before sending a follow-up offer and escalating to a 90-day tag"],results:["Both workflows tested end-to-end against a real contact through GHL's Enrollment History, confirming every wait, condition, and branch executed exactly on schedule","Confirmed GHL workflows don't halt on a failed send (e.g. no phone number provisioned) — they log it and continue, proving the automation logic is resilient, not just happy-path","Documented the one native GHL limitation found along the way: no built-in scheduled/recurring trigger for date-based checks like '60 days since X', and the fix — a lightweight n8n cron job reading the CRM via API — the same GHL-to-n8n handoff pattern used in P08 and P09, just applied to retention instead of intake"],screenshots:[{src:"assets/p10_pipeline.png",label:"pipeline stages"},{src:"assets/p10_pipeline_board.png",label:"pipeline board"},{src:"assets/p10_wf1_canvas.png",label:"review request workflow"},{src:"assets/p10_wf2_canvas.png",label:"reactivation workflow"},{src:"assets/p10_calendar_notifications.png",label:"calendar notifications"},{src:"assets/p10_tags_accumulated.png",label:"live test proof"}]}
 };
 
@@ -974,7 +1065,10 @@ function buildPanel(id){
   const shots=d.screenshots.map(s=>`<div class="ss-item" onclick="openLb('${s.src}','${s.label}');event.stopPropagation()"><img src="${s.src}" alt="${s.label}" loading="lazy"><div class="ss-label">${s.label}</div></div>`).join('');
   const tags=d.tools.map(t=>`<span class="dp-tag">${t}</span>`).join('');
   const problem=d.problem?`<div class="dp-problem"><span class="dp-industry">${d.industry}</span><p class="dp-problem-text">${d.problem}</p></div>`:'';
-  return `<div class="dp-header"><div><div class="dp-title">${d.title}</div><div class="dp-tags">${tags}</div></div><button class="dp-close" onclick="closePanel('${id}');event.stopPropagation()">close ✕</button></div>${problem}<div class="dp-cols"><div><div class="dp-section"><span class="dp-label">How it works</span><ul class="steps-list">${steps}</ul></div><div class="dp-section"><span class="dp-label">Results</span><ul class="results-list">${results}</ul></div></div><div><div class="dp-section"><span class="dp-label">Screenshots</span><div class="ss-grid">${shots}</div></div></div></div>`;
+  const hasShots=d.screenshots && d.screenshots.length>0;
+  const rightCol=hasShots?`<div><div class="dp-section"><span class="dp-label">Screenshots</span><div class="ss-grid">${shots}</div></div></div>`:'';
+  const colsStyle=hasShots?'':'grid-template-columns:1fr;';
+  return `<div class="dp-header"><div><div class="dp-title">${d.title}</div><div class="dp-tags">${tags}</div></div><button class="dp-close" onclick="closePanel('${id}');event.stopPropagation()">close ✕</button></div>${problem}<div class="dp-cols" style="${colsStyle}"><div><div class="dp-section"><span class="dp-label">How it works</span><ul class="steps-list">${steps}</ul></div><div class="dp-section"><span class="dp-label">Results</span><ul class="results-list">${results}</ul></div></div>${rightCol}</div>`;
 }
 
 let active=null;
