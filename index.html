@@ -3,660 +3,624 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reez San Gabriel — Automation Specialist</title>
+<title>Reez San Gabriel | Automation Specialist</title>
 <meta name="description" content="n8n, Make, and Zapier automation specialist. Workflows mapped, tested, and documented before anything goes live.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#08141c;
-    --bg-2:#10232d;
-    --bg-3:#152d39;
-    --border:#1e3a46;
-    --border-strong:#2a4f5e;
-    --text-1:#f8fafc;
-    --text-2:#94a3b8;
-    --text-3:#4a6272;
-    --primary:#14b8a6;
-    --accent:#2dd4bf;
-    --glow:#67e8f9;
-    --primary-dim:rgba(20,184,166,0.1);
-    --glow-dim:rgba(103,232,249,0.08);
-    --rust:#e05a1e;
-    --radius:12px;
-    --max-w:960px;
+    --bg:#F4F4EF;
+    --bg-2:#FFFFFF;
+    --bg-3:#ECECE5;
+    --border:#E2E2DA;
+    --border-strong:#CFCFC4;
+    --text-1:#161616;
+    --text-2:#4F4F49;
+    --text-3:#6E6E66;
+    --ink:#161616;
+    --ink-2:#1F1F1D;
+    --ink-line:#34342F;
+    --lime:#C2D88A;
+    --lime-soft:#E7EFD2;
+    --accent:#56692A;
+    --primary:#161616;
+    --rust:#161616;
+    --radius:16px;
+    --max-w:1040px;
+    --shadow:0 1px 2px rgba(22,22,22,0.04), 0 8px 24px -12px rgba(22,22,22,0.12);
+    --shadow-lift:0 2px 4px rgba(22,22,22,0.05), 0 18px 40px -16px rgba(22,22,22,0.22);
+    --head:'Plus Jakarta Sans','Inter',-apple-system,sans-serif;
+    --body:'Inter',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',monospace;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
   body{
-    background:var(--bg);overflow-x:hidden;
+    background:var(--bg); overflow-x:hidden;
     color:var(--text-1);
-    font-family:'Inter',-apple-system,sans-serif;
+    font-family:var(--body);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3,h4{
-    font-family:'Outfit',sans-serif;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
+    font-family:var(--head);
+    letter-spacing:-0.02em;
+    font-weight:800;
   }
   a{ color:inherit; text-decoration:none; }
-  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+  ::selection{ background:var(--lime); color:var(--ink); }
 
   /* NAV */
   nav{
     position:sticky; top:0; z-index:100;
-    background:rgba(8,20,28,0.92);
+    background:rgba(22,22,22,0.98);
     backdrop-filter:blur(16px);
     -webkit-backdrop-filter:blur(16px);
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--ink-line);
   }
   .nav-inner{
     max-width:var(--max-w); margin:0 auto; padding:0 28px;
-    height:56px; display:flex; align-items:center; justify-content:space-between;
+    height:64px; display:flex; align-items:center; justify-content:space-between; gap:16px;
   }
   .nav-logo{
-    font-family:'Outfit',sans-serif;
-    font-size:0.85rem; font-weight:800;
-    color:var(--text-1); letter-spacing:0.08em;
-    text-transform:uppercase;
+    font-family:var(--head);
+    font-size:0.98rem; font-weight:800;
+    color:#F4F4EF; letter-spacing:-0.01em;
     display:flex; align-items:center; gap:10px;
   }
   .nav-logo-badge{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.6rem; font-weight:600;
-    letter-spacing:0.12em; text-transform:uppercase;
-    color:var(--bg); background:var(--accent);
-    padding:3px 8px; border-radius:4px;
+    font-family:var(--head);
+    font-size:0.66rem; font-weight:700;
+    letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--ink); background:var(--lime);
+    padding:4px 9px; border-radius:999px;
   }
   .nav-links{ display:flex; gap:28px; align-items:center; }
   .nav-links a{
-    font-size:0.84rem; font-weight:500;
-    color:var(--text-3); transition:color 0.15s;
-    font-family:'Inter',sans-serif;
-    text-transform:none; letter-spacing:0;
+    font-size:0.88rem; font-weight:500;
+    color:#BDBDB4; transition:color 0.15s;
+    font-family:var(--body);
   }
-  .nav-links a:hover{ color:var(--text-1); }
+  .nav-links a:hover{ color:var(--lime); }
   .nav-clock{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.68rem; color:var(--text-3); letter-spacing:0.04em;
+    font-family:var(--mono);
+    font-size:0.68rem; color:#8A8A82; letter-spacing:0.04em;
   }
 
   /* LAYOUT */
-  .section{ max-width:var(--max-w); margin:0 auto; padding:44px 28px; }
+  .section{ max-width:var(--max-w); margin:0 auto; padding:72px 28px; }
   .divider{ max-width:var(--max-w); margin:0 auto; padding:0 28px; }
   .divider hr{ border:none; border-top:1px solid var(--border); }
+  .section h2{ font-family:var(--head); font-weight:800; letter-spacing:-0.025em; line-height:1.15; }
 
   /* EYEBROW */
-  .eyebrow{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
-  .eyebrow-line{ width:28px; height:1.5px; background:var(--accent); flex-shrink:0; }
+  .eyebrow{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .eyebrow-line{ width:22px; height:2px; border-radius:2px; background:var(--accent); flex-shrink:0; }
   .eyebrow-text{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.68rem; font-weight:500;
-    letter-spacing:0.16em; text-transform:uppercase; color:var(--accent);
+    font-family:var(--head);
+    font-size:0.74rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);
   }
+  .eyebrow-line.rust{ background:var(--accent); }
+  .eyebrow-text.rust{ color:var(--accent); }
 
   /* BUTTONS */
   .btn{
-    font-family:'Inter',sans-serif; font-weight:600; font-size:0.9rem;
-    padding:12px 22px; border-radius:999px; border:1.5px solid transparent;
+    font-family:var(--head); font-weight:700; font-size:0.92rem;
+    padding:13px 24px; border-radius:999px; border:1.5px solid transparent;
     cursor:pointer; display:inline-flex; align-items:center;
-    gap:7px; transition:all 0.15s ease; text-decoration:none;
-    text-transform:none; letter-spacing:0;
+    gap:8px; transition:transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    text-decoration:none; min-height:46px;
   }
   .btn-primary{
-    background:var(--accent); color:var(--bg); border-color:var(--accent);
+    background:var(--ink); color:var(--lime); border-color:var(--ink);
   }
   .btn-primary:hover{
-    background:var(--primary); border-color:var(--primary);
-    transform:translateY(-1px);
+    transform:translateY(-2px); box-shadow:0 10px 24px -10px rgba(22,22,22,0.5);
   }
   .btn-ghost{
-    background:transparent; border-color:var(--border-strong); color:var(--text-2);
+    background:transparent; border-color:var(--border-strong); color:var(--text-1);
   }
-  .btn-ghost:hover{ border-color:var(--accent); color:var(--text-1); }
+  .btn-ghost:hover{ border-color:var(--ink); }
   .btn-rust{
-    background:transparent; border-color:var(--rust);
-    color:var(--rust); font-size:0.85rem; padding:10px 18px;
+    background:var(--lime); border-color:var(--lime);
+    color:var(--ink);
   }
-  .btn-rust:hover{ background:var(--rust); color:#fff; }
+  .btn-rust:hover{ transform:translateY(-2px); box-shadow:0 10px 24px -12px rgba(79,107,0,0.6); }
   .btn-secondary{
-    background:var(--rust); color:#fff; border-color:var(--rust);
+    background:var(--lime); color:var(--ink); border-color:var(--lime);
   }
   .btn-secondary:hover{
-    background:#c94e18; border-color:#c94e18;
-    transform:translateY(-1px);
+    transform:translateY(-2px); box-shadow:0 10px 24px -12px rgba(79,107,0,0.6);
   }
 
-  .eyebrow-line.rust{ background:var(--rust); }
-  .eyebrow-text.rust{ color:var(--rust); }
-
-  /* HERO */
-  .hero{ padding-top:56px; padding-bottom:44px; }
+  /* HERO (dark band) */
+  .hero{ position:relative; isolation:isolate; padding-top:88px; padding-bottom:96px; }
+  .hero::before{
+    content:""; position:absolute; top:0; bottom:0;
+    left:calc(50% - 50vw); right:calc(50% - 50vw);
+    background:
+      radial-gradient(circle at 85% 20%, rgba(194,216,138,0.10), transparent 45%),
+      var(--ink);
+    z-index:-1;
+  }
+  .hero + .divider{ display:none; }
   .hero-inner{
-    display:grid; grid-template-columns:1.1fr 0.9fr;
-    gap:48px; align-items:center;
+    display:grid; grid-template-columns:1.15fr 0.85fr;
+    gap:56px; align-items:center;
   }
-
   .hero-badge{
     display:inline-flex; align-items:center; gap:8px;
-    background:var(--primary-dim);
-    border:1px solid rgba(45,212,191,0.2);
     border-radius:999px; padding:6px 14px; margin-bottom:24px;
-    font-family:'JetBrains Mono',monospace; font-size:0.68rem;
-    letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);
+    font-size:0.72rem; font-weight:600; color:var(--lime);
+    border:1px solid var(--ink-line);
   }
   .badge-dot{
-    width:6px; height:6px; border-radius:50%; background:var(--accent);
+    width:7px; height:7px; border-radius:50%; background:var(--lime);
     animation:blink 2s ease infinite; flex-shrink:0;
   }
-  @keyframes blink{ 0%,100%{opacity:1} 50%{opacity:0.3} }
+  @keyframes blink{ 0%,100%{opacity:1} 50%{opacity:0.35} }
 
-  .hero-line1{font-family:"Outfit",sans-serif;font-size:clamp(2.4rem,5vw,3.6rem);font-weight:800;color:var(--text-1);line-height:1.1;letter-spacing:0.04em;text-transform:uppercase;display:block;margin-bottom:8px;}
-  .hero-line2{font-family:"Outfit",sans-serif;font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;color:var(--accent);line-height:1.15;letter-spacing:0.04em;text-transform:uppercase;display:block;margin-bottom:20px;}
-  .hero h1{
-    font-size:clamp(2.2rem,4.5vw,3.2rem);
-    font-weight:800; color:var(--text-1);
-    line-height:1.1; margin-bottom:20px;
+  .hero-line1{
+    font-family:var(--head);
+    font-size:clamp(2.6rem,6vw,4.2rem);
+    font-weight:800; color:#F4F4EF;
+    line-height:1.02; letter-spacing:-0.035em;
+    display:block; margin-bottom:14px;
   }
-  .hero h1 .hl{
-    color:var(--accent);
+  .hero-line2{
+    font-family:var(--head);
+    font-size:clamp(1.3rem,2.8vw,1.9rem);
+    font-weight:700; color:var(--lime);
+    line-height:1.2; letter-spacing:-0.02em;
+    display:block; margin-bottom:24px;
   }
   .hero-sub{
-    font-size:0.97rem; color:var(--text-2);
-    line-height:1.75; margin-bottom:32px;
-    font-family:'Inter',sans-serif;
-    text-transform:none; letter-spacing:0; font-weight:400;
-    max-width:440px;
+    font-size:1.04rem; color:#BDBDB4;
+    line-height:1.75; margin-bottom:34px;
+    font-family:var(--body); font-weight:400;
+    max-width:480px;
   }
   .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .hero .btn-primary{ background:var(--lime); color:var(--ink); border-color:var(--lime); }
+  .hero .btn-primary:hover{ box-shadow:0 12px 28px -12px rgba(194,216,138,0.55); }
+  .hero .btn-ghost{ border-color:#4A4A44; color:#F4F4EF; }
+  .hero .btn-ghost:hover{ border-color:var(--lime); color:var(--lime); }
 
   /* TERMINAL */
   .terminal{
-    background:var(--bg-2);
-    border:1px solid var(--border);
-    border-radius:var(--radius); overflow:hidden;
-    font-family:'JetBrains Mono',monospace;
+    background:var(--ink-2);
+    border:1px solid var(--ink-line);
+    border-radius:18px; overflow:hidden;
+    font-family:var(--mono);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.7);
+    transform:rotate(-1.2deg);
   }
   .terminal-bar{
-    background:var(--bg-3); border-bottom:1px solid var(--border);
-    padding:10px 16px; display:flex; align-items:center; gap:8px;
+    background:#262623; border-bottom:1px solid var(--ink-line);
+    padding:12px 16px; display:flex; align-items:center; gap:8px;
   }
   .t-dot{ width:10px; height:10px; border-radius:50%; }
   .t-dot-r{ background:#ff5f57; }
   .t-dot-y{ background:#febc2e; }
   .t-dot-g{ background:#28c840; }
-  .terminal-title{
-    font-size:0.68rem; color:var(--text-3);
-    letter-spacing:0.06em; margin-left:6px; text-transform:none;
-  }
-  .terminal-body{ padding:22px; }
+  .terminal-title{ font-size:0.7rem; color:#8A8A82; letter-spacing:0.04em; margin-left:6px; }
+  .terminal-body{ padding:24px 24px 26px; }
   .t-line{
-    font-size:0.76rem; line-height:2; display:flex; gap:10px;
+    font-size:0.8rem; line-height:2.05; display:flex; gap:10px;
     opacity:0; transition:opacity 0.4s ease;
   }
   .t-line.visible{ opacity:1; }
-  .t-prefix{ color:var(--accent); flex-shrink:0; }
-  .t-text{ color:var(--text-2); }
-  .t-text.success{ color:#4ade80; }
-  .t-text.label{
-    color:var(--text-1); font-weight:600;
-  }
-  .t-text.dim{ color:var(--text-3); }
+  .t-prefix{ color:var(--lime); flex-shrink:0; }
+  .t-text{ color:#BDBDB4; }
+  .t-text.success{ color:var(--lime); }
+  .t-text.label{ color:#F4F4EF; font-weight:600; }
+  .t-text.dim{ color:#8A8A82; }
   .t-cursor{
-    display:inline-block; width:7px; height:13px;
-    background:var(--accent); margin-left:2px; vertical-align:middle;
+    display:inline-block; width:8px; height:14px;
+    background:var(--lime); margin-left:3px; vertical-align:middle;
     animation:cursor-blink 1s step-end infinite;
   }
   @keyframes cursor-blink{ 0%,100%{opacity:1} 50%{opacity:0} }
 
   /* SERVICES + PROCESS */
-  .sp-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-top:40px; }
-  .services-list{ display:flex; flex-direction:column; gap:12px; }
+  .sp-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:40px; }
+  .services-list{ display:flex; flex-direction:column; gap:14px; }
   .service-item{
-    display:flex; align-items:flex-start; gap:14px;
-    padding:20px; background:var(--bg-2);
-    border:1px solid var(--border); border-radius:10px;
-    transition:border-color 0.15s;
+    display:flex; align-items:flex-start; gap:16px;
+    padding:22px; background:var(--bg-2);
+    border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    transition:transform 0.15s, box-shadow 0.15s, border-color 0.15s;
   }
-  .service-item:hover{
-    border-color:var(--accent);
-  }
+  .service-item:hover{ transform:translateY(-2px); box-shadow:var(--shadow-lift); border-color:var(--border-strong); }
   .si-icon{
-    width:34px; height:34px; border-radius:8px;
-    background:var(--primary-dim); display:flex;
-    align-items:center; justify-content:center;
-    flex-shrink:0; font-size:0.95rem;
-    border:1px solid rgba(45,212,191,0.15);
+    width:42px; height:42px; border-radius:12px;
+    background:var(--ink); color:var(--lime); display:flex;
+    align-items:center; justify-content:center; flex-shrink:0;
   }
+  .si-icon svg{ width:20px; height:20px; }
   .si-title{
-    font-family:'Outfit',sans-serif; font-size:0.84rem; font-weight:700;
-    color:var(--text-1); margin-bottom:4px;
-    text-transform:uppercase; letter-spacing:0.04em;
+    font-family:var(--head); font-size:1rem; font-weight:700;
+    color:var(--text-1); margin-bottom:4px; letter-spacing:-0.01em;
   }
-  .si-desc{
-    font-size:0.82rem; color:var(--text-2); line-height:1.55;
-    font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0; font-weight:400;
-  }
+  .si-desc{ font-size:0.88rem; color:var(--text-2); line-height:1.6; font-family:var(--body); }
 
   .process-col{ padding-top:4px; }
   .process-col-label{
-    font-family:'JetBrains Mono',monospace; font-size:0.66rem;
-    letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3);
-    margin-bottom:20px; font-weight:500;
-    display:flex; align-items:center; gap:10px;
+    font-family:var(--head); font-size:0.74rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--text-3);
+    margin-bottom:12px; display:flex; align-items:center; gap:10px;
   }
-  .process-col-label::before{
-    content:""; display:inline-block;
-    width:20px; height:1px; background:var(--border-strong);
-  }
+  .process-col-label::before{ content:""; display:inline-block; width:22px; height:2px; border-radius:2px; background:var(--border-strong); }
   .process-steps{ display:flex; flex-direction:column; }
-  .ps{ display:flex; gap:16px; padding:20px 0; border-bottom:1px solid var(--border); }
+  .ps{ display:flex; gap:18px; padding:22px 0; border-bottom:1px solid var(--border); }
   .ps:last-child{ border-bottom:none; }
   .ps-num{
-    font-family:'JetBrains Mono',monospace; font-size:0.65rem;
-    color:var(--accent); font-weight:600; letter-spacing:0.08em;
-    padding-top:3px; flex-shrink:0;
+    font-family:var(--head); font-size:0.8rem; font-weight:800;
+    color:var(--ink); background:var(--lime);
+    width:34px; height:34px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
   }
   .ps-title{
-    font-family:'Outfit',sans-serif; font-size:0.88rem; font-weight:700;
-    color:var(--text-1); margin-bottom:6px;
-    text-transform:uppercase; letter-spacing:0.04em;
+    font-family:var(--head); font-size:1.02rem; font-weight:700;
+    color:var(--text-1); margin-bottom:6px; letter-spacing:-0.01em;
   }
-  .ps-desc{
-    font-size:0.83rem; color:var(--text-2); line-height:1.6;
-    font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0; font-weight:400;
-  }
+  .ps-desc{ font-size:0.88rem; color:var(--text-2); line-height:1.65; font-family:var(--body); }
 
   /* PROJECTS */
-  .projects-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:32px; }
+  .projects-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:28px; }
   .project-card{
     background:var(--bg-2); border:1px solid var(--border);
     border-radius:var(--radius); overflow:hidden; cursor:pointer;
-    transition:border-color 0.15s, transform 0.15s;
+    box-shadow:var(--shadow);
+    transition:transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+    display:flex; flex-direction:column;
   }
-  .project-card:hover{
-    border-color:var(--border-strong); transform:translateY(-3px);
-  }
-  .project-card.expanded{
-    border-color:var(--accent);
-    transform:none;
-  }
+  .project-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lift); }
+  .project-card.expanded{ border-color:var(--ink); box-shadow:0 0 0 1px var(--ink), var(--shadow-lift); transform:none; }
 
   .card-thumb{
-    width:100%; height:138px; overflow:hidden;
+    width:100%; height:168px; overflow:hidden;
     background:var(--bg-3); border-bottom:1px solid var(--border); position:relative;
   }
-  .card-thumb img{ width:100%; height:100%; object-fit:cover; transition:transform 0.3s ease; }
+  .card-thumb img{ width:100%; height:100%; object-fit:cover; object-position:top left; transition:transform 0.35s ease; }
   .project-card:hover .card-thumb img{ transform:scale(1.05); }
   .card-badge{
-    position:absolute; top:8px; left:8px;
-    font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:0.04em;
-    background:rgba(8,20,28,0.88); color:var(--accent);
-    padding:4px 8px; border-radius:4px; backdrop-filter:blur(4px);
+    position:absolute; top:10px; left:10px;
+    font-family:var(--head); font-size:0.66rem; font-weight:700; letter-spacing:0.01em;
+    background:var(--ink); color:var(--lime);
+    padding:5px 10px; border-radius:999px;
   }
 
-  .card-body{ padding:16px 18px 18px; }
+  .card-body{ padding:18px 20px 20px; display:flex; flex-direction:column; flex-grow:1; }
   .card-num{
-    font-family:'JetBrains Mono',monospace; font-size:0.62rem;
-    color:var(--rust); font-weight:600; letter-spacing:0.08em; margin-bottom:5px;
+    font-family:var(--head); font-size:0.7rem;
+    color:var(--accent); font-weight:700; letter-spacing:0.1em; margin-bottom:6px; text-transform:uppercase;
   }
   .card-title{
-    font-family:'Outfit',sans-serif; font-size:0.88rem; font-weight:700;
-    color:var(--text-1); margin-bottom:7px; line-height:1.3;
-    text-transform:uppercase; letter-spacing:0.03em;
+    font-family:var(--head); font-size:1.05rem; font-weight:700;
+    color:var(--text-1); margin-bottom:8px; line-height:1.3; letter-spacing:-0.015em;
   }
-  .card-desc{
-    font-size:0.8rem; color:var(--text-2); line-height:1.6;
-    font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0; font-weight:400;
-  }
+  .card-desc{ font-size:0.86rem; color:var(--text-2); line-height:1.6; font-family:var(--body); }
   .card-expand{
-    font-family:'JetBrains Mono',monospace; font-size:0.66rem;
-    color:var(--text-3); margin-top:12px;
-    display:flex; align-items:center; gap:5px; transition:color 0.15s;
-    text-transform:none; letter-spacing:0;
+    font-family:var(--head); font-size:0.8rem; font-weight:700;
+    color:var(--text-1); margin-top:auto; padding-top:14px;
+    display:flex; align-items:center; gap:6px; transition:color 0.15s;
   }
   .project-card:hover .card-expand{ color:var(--accent); }
 
   .detail-panel{
     display:none; grid-column:1/-1;
-    background:var(--bg-2); border:1px solid var(--accent);
-    border-radius:var(--radius); padding:28px;
+    background:var(--bg-2); border:1.5px solid var(--ink);
+    border-radius:20px; padding:32px;
+    box-shadow:var(--shadow-lift);
   }
   .detail-panel.open{ display:block; }
 
   .dp-header{
     display:flex; justify-content:space-between; align-items:flex-start;
-    margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid var(--border); gap:16px;
+    margin-bottom:24px; padding-bottom:20px; border-bottom:1px solid var(--border); gap:16px;
   }
   .dp-title{
-    font-family:'Outfit',sans-serif; font-size:1rem; font-weight:800;
-    color:var(--text-1); margin-bottom:8px;
-    text-transform:uppercase; letter-spacing:0.04em;
+    font-family:var(--head); font-size:1.35rem; font-weight:800;
+    color:var(--text-1); margin-bottom:10px; letter-spacing:-0.02em;
   }
   .dp-tags{ display:flex; gap:6px; flex-wrap:wrap; }
   .dp-tag{
-    font-family:'JetBrains Mono',monospace; font-size:0.65rem;
-    color:var(--accent); background:var(--primary-dim);
-    border-radius:5px; padding:4px 9px; letter-spacing:0.04em; text-transform:none;
+    font-family:var(--head); font-size:0.72rem; font-weight:600;
+    color:var(--text-1); background:var(--bg-3);
+    border-radius:999px; padding:5px 11px;
   }
   .dp-close{
-    font-family:'JetBrains Mono',monospace; font-size:0.72rem;
-    color:var(--text-3); cursor:pointer; background:none;
-    border:1px solid var(--border); padding:6px 12px;
-    border-radius:6px; transition:all 0.15s; white-space:nowrap; flex-shrink:0; text-transform:none;
+    font-family:var(--head); font-size:0.8rem; font-weight:700;
+    color:var(--text-1); cursor:pointer; background:var(--bg-2);
+    border:1.5px solid var(--border-strong); padding:8px 14px; min-height:40px;
+    border-radius:999px; transition:all 0.15s; white-space:nowrap; flex-shrink:0;
   }
-  .dp-close:hover{ border-color:var(--accent); color:var(--text-1); }
+  .dp-close:hover{ border-color:var(--ink); background:var(--ink); color:var(--lime); }
 
-  .dp-cols{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-  .dp-section{ margin-bottom:22px; }
+  .dp-cols{ display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .dp-section{ margin-bottom:24px; }
   .dp-section:last-child{ margin-bottom:0; }
   .dp-label{
-    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
+    font-family:var(--head); font-size:0.74rem; font-weight:700;
     letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);
     display:flex; align-items:center; gap:8px; margin-bottom:12px;
   }
-  .dp-label::before{
-    content:""; display:inline-block; width:16px; height:1px;
-    background:var(--accent); flex-shrink:0;
-  }
+  .dp-label::before{ content:""; display:inline-block; width:16px; height:2px; border-radius:2px; background:var(--accent); flex-shrink:0; }
 
   .steps-list{ list-style:none; }
   .steps-list li{
-    display:flex; gap:12px; padding:9px 0;
+    display:flex; gap:14px; padding:11px 0;
     border-bottom:1px solid var(--border);
-    font-size:0.84rem; color:var(--text-2); line-height:1.5;
-    font-family:'Inter',sans-serif; font-weight:400;
+    font-size:0.9rem; color:var(--text-2); line-height:1.55; font-family:var(--body);
   }
   .steps-list li:last-child{ border-bottom:none; }
   .sn{
-    font-family:'JetBrains Mono',monospace; font-size:0.62rem;
-    color:var(--rust); font-weight:600; padding-top:2px; flex-shrink:0; width:20px;
+    font-family:var(--head); font-size:0.72rem; font-weight:800;
+    color:var(--ink); background:var(--lime-soft);
+    min-width:26px; height:22px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px;
   }
 
   .results-list{ list-style:none; }
   .results-list li{
-    display:flex; gap:10px; padding:8px 0;
-    font-size:0.84rem; color:var(--text-2);
-    border-bottom:1px solid var(--border); line-height:1.5;
-    font-family:'Inter',sans-serif; font-weight:400;
+    display:flex; gap:12px; padding:10px 0;
+    font-size:0.9rem; color:var(--text-2);
+    border-bottom:1px solid var(--border); line-height:1.55; font-family:var(--body);
   }
   .results-list li:last-child{ border-bottom:none; }
-  .rd{ color:var(--accent); flex-shrink:0; font-weight:700; }
+  .rd{ color:var(--accent); flex-shrink:0; font-weight:800; }
 
-  .ss-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; }
+  .ss-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
   .ss-item{
-    border-radius:8px; overflow:hidden;
+    border-radius:12px; overflow:hidden;
     border:1px solid var(--border); cursor:pointer; background:var(--bg-3);
+    transition:box-shadow 0.15s, border-color 0.15s;
   }
-  .ss-item img{ width:100%; height:100px; object-fit:cover; display:block; transition:transform 0.2s; }
+  .ss-item:hover{ box-shadow:var(--shadow-lift); border-color:var(--border-strong); }
+  .ss-item img{ width:100%; height:104px; object-fit:cover; object-position:top left; display:block; transition:transform 0.2s; }
   .ss-item:hover img{ transform:scale(1.04); }
   .ss-label{
-    font-family:'JetBrains Mono',monospace; font-size:0.6rem;
-    color:var(--text-3); padding:5px 7px; letter-spacing:0.05em; text-transform:uppercase;
+    font-family:var(--head); font-size:0.7rem; font-weight:600;
+    color:var(--text-2); padding:7px 9px; background:var(--bg-2);
   }
 
   /* TECH STACK */
   .stack-grid{
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr));
-    gap:10px; margin-top:28px;
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(104px,1fr));
+    gap:12px; margin-top:28px;
   }
   .stack-item{
     background:var(--bg-2); border:1px solid var(--border);
-    border-radius:10px; padding:16px 8px 14px; text-align:center;
-    transition:border-color 0.15s, transform 0.15s;
+    border-radius:14px; padding:18px 8px 14px; text-align:center;
+    box-shadow:var(--shadow);
+    transition:border-color 0.15s, transform 0.15s, box-shadow 0.15s;
   }
-  .stack-item:hover{
-    border-color:var(--accent); transform:translateY(-2px);
-  }
-  .stack-logo{ width:36px; height:36px; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; }
+  .stack-item:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lift); }
+  .stack-logo{ width:36px; height:36px; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; }
   .stack-logo img{
-    width:32px; height:32px; object-fit:contain;
-    filter:brightness(0) invert(1); opacity:0.8; transition:opacity 0.15s;
+    width:30px; height:30px; object-fit:contain;
+    filter:brightness(0); opacity:0.78; transition:opacity 0.15s;
   }
   .stack-item:hover .stack-logo img{ opacity:1; }
   .stack-mono{
-    width:34px; height:34px; border-radius:7px;
-    background:var(--bg-3); border:1px solid var(--border-strong);
+    width:34px; height:34px; border-radius:9px;
+    background:var(--ink); color:var(--lime);
     display:flex; align-items:center; justify-content:center;
-    font-family:'JetBrains Mono',monospace; font-size:0.6rem;
-    font-weight:600; color:var(--text-1); text-transform:none;
+    font-family:var(--head); font-size:0.62rem; font-weight:800;
   }
-  .stack-name{
-    font-family:'JetBrains Mono',monospace; font-size:0.63rem;
-    color:var(--text-2); letter-spacing:0.05em; text-transform:none;
-  }
+  .stack-name{ font-family:var(--head); font-size:0.74rem; font-weight:600; color:var(--text-2); }
 
   /* HOW + CONTACT */
   .wc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:36px; }
   .how-cards{ display:flex; flex-direction:column; gap:12px; }
   .how-card{
     background:var(--bg-2); border:1px solid var(--border);
-    border-radius:10px; padding:22px; transition:border-color 0.15s;
+    border-radius:var(--radius); padding:22px; transition:border-color 0.15s;
   }
   .how-card:hover{ border-color:var(--border-strong); }
-  .how-card h3{
-    font-size:0.88rem; font-weight:700; color:var(--text-1); margin-bottom:6px;
-  }
-  .how-card p{
-    font-size:0.83rem; color:var(--text-2); line-height:1.6;
-    font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0; font-weight:400;
-  }
+  .how-card h3{ font-size:1rem; font-weight:700; color:var(--text-1); margin-bottom:6px; }
+  .how-card p{ font-size:0.88rem; color:var(--text-2); line-height:1.6; font-family:var(--body); }
 
   .cta-box{
     background:var(--bg-2); border:1px solid var(--border);
-    border-radius:var(--radius); padding:32px;
+    border-radius:20px; padding:36px;
     display:flex; flex-direction:column; justify-content:center;
+    box-shadow:var(--shadow);
   }
   .cta-box h2{
-    font-size:1.2rem; font-weight:800; color:var(--text-1);
-    margin-bottom:10px; line-height:1.25;
+    font-size:1.5rem; font-weight:800; color:var(--text-1);
+    margin-bottom:10px; line-height:1.2; letter-spacing:-0.025em;
   }
-  .cta-box p{
-    font-size:0.86rem; color:var(--text-2); margin-bottom:22px; line-height:1.65;
-    font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0; font-weight:400;
-  }
+  .cta-box p{ font-size:0.92rem; color:var(--text-2); margin-bottom:24px; line-height:1.65; font-family:var(--body); }
   .cta-btns{ display:flex; flex-direction:column; gap:10px; }
-  .cta-note{
-    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
-    color:var(--text-3); margin-top:8px; line-height:1.5; text-transform:none; letter-spacing:0;
+  .cta-note{ font-size:0.74rem; color:var(--text-3); margin-top:8px; line-height:1.5; }
+
+  /* first contact box: dark */
+  .wc-grid > .cta-box:first-child{
+    background:radial-gradient(circle at 90% 10%, rgba(194,216,138,0.12), transparent 50%), var(--ink);
+    border-color:var(--ink);
   }
-  .email-line{
-    font-family:'JetBrains Mono',monospace; font-size:0.72rem;
-    color:var(--text-3); margin-top:14px; text-transform:none;
-  }
-  .email-line a{ color:var(--accent); border-bottom:1px solid rgba(45,212,191,0.3); transition:border-color 0.15s; }
+  .wc-grid > .cta-box:first-child h2{ color:#F4F4EF; }
+  .wc-grid > .cta-box:first-child p{ color:#BDBDB4; }
+  .wc-grid > .cta-box:first-child .btn-primary{ background:var(--lime); color:var(--ink); border-color:var(--lime); }
+  .wc-grid > .cta-box:first-child a.btn-primary[href^="mailto"]{ background:transparent; color:#F4F4EF; border-color:#4A4A44; }
+  .wc-grid > .cta-box:first-child a.btn-primary[href^="mailto"]:hover{ border-color:var(--lime); color:var(--lime); }
+  .wc-grid > .cta-box:first-child .email-line{ color:#8A8A82; }
+
+  .email-line{ font-family:var(--body); font-size:0.8rem; color:var(--text-3); margin-top:14px; }
+  .email-line a{ color:var(--accent); border-bottom:1px solid rgba(79,107,0,0.3); transition:border-color 0.15s; }
   .email-line a:hover{ border-color:var(--accent); }
 
   /* INQUIRY FORM */
   .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-  .form-group{ display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
-  .form-label{
-    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
-    letter-spacing:0.1em; text-transform:uppercase; color:var(--text-3);
-  }
+  .form-group{ display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+  .form-label{ font-family:var(--head); font-size:0.78rem; font-weight:700; color:var(--text-1); }
   .form-input, .form-textarea{
-    background:var(--bg-3); border:1px solid var(--border); border-radius:8px;
-    padding:11px 14px; color:var(--text-1); font-family:'Inter',sans-serif;
-    font-size:0.87rem; font-weight:400; transition:border-color 0.15s; width:100%;
+    background:var(--bg); border:1.5px solid var(--border); border-radius:12px;
+    padding:12px 14px; color:var(--text-1); font-family:var(--body);
+    font-size:0.92rem; font-weight:400; transition:border-color 0.15s, box-shadow 0.15s; width:100%;
   }
-  .form-input::placeholder, .form-textarea::placeholder{ color:var(--text-3); }
-  .form-input:focus, .form-textarea:focus{ outline:none; border-color:var(--accent); }
-  .form-textarea{ resize:vertical; min-height:104px; font-family:'Inter',sans-serif; }
-  .form-note{
-    font-family:'JetBrains Mono',monospace; font-size:0.62rem;
-    color:var(--text-3); margin-top:10px; line-height:1.5;
-  }
+  .form-input::placeholder, .form-textarea::placeholder{ color:#8E8E86; }
+  .form-input:focus, .form-textarea:focus{ outline:none; border-color:var(--ink); box-shadow:0 0 0 4px rgba(194,216,138,0.45); }
+  .form-textarea{ resize:vertical; min-height:110px; }
+  .form-note{ font-size:0.8rem; color:var(--text-2); margin-top:10px; line-height:1.5; }
 
   /* ABOUT */
-  .about-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:32px; margin-top:36px; align-items:start; }
-  .about-text p{
-    font-size:0.95rem; color:var(--text-2); line-height:1.8;
-    font-family:'Inter',sans-serif; text-transform:none; letter-spacing:0; font-weight:400;
-  }
-  .about-text p + p{ margin-top:14px; }
-  .about-text strong{ color:var(--text-1); font-weight:600; }
+  .about-grid{ display:grid; grid-template-columns:1.25fr 1fr; gap:36px; margin-top:32px; align-items:start; }
+  .about-text p{ font-size:1rem; color:var(--text-2); line-height:1.8; font-family:var(--body); }
+  .about-text p + p{ margin-top:16px; }
+  .about-text strong{ color:var(--text-1); font-weight:600; background:linear-gradient(transparent 62%, var(--lime-soft) 62%); }
 
   .about-card{
     background:var(--bg-2); border:1px solid var(--border);
-    border-radius:var(--radius); padding:24px;
+    border-radius:20px; padding:28px; box-shadow:var(--shadow);
   }
-  .about-card h3{
-    font-size:0.82rem; font-weight:700; color:var(--text-1); margin-bottom:14px;
-  }
+  .about-card h3{ font-size:1rem; font-weight:800; color:var(--text-1); margin-bottom:14px; }
   .bg-tags{ display:flex; flex-wrap:wrap; gap:8px; }
   .bg-tag{
-    font-family:'JetBrains Mono',monospace; font-size:0.68rem;
-    color:var(--accent); background:var(--primary-dim);
-    border-radius:5px; padding:5px 10px; letter-spacing:0.02em; text-transform:none;
+    font-family:var(--head); font-size:0.76rem; font-weight:600;
+    color:var(--text-1); background:var(--bg-3);
+    border-radius:999px; padding:6px 12px;
   }
-  .resume-block{ margin-top:16px; padding-top:16px; border-top:1px solid var(--border); }
-  .resume-note{
-    font-family:'JetBrains Mono',monospace; font-size:0.63rem;
-    color:var(--text-3); margin-top:8px; text-align:center; text-transform:none; letter-spacing:0;
-  }
+  .resume-block{ margin-top:20px; padding-top:20px; border-top:1px solid var(--border); }
+  .resume-note{ font-size:0.74rem; color:var(--text-3); margin-top:8px; text-align:center; }
 
   /* FOOTER */
   footer{
-    max-width:var(--max-w); margin:0 auto; padding:24px 28px 52px;
+    max-width:var(--max-w); margin:0 auto; padding:28px 28px 56px;
     border-top:1px solid var(--border);
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
   }
-  footer span{ font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--text-3); text-transform:none; letter-spacing:0; }
+  footer span{ font-family:var(--head); font-size:0.8rem; font-weight:600; color:var(--text-3); }
 
   /* LIGHTBOX */
   .lightbox{
     display:none; position:fixed; inset:0;
-    background:rgba(0,0,0,0.93); z-index:999;
+    background:rgba(16,16,16,0.94); z-index:999;
     align-items:center; justify-content:center; padding:24px;
   }
   .lightbox.open{ display:flex; }
-  .lightbox img{
-    max-width:90vw; max-height:88vh; border-radius:10px;
-    object-fit:contain; box-shadow:0 32px 80px rgba(0,0,0,0.5);
-  }
+  .lightbox img{ max-width:90vw; max-height:88vh; border-radius:12px; object-fit:contain; box-shadow:0 32px 80px rgba(0,0,0,0.5); }
   .lb-close{
     position:fixed; top:20px; right:24px;
-    font-family:'JetBrains Mono',monospace; font-size:1.3rem;
-    color:#fff; cursor:pointer; background:none; border:none; opacity:0.7; text-transform:none;
+    font-size:1.3rem; color:#fff; cursor:pointer; background:none; border:none; opacity:0.75;
+    width:44px; height:44px;
   }
   .lb-close:hover{ opacity:1; }
 
-  /* RESPONSIVE */
-  @media(max-width:760px){
-    .section{ padding:32px 20px; }
-    .hero{ padding-top:44px; }
-    .hero-inner{ grid-template-columns:1fr; }
-    .terminal{ display:none; }
-    .sp-grid,.wc-grid,.about-grid,.dp-cols{ grid-template-columns:1fr; }
-    .projects-grid{ grid-template-columns:1fr 1fr; }
-    .form-row{ grid-template-columns:1fr; }
-    .nav-clock{ display:none; }
-    footer{ flex-direction:column; align-items:flex-start; }
-  }
-  @media(max-width:480px){ .projects-grid{ grid-template-columns:1fr; } }
-  @media(prefers-reduced-motion:reduce){
-    html{ scroll-behavior:auto; }
-    .badge-dot,.t-cursor{ animation:none; }
-    .project-card:hover,.service-item:hover,.stack-item:hover{ transform:none; }
-  }
-
-  /* TWO-SIZE HERO TITLE */
-  .hero-line1{
-    font-family:'Outfit',sans-serif;
-    font-size:clamp(2.4rem,5vw,3.6rem);
-    font-weight:800; color:var(--text-1);
-    line-height:1.1; letter-spacing:0.04em;
-    text-transform:uppercase; display:block; margin-bottom:8px;
-  }
-  .hero-line2{
-    font-family:'Outfit',sans-serif;
-    font-size:clamp(1.3rem,2.8vw,2rem);
-    font-weight:700; color:var(--accent);
-    line-height:1.15; letter-spacing:0.04em;
-    text-transform:uppercase; display:block; margin-bottom:20px;
-  }
-
-  /* PROBLEM CONTEXT */
+  /* PROBLEM CONTEXT (Scenario) */
   .dp-problem{
-    background:var(--bg-3);
+    background:var(--bg);
     border:1px solid var(--border);
-    border-left:3px solid var(--accent);
-    border-radius:8px;
-    padding:16px 18px;
-    margin-bottom:24px;
+    border-radius:14px;
+    padding:18px 20px;
+    margin-bottom:26px;
   }
+  .dp-problem .dp-label{ margin-bottom:8px; }
   .dp-industry{
-    font-family:'JetBrains Mono',monospace;
-    font-size:0.64rem; letter-spacing:0.12em;
-    text-transform:uppercase; color:var(--accent);
-    margin-bottom:8px; display:block;
+    font-family:var(--head); font-size:0.72rem; font-weight:700;
+    display:inline-block; color:var(--ink); background:var(--lime);
+    border-radius:999px; padding:3px 10px; margin-bottom:10px;
   }
-  .dp-problem-text{
-    font-size:0.88rem; color:var(--text-2);
-    line-height:1.65; font-family:'Inter',sans-serif;
-    font-weight:400; text-transform:none; letter-spacing:0;
-  }
+  .dp-problem-text{ font-size:0.95rem; color:var(--text-2); line-height:1.7; font-family:var(--body); }
 
   /* FEATURED PROJECT */
   .featured-wrap{
-    background:linear-gradient(180deg, rgba(45,212,191,0.06), transparent 60%);
-    border:1px solid var(--accent);
-    border-radius:16px;
-    padding:28px;
-    margin-bottom:36px;
+    background:var(--bg-2);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:32px;
+    margin-bottom:28px;
     position:relative;
+    box-shadow:var(--shadow-lift);
   }
   .featured-kicker{
     display:inline-flex; align-items:center; gap:8px;
-    font-family:'JetBrains Mono',monospace; font-size:0.66rem;
-    letter-spacing:0.14em; text-transform:uppercase; color:var(--accent);
-    background:var(--primary-dim); border:1px solid rgba(45,212,191,0.25);
-    border-radius:999px; padding:5px 12px; margin-bottom:16px;
+    font-family:var(--head); font-size:0.72rem; font-weight:800;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--ink);
+    background:var(--lime); border-radius:999px; padding:6px 13px; margin-bottom:18px;
   }
-  .featured-kicker .badge-dot{ width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease infinite; }
-  .featured-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px; align-items:start;
-  }
+  .featured-kicker .badge-dot{ width:7px;height:7px;border-radius:50%;background:var(--ink);animation:blink 2s ease infinite; }
+  .featured-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:32px; align-items:start; }
   .featured-title{
-    font-family:'Outfit',sans-serif; font-weight:800;
-    font-size:clamp(1.2rem,2.4vw,1.6rem);
-    color:var(--text-1); line-height:1.25;
-    text-transform:none; letter-spacing:0.01em;
-    margin-bottom:12px;
+    font-family:var(--head); font-weight:800;
+    font-size:clamp(1.35rem,2.6vw,1.85rem);
+    color:var(--text-1); line-height:1.2; letter-spacing:-0.025em;
+    margin-bottom:14px;
   }
-  .featured-desc{
-    font-size:0.92rem; color:var(--text-2); line-height:1.7;
-    font-family:'Inter',sans-serif; font-weight:400;
-    margin-bottom:18px;
-  }
+  .featured-desc{ font-size:0.96rem; color:var(--text-2); line-height:1.7; font-family:var(--body); margin-bottom:18px; }
   .featured-tags{ display:flex; gap:6px; flex-wrap:wrap; margin-bottom:20px; }
   .featured-highlights{ list-style:none; margin-bottom:22px; }
   .featured-highlights li{
-    display:flex; gap:10px; padding:7px 0;
-    font-size:0.85rem; color:var(--text-2); line-height:1.5;
-    font-family:'Inter',sans-serif; font-weight:400;
+    display:flex; gap:10px; padding:8px 0;
+    font-size:0.9rem; color:var(--text-2); line-height:1.55; font-family:var(--body);
   }
-  .featured-highlights li .rd{ color:var(--accent); flex-shrink:0; font-weight:700; }
+  .featured-highlights li .rd{ color:var(--accent); flex-shrink:0; font-weight:800; }
+  .featured-wrap .card-expand{
+    display:inline-flex; align-self:flex-start; padding:11px 18px; margin-top:4px; min-height:44px;
+    border-radius:999px; background:var(--ink); color:var(--lime) !important;
+  }
   .featured-video{
     position:relative; width:100%;
-    padding-top:75%; /* extra height accounts for Drive preview toolbar */
-    border-radius:12px; overflow:hidden;
-    border:1px solid var(--border); background:#000;
+    padding-top:75%;
+    border-radius:16px; overflow:hidden;
+    border:1px solid var(--border); background:var(--ink);
   }
-  .featured-video iframe{
-    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+  .featured-video iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+  .featured-video-cap{ font-size:0.74rem; color:var(--text-3); margin-top:10px; text-align:center; }
+
+  /* RESPONSIVE */
+  @media(max-width:860px){
+    .section{ padding:52px 20px; }
+    .hero{ padding-top:56px; padding-bottom:64px; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .terminal{ display:none; }
+    .sp-grid,.wc-grid,.about-grid,.dp-cols,.featured-grid{ grid-template-columns:1fr; }
+    .projects-grid{ grid-template-columns:1fr 1fr; }
+    .form-row{ grid-template-columns:1fr; }
+    .nav-clock{ display:none; }
+    .nav-links{ gap:18px; }
+    footer{ flex-direction:column; align-items:flex-start; }
+    .featured-wrap,.cta-box,.detail-panel{ padding:24px; }
   }
-  .featured-video-cap{
-    font-family:'JetBrains Mono',monospace; font-size:0.64rem;
-    color:var(--text-3); margin-top:10px; text-align:center;
-    letter-spacing:0.04em; text-transform:none;
+  @media(max-width:520px){
+    .projects-grid{ grid-template-columns:1fr; }
+    .nav-inner{ padding:0 16px; }
+    .nav-logo-badge{ display:none; }
+    .section{ padding:44px 16px; }
   }
-  @media(max-width:760px){
-    .featured-grid{ grid-template-columns:1fr; }
+  @media(prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .badge-dot,.t-cursor{ animation:none; }
+    .project-card:hover,.service-item:hover,.stack-item:hover,.btn:hover{ transform:none; }
+    .terminal{ transform:none; }
   }
+  #more-builds-btn{
+    font-family:var(--head) !important; font-weight:700 !important; font-size:0.86rem !important;
+    color:var(--text-1) !important; background:var(--bg-2) !important;
+    border:1.5px solid var(--border-strong) !important; border-radius:999px !important;
+    padding:12px 22px !important; min-height:44px; box-shadow:var(--shadow);
+    transition:border-color 0.15s, background 0.15s, color 0.15s;
+  }
+  #more-builds-btn:hover{ border-color:var(--ink) !important; background:var(--ink) !important; color:var(--lime) !important; }
+  .featured-actions{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:4px; }
+  .featured-actions .card-expand{ margin-top:0 !important; }
+  .guide-link{
+    display:inline-flex; align-items:center; gap:6px; min-height:44px;
+    font-family:var(--head); font-size:0.8rem; font-weight:700;
+    padding:11px 18px; border-radius:999px;
+    border:1.5px solid var(--border-strong); color:var(--text-1); background:var(--bg-2);
+    transition:border-color 0.15s, background 0.15s;
+  }
+  .guide-link:hover{ border-color:var(--ink); background:var(--lime-soft); }
+  .inline-doc{ color:var(--accent); font-weight:600; text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(86,105,42,0.4); }
+  .inline-doc:hover{ text-decoration-color:var(--accent); }
 </style>
 </head>
 <body>
@@ -709,7 +673,7 @@
         <div class="t-line" id="tl-1"><span class="t-prefix">✓</span><span class="t-text success">trigger received</span></div>
         <div class="t-line" id="tl-2"><span class="t-prefix">→</span><span class="t-text">processing steps...</span></div>
         <div class="t-line" id="tl-3"><span class="t-prefix">✓</span><span class="t-text success">all actions completed</span></div>
-        <div class="t-line" id="tl-4"><span class="t-prefix">$</span><span class="t-text label">0 manual steps — done <span class="t-cursor"></span></span></div>
+        <div class="t-line" id="tl-4"><span class="t-prefix">$</span><span class="t-text label">0 manual steps, done <span class="t-cursor"></span></span></div>
       </div>
     </div>
   </div>
@@ -724,28 +688,28 @@
   <div class="sp-grid">
     <div class="services-list">
       <div class="service-item">
-        <div class="si-icon">⚙️</div>
+        <div class="si-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M7.5 6H14a3 3 0 0 1 3 3v6.5"/><path d="M5 8.5V15a3 3 0 0 0 3 3h8.5"/></svg></div>
         <div>
           <div class="si-title">Workflow Automation</div>
           <p class="si-desc">End-to-end workflows in n8n, Make, or Zapier. I connect your tools so tasks move automatically without anyone pushing them along.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="si-icon">🤖</div>
+        <div class="si-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
         <div>
           <div class="si-title">AI Integration</div>
           <p class="si-desc">Add AI to your workflow for scoring, classifying, routing, or generating content. Works with Gemini, GPT-4o, and Claude.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="si-icon">🔌</div>
+        <div class="si-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7V3M15 7V3"/><path d="M6 7h12v4a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg></div>
         <div>
           <div class="si-title">API Connections</div>
           <p class="si-desc">Connect tools that have no native integration. If it has an API, it can talk to your other tools through webhooks or HTTP requests.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="si-icon">📋</div>
+        <div class="si-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 11h6M9 15h4"/></svg></div>
         <div>
           <div class="si-title">CRM Automation</div>
           <p class="si-desc">Automate lead capture, contact creation, pipeline updates, and follow-up sequences inside HubSpot, Notion, GoHighLevel, or your existing CRM.</p>
@@ -773,7 +737,7 @@
           <div class="ps-num">03</div>
           <div>
             <div class="ps-title">You get a working system you own</div>
-            <p class="ps-desc">I build it, test it, and hand it over with clear documentation. It lives inside your own accounts, with no ongoing dependency on me.</p>
+            <p class="ps-desc">I build it, test it, and hand it over with <a class="inline-doc" href="assets/Sample_Handover_Guide.pdf" target="_blank" rel="noopener">clear documentation</a>. It lives inside your own accounts, with no ongoing dependency on me.</p>
           </div>
         </div>
       </div>
@@ -787,14 +751,14 @@
 <div class="section" id="projects">
   <div class="eyebrow"><span class="eyebrow-line rust"></span><span class="eyebrow-text rust">Work</span></div>
   <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem);color:var(--text-1);margin-bottom:6px;">Projects</h2>
-  <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:28px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Nine real builds across healthcare, real estate, operations, sales, content, insurance, and home services. Click any card to see the full breakdown.</p>
+  <p style="color:var(--text-2);font-size:0.9rem;max-width:520px;margin-bottom:28px;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">A featured system plus ten portfolio builds across legal, healthcare, real estate, insurance, home services, operations, and content. Each one was built and tested end to end in a sandbox setup. Click any card to see the full breakdown.</p>
 
   <!-- FEATURED PROJECT -->
   <div class="featured-wrap">
     <div class="featured-kicker"><span class="badge-dot"></span>Featured Build</div>
     <div class="featured-grid">
       <div>
-        <div class="featured-title">Automated Client Follow-Up System — A Law Firm Case Study<br>(Adaptable to Any Appointment-Based Business)</div>
+        <div class="featured-title">Automated Client Follow-Up System for Law Firms<br>(Adaptable to Any Appointment-Based Business)</div>
         <p class="featured-desc">The most complete system I've built to date: six connected automation sequences covering the full client journey, plus a one-click way for the business owner to report outcomes without ever logging into the CRM.</p>
         <div class="featured-tags">
           <span class="dp-tag">GoHighLevel</span>
@@ -804,16 +768,19 @@
         </div>
         <ul class="featured-highlights">
           <li><span class="rd">+</span>6 sequences: lead follow-up, reminders, no-show recovery, post-consult nurture, long-term nurture, review requests</li>
-          <li><span class="rd">+</span>Zero-login design — the owner responds to outcomes with a single email click</li>
+          <li><span class="rd">+</span>Zero-login design: the owner responds to outcomes with a single email click</li>
           <li><span class="rd">+</span>Reminder timing verified against a real, live booking via execution logs</li>
         </ul>
-        <div class="card-expand" onclick="toggleCard('p11',this.closest('.featured-wrap'))" style="cursor:pointer;font-size:0.72rem;">
-          <span id="p11-arr">↓</span>&nbsp;<span id="p11-lbl">See how it works</span>
+        <div class="featured-actions">
+          <div class="card-expand" onclick="toggleCard('p11',this.closest('.featured-wrap'))" style="cursor:pointer;font-size:0.72rem;">
+            <span id="p11-arr">↓</span>&nbsp;<span id="p11-lbl">See how it works</span>
+          </div>
+          <a class="guide-link" href="assets/Sample_Handover_Guide.pdf" target="_blank" rel="noopener">View sample handover guide (PDF) ↗</a>
         </div>
       </div>
       <div>
         <div class="featured-video">
-          <iframe src="https://drive.google.com/file/d/1VOR9xGti6X4lbdeC3eQoRIcSeUobCr_F/preview" title="Automated Client Follow-Up System — Case Study" allow="autoplay" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://drive.google.com/file/d/1VOR9xGti6X4lbdeC3eQoRIcSeUobCr_F/preview" title="Automated Client Follow-Up System walkthrough" allow="autoplay" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
     </div>
@@ -821,10 +788,76 @@
   </div>
 
   <div class="projects-grid" id="pgrid">
+    <div class="project-card" onclick="toggleCard('p10',this)" data-id="p10">
+      <div class="card-thumb"><img src="assets/p10_pipeline_board.png" alt="Med Spa Retention System" loading="lazy"><span class="card-badge">GHL</span></div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 01</div>
+        <div class="card-title">Med Spa Retention & Reputation System</div>
+        <p class="card-desc">A full client-lifecycle pipeline plus two branching workflows that ask for reviews at the right moment and win lapsed clients back before they're gone for good.</p>
+        <div class="card-expand"><span id="p10-arr">↓</span>&nbsp;<span id="p10-lbl">See how it works</span></div>
+      </div>
+    </div>
+    <div class="project-card" onclick="toggleCard('p09',this)" data-id="p09">
+      <div class="card-thumb"><img src="assets/p9_n8n_workflow.png" alt="AI Lead Routing" loading="lazy"><span class="card-badge">GHL · n8n · Gemini</span></div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 02</div>
+        <div class="card-title">AI Lead Qualification & Routing</div>
+        <p class="card-desc">AI reads the request, sorts hot from cold, and the CRM already knows which one to call first.</p>
+        <div class="card-expand"><span id="p09-arr">↓</span>&nbsp;<span id="p09-lbl">See how it works</span></div>
+      </div>
+    </div>
+    <div class="project-card" onclick="toggleCard('p08',this)" data-id="p08">
+      <div class="card-thumb"><img src="assets/p8_GHL_workflow.png" alt="GHL Speed-to-Lead" loading="lazy"><span class="card-badge">GHL · n8n · Sheets</span></div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 03</div>
+        <div class="card-title">GHL Speed-to-Lead Automation</div>
+        <p class="card-desc">New lead hits the CRM, gets an instant branded reply, and lands in the tracker before anyone touches it.</p>
+        <div class="card-expand"><span id="p08-arr">↓</span>&nbsp;<span id="p08-lbl">See how it works</span></div>
+      </div>
+    </div>
+    <div class="detail-panel" id="panel-p10" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p09" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p08" style="display:none;grid-column:1/-1"></div>
+    <div class="project-card" onclick="toggleCard('p07',this)" data-id="p07">
+      <div class="card-thumb"><img src="assets/p7_make.png" alt="Renewal Pipeline" loading="lazy"><span class="card-badge">Make · Sheets · Gmail</span></div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 04</div>
+        <div class="card-title">Insurance Renewal Reminder Pipeline</div>
+        <p class="card-desc">A 7-stage countdown from 120 days to renewal day that emails clients and agents automatically, updates status in Sheets, flags missing data, and keeps running even if one row fails.</p>
+        <div class="card-expand"><span id="p07-arr">↓</span>&nbsp;<span id="p07-lbl">See how it works</span></div>
+      </div>
+    </div>
+    <div class="project-card" onclick="toggleCard('p06',this)" data-id="p06">
+      <div class="card-thumb"><img src="assets/P6_n8n_WF1.png" alt="Clinic" loading="lazy"><span class="card-badge">n8n · Google Sheets · Gmail</span></div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 05</div>
+        <div class="card-title">Dental Clinic Appointment System</div>
+        <p class="card-desc">Confirmation, 24-hour reminder, and no-show follow-up all run automatically. Admin updates one column, two emails fire.</p>
+        <div class="card-expand"><span id="p06-arr">↓</span>&nbsp;<span id="p06-lbl">See how it works</span></div>
+      </div>
+    </div>
+    <div class="project-card" onclick="toggleCard('p05',this)" data-id="p05">
+      <div class="card-thumb"><img src="assets/P5_Make.png" alt="Real Estate" loading="lazy"><span class="card-badge">Make · Gemini · HubSpot</span></div>
+      <div class="card-body">
+        <div class="card-num">PROJECT 06</div>
+        <div class="card-title">Real Estate Speed-to-Lead</div>
+        <p class="card-desc">Inquiry comes in. Within 60 seconds it is scored, saved to HubSpot, and the prospect has a reply waiting.</p>
+        <div class="card-expand"><span id="p05-arr">↓</span>&nbsp;<span id="p05-lbl">See how it works</span></div>
+      </div>
+    </div>
+    <div class="detail-panel" id="panel-p07" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p06" style="display:none;grid-column:1/-1"></div>
+    <div class="detail-panel" id="panel-p05" style="display:none;grid-column:1/-1"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:28px;">
+    <button type="button" id="more-builds-btn" onclick="toggleMoreBuilds()" style="background:transparent;border:1px solid var(--border, rgba(255,255,255,0.15));color:var(--text-2);font-family:inherit;font-size:0.8rem;padding:10px 20px;border-radius:6px;cursor:pointer;">Show earlier builds (4) ↓</button>
+  </div>
+  <div class="projects-grid" id="pgrid-more" style="display:none;margin-top:24px;">
     <div class="project-card" onclick="toggleCard('p01',this)" data-id="p01">
       <div class="card-thumb"><img src="assets/P1_n8n_canvas.png" alt="Ops Triage" loading="lazy"><span class="card-badge">n8n · Slack · Gemini</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 01</div>
+        <div class="card-num">PROJECT 07</div>
         <div class="card-title">Internal Ops Request Triage</div>
         <p class="card-desc">Staff post a message. AI reads it, classifies it, assigns a priority, and logs it. Nobody sorts manually.</p>
         <div class="card-expand"><span id="p01-arr">↓</span>&nbsp;<span id="p01-lbl">See how it works</span></div>
@@ -833,7 +866,7 @@
     <div class="project-card" onclick="toggleCard('p02',this)" data-id="p02">
       <div class="card-thumb"><img src="assets/P2_zapier.png" alt="AI Intake" loading="lazy"><span class="card-badge">Zapier · Notion · GPT-4o</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 02</div>
+        <div class="card-num">PROJECT 08</div>
         <div class="card-title">AI Client Intake Pipeline</div>
         <p class="card-desc">A lead submits a form. Two minutes later they have a personalized reply and the owner has an alert if it matters.</p>
         <div class="card-expand"><span id="p02-arr">↓</span>&nbsp;<span id="p02-lbl">See how it works</span></div>
@@ -842,7 +875,7 @@
     <div class="project-card" onclick="toggleCard('p03',this)" data-id="p03">
       <div class="card-thumb"><img src="assets/P3_zapier.png" alt="Onboarding" loading="lazy"><span class="card-badge">Zapier · Notion · Gmail</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 03</div>
+        <div class="card-num">PROJECT 09</div>
         <div class="card-title">Client Onboarding Sequence</div>
         <p class="card-desc">Mark someone as a client in Notion. Welcome email, checklist, and 3-day follow-up run without you touching anything.</p>
         <div class="card-expand"><span id="p03-arr">↓</span>&nbsp;<span id="p03-lbl">See how it works</span></div>
@@ -854,73 +887,13 @@
     <div class="project-card" onclick="toggleCard('p04',this)" data-id="p04">
       <div class="card-thumb"><img src="assets/P4_make.png" alt="Content Engine" loading="lazy"><span class="card-badge">Make · Gemini · Notion</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 04</div>
+        <div class="card-num">PROJECT 10</div>
         <div class="card-title">Content Repurposing Engine</div>
         <p class="card-desc">One raw idea becomes a LinkedIn post, X thread, and newsletter blurb in under 90 seconds.</p>
         <div class="card-expand"><span id="p04-arr">↓</span>&nbsp;<span id="p04-lbl">See how it works</span></div>
       </div>
     </div>
-    <div class="project-card" onclick="toggleCard('p05',this)" data-id="p05">
-      <div class="card-thumb"><img src="assets/P5_Make.png" alt="Real Estate" loading="lazy"><span class="card-badge">Make · Gemini · HubSpot</span></div>
-      <div class="card-body">
-        <div class="card-num">PROJECT 05</div>
-        <div class="card-title">Real Estate Speed-to-Lead</div>
-        <p class="card-desc">Inquiry comes in. Within 60 seconds it is scored, saved to HubSpot, and the prospect has a reply waiting.</p>
-        <div class="card-expand"><span id="p05-arr">↓</span>&nbsp;<span id="p05-lbl">See how it works</span></div>
-      </div>
-    </div>
-    <div class="project-card" onclick="toggleCard('p06',this)" data-id="p06">
-      <div class="card-thumb"><img src="assets/P6_n8n_WF1.png" alt="Clinic" loading="lazy"><span class="card-badge">n8n · Google Sheets · Gmail</span></div>
-      <div class="card-body">
-        <div class="card-num">PROJECT 06</div>
-        <div class="card-title">Dental Clinic Appointment System</div>
-        <p class="card-desc">Confirmation, 24-hour reminder, and no-show follow-up all run automatically. Admin updates one column, two emails fire.</p>
-        <div class="card-expand"><span id="p06-arr">↓</span>&nbsp;<span id="p06-lbl">See how it works</span></div>
-      </div>
-    </div>
-    <div class="project-card" onclick="toggleCard('p07',this)" data-id="p07">
-      <div class="card-thumb"><img src="assets/p7_make.png" alt="Renewal Pipeline" loading="lazy"><span class="card-badge">Make · Sheets · Gmail</span></div>
-      <div class="card-body">
-        <div class="card-num">PROJECT 07</div>
-        <div class="card-title">Insurance Renewal Reminder Pipeline</div>
-        <p class="card-desc">A 7-stage countdown from 120 days to renewal day that emails clients and agents automatically, updates status in Sheets, and flags missing data before it becomes a problem.</p>
-        <div class="card-expand"><span id="p07-arr">↓</span>&nbsp;<span id="p07-lbl">See how it works</span></div>
-      </div>
-    </div>
-    <div class="project-card" onclick="toggleCard('p08',this)" data-id="p08">
-      <div class="card-thumb"><img src="assets/p8_GHL_workflow.png" alt="GHL Speed-to-Lead" loading="lazy"><span class="card-badge">GHL · n8n · Sheets</span></div>
-      <div class="card-body">
-        <div class="card-num">PROJECT 08</div>
-        <div class="card-title">GHL Speed-to-Lead Automation</div>
-        <p class="card-desc">New lead hits the CRM, gets an instant branded reply, and lands in the tracker before anyone touches it.</p>
-        <div class="card-expand"><span id="p08-arr">↓</span>&nbsp;<span id="p08-lbl">See how it works</span></div>
-      </div>
-    </div>
-    <div class="project-card" onclick="toggleCard('p09',this)" data-id="p09">
-      <div class="card-thumb"><img src="assets/p9_n8n_workflow.png" alt="AI Lead Routing" loading="lazy"><span class="card-badge">GHL · n8n · Gemini</span></div>
-      <div class="card-body">
-        <div class="card-num">PROJECT 09</div>
-        <div class="card-title">AI Lead Qualification & Routing</div>
-        <p class="card-desc">AI reads the request, sorts hot from cold, and the CRM already knows which one to call first.</p>
-        <div class="card-expand"><span id="p09-arr">↓</span>&nbsp;<span id="p09-lbl">See how it works</span></div>
-      </div>
-    </div>
-    <div class="project-card" onclick="toggleCard('p10',this)" data-id="p10">
-      <div class="card-thumb"><img src="assets/p10_pipeline_board.png" alt="Med Spa Retention System" loading="lazy"><span class="card-badge">GHL</span></div>
-      <div class="card-body">
-        <div class="card-num">PROJECT 10</div>
-        <div class="card-title">Med Spa Retention & Reputation System</div>
-        <p class="card-desc">A full client-lifecycle pipeline plus two branching workflows that ask for reviews at the right moment and win lapsed clients back before they're gone for good.</p>
-        <div class="card-expand"><span id="p10-arr">↓</span>&nbsp;<span id="p10-lbl">See how it works</span></div>
-      </div>
-    </div>
     <div class="detail-panel" id="panel-p04" style="display:none;grid-column:1/-1"></div>
-    <div class="detail-panel" id="panel-p05" style="display:none;grid-column:1/-1"></div>
-    <div class="detail-panel" id="panel-p06" style="display:none;grid-column:1/-1"></div>
-    <div class="detail-panel" id="panel-p07" style="display:none;grid-column:1/-1"></div>
-    <div class="detail-panel" id="panel-p08" style="display:none;grid-column:1/-1"></div>
-    <div class="detail-panel" id="panel-p09" style="display:none;grid-column:1/-1"></div>
-    <div class="detail-panel" id="panel-p10" style="display:none;grid-column:1/-1"></div>
   </div>
 </div>
 
@@ -1006,7 +979,7 @@
       <p>I build automation workflows in n8n, Make, Zapier, and GoHighLevel for small businesses looking to take repetitive tasks off their plate.</p>
       <p>My background in <strong>Mathematics</strong> and <strong>real estate analytics</strong> shapes how I work. I tend to look at a process and spot the logic gaps before picking a tool, which means I spend more time mapping than building and less time fixing things after the fact.</p>
       <p>What I enjoy most is seeing a workflow run clean for the first time. That is what keeps me testing carefully and not handing anything over until it actually works the way it should.</p>
-      <p>Every build comes with documentation so you can understand how it runs without needing to call me.</p>
+      <p>Every build comes with <a class="inline-doc" href="assets/Sample_Handover_Guide.pdf" target="_blank" rel="noopener">documentation</a> so you can understand how it runs without needing to call me.</p>
     </div>
     <div class="about-card">
       <h3>Background</h3>
@@ -1018,15 +991,14 @@
         <span class="bg-tag">AI Integration</span>
       </div>
       <div class="resume-block">
-        <a class="btn btn-rust" href="assets/Reez_SanGabriel_Resume.pdf" target="_blank" id="resume-about" style="width:100%;justify-content:center;text-transform:none;letter-spacing:0;">View full resume ↗</a>
-        <a class="btn btn-rust" href="https://www.onlinejobs.ph/jobseekers/info/2086703" target="_blank" style="width:100%;justify-content:center;text-transform:none;letter-spacing:0;margin-top:10px;">View OnlineJobs.ph profile ↗</a>
+        <a class="btn btn-rust" href="#contact" style="width:100%;justify-content:center;text-transform:none;letter-spacing:0;">Book a discovery call</a>
       </div>
     </div>
   </div>
 </div>
 
 <footer>
-  <span>Reez San Gabriel — Automation Specialist</span>
+  <span>Reez San Gabriel | Automation Specialist</span>
   <span id="footer-clock"></span>
 </footer>
 
@@ -1051,11 +1023,11 @@ const projects = {
   p04:{title:"Content Repurposing Engine",industry:"Content / Marketing",problem:"A content creator had ideas but no bandwidth to turn one piece into multiple formats. Writing the same concept three different ways for three different platforms was eating hours every week.",tools:["Make","Google Gemini","Notion","Gmail"],steps:["New row in Notion Content Ideas table triggers the Make scenario","Raw idea sent to Gemini with separate prompts per platform","Three drafts returned: LinkedIn post, X thread, newsletter blurb","Each draft saved to Notion Content Drafts table organized by platform","Gmail notification sent when drafts are ready to review"],results:["One idea becomes three platform-ready drafts in under 90 seconds","Content backlog organized without copy-pasting between tools","Writer reviews and posts rather than writing from scratch"],screenshots:[{src:"assets/P4_make.png",label:"make canvas"},{src:"assets/P4_notion_content_ideas_table.png",label:"content ideas"},{src:"assets/P4_content_drafts_table.png",label:"content drafts"},{src:"assets/P4_gmail_notification.png",label:"gmail notification"}]},
   p05:{title:"Real Estate Speed-to-Lead System",industry:"Real Estate",problem:"Property inquiries were sitting unanswered for hours while agents were out on viewings. By the time someone followed up, the lead had already moved on.",tools:["Tally","Make","Google Gemini","HubSpot","Gmail"],steps:["Tally form submission triggers the Make scenario via webhook","Gemini scores the inquiry 0 to 100 on budget, timeline, and intent","Score converted to a tier label: Hot, Warm, or Cold","Contact record created in HubSpot CRM with full data and tier","Personalized email reply sent to the prospect within 60 seconds"],results:["Response time under 60 seconds before any agent sees the lead","Every lead scored and tiered so agents know where to focus","HubSpot stays current with zero manual data entry"],screenshots:[{src:"assets/P5_Make.png",label:"make canvas"},{src:"assets/P5_tally.png",label:"tally form"},{src:"assets/p5_Gemini_output.png",label:"gemini output"},{src:"assets/p5_Gmail.png",label:"gmail reply"},{src:"assets/p5_HubSpot.png",label:"hubspot record"}]},
   p06:{title:"Dental Clinic Appointment Automation",industry:"Healthcare / Clinic Operations",problem:"A small dental clinic was losing patients to no-shows. Reminders were sent manually when the admin remembered, confirmations were inconsistent, and missed appointments had no follow-up process.",tools:["Tally","n8n","Gmail","Google Sheets"],steps:["Patient submits Tally booking form with name, email, date, time, and type","n8n logs the record to Google Sheets CRM instantly","Confirmation email sent to patient immediately","IF node checks whether the appointment is more than 24 hours away","If yes: Wait node pauses until 24 hours before then fires reminder email","If no (same-day booking): workflow stops cleanly with no duplicate email","Admin marks patient as No-Show in Google Sheets Status column","Google Sheets Trigger detects the update and fires two Gmail nodes simultaneously: admin alert and patient rebooking email"],results:["Zero manual effort from admin for confirmations and reminders","Same-day bookings handled correctly with no unnecessary emails","No-shows trigger follow-up within minutes of admin updating the sheet","Patients receive a warm rebooking email automatically","Entire stack runs on free-tier tools"],screenshots:[{src:"assets/P6_n8n_WF1.png",label:"n8n wf1"},{src:"assets/P6_n8n_WF2.png",label:"n8n wf2"},{src:"assets/P6_google_sheet.png",label:"google sheet"},{src:"assets/P6_gmail_confirmation.png",label:"confirmation"},{src:"assets/P6_gmail_reminder.png",label:"reminder"},{src:"assets/P6_gmail_admin-alert.png",label:"admin alert"},{src:"assets/P6_gmail_patient_rebooking.png",label:"rebooking"}]},
-  p07:{title:"Insurance Renewal Reminder Pipeline",industry:"Insurance / Independent Brokers",problem:"Independent brokers lose renewals every year not because clients do not want to renew, but because follow-up is manual and inconsistent. A lapsed renewal is lost commission, permanently.",tools:["Make","Google Sheets","Gmail"],steps:["Google Sheets Search Rows pulls the full client list once daily","Router splits every row into 7 branches, each checking today's date against a trigger window: 120, 90, 60, 30, 14, 7, and 0 days out","Matching rows fire the right email automatically: internal alerts to the agent at day 120 and day 0, client touchpoints in between","Pipeline Stage and Last Contacted columns update on the sheet after every send","Rows missing required data are diverted to a separate branch that emails the agent a specific alert instead of failing silently","Every Gmail and Sheets module has a Resume error handler so one bad row never crashes the run for everyone else"],results:["Zero renewals missed across a full 120-day cycle","Agent gets an early heads-up 4 months out and an urgent flag on renewal day itself","Missing data flagged automatically instead of failing silently","Runs daily, fully unattended, no manual chasing required"],screenshots:[{src:"assets/p7_make.png",label:"make scenario"},{src:"assets/p7_google_sheet.png",label:"tracking sheet"},{src:"assets/p7_gmail_day60.png",label:"day 60 email"},{src:"assets/p7_gmail_day0.png",label:"day 0 escalation"},{src:"assets/p7_gmail_missing_data.png",label:"missing data alert"}]},
+  p07:{title:"Insurance Renewal Reminder Pipeline",industry:"Insurance / Independent Brokers",problem:"Independent brokers lose renewals every year not because clients do not want to renew, but because follow-up is manual and inconsistent. A lapsed renewal is lost commission, permanently.",tools:["Make","Google Sheets","Gmail"],steps:["Google Sheets Search Rows pulls the full client list once daily","Router splits every row into 7 branches, each checking today's date against a trigger window: 120, 90, 60, 30, 14, 7, and 0 days out","Matching rows fire the right email automatically: internal alerts to the agent at day 120 and day 0, client touchpoints in between","Pipeline Stage and Last Contacted columns update on the sheet after every send","Rows missing required data are diverted to a separate branch that emails the agent a specific alert instead of failing silently","Every Gmail and Sheets module has a Resume error handler so one bad row never crashes the run for everyone else"],results:["Every trigger window from 120 days to renewal day fired correctly in testing","Agent gets an early heads-up 4 months out and an urgent flag on renewal day itself","Missing data flagged automatically instead of failing silently","Runs daily, fully unattended, no manual chasing required"],screenshots:[{src:"assets/p7_make.png",label:"make scenario"},{src:"assets/p7_google_sheet.png",label:"tracking sheet"},{src:"assets/p7_gmail_day60.png",label:"day 60 email"},{src:"assets/p7_gmail_day0.png",label:"day 0 escalation"},{src:"assets/p7_gmail_missing_data.png",label:"missing data alert"}]},
   p08:{title:"GHL Speed-to-Lead Automation",industry:"Insurance / Independent Brokers",problem:"Prospects who fill out a form expect an acknowledgment right away. When that doesn't happen inside the CRM itself, trust drops and the lead moves on to whoever responds first. Most GHL setups stop at a canned autoresponder with no record kept outside the CRM.",tools:["GoHighLevel","n8n","Google Sheets"],steps:["Trigger fires the instant a new contact is created in GHL","Branded email reply sent immediately using a merge field for personalization","In parallel, full contact data sent via webhook to n8n","n8n appends the lead to a live Google Sheets tracker outside the CRM"],results:["New lead to acknowledged and logged in under a few seconds","Zero manual steps required from the business owner","Proves GHL can hand data off to any external tool the moment something happens"],screenshots:[{src:"assets/p8_GHL_workflow.png",label:"GHL workflow"},{src:"assets/p8_n8n.png",label:"n8n webhook"},{src:"assets/p8_gmail.png",label:"instant reply"},{src:"assets/p8_google_sheet.png",label:"lead tracker"}]},
   p09:{title:"AI Lead Qualification & Routing",industry:"Home Services / HVAC",problem:"Not every lead deserves the same response. A no-heat emergency needs a callback in minutes; a pricing question can wait. Most CRMs, GHL included, treat every new lead identically with no sense of urgency built in.",tools:["GoHighLevel","n8n","Google Gemini","Google Sheets"],steps:["GHL form captures the request with an open-text field describing the issue","Form submission triggers a webhook to n8n with the full message","Gemini reads the message and classifies it HOT, WARM, or COLD with a reason","Switch node routes to a different outcome per classification","Hot and Warm trigger internal notification emails with the AI's reasoning attached","All three tiers logged to a tracker and tagged back onto the GHL contact via API"],results:["Urgent leads flagged and alerted within seconds, no manual reading required","Cold leads logged silently instead of triggering unnecessary noise","GHL contact record reflects the AI's classification directly, closing the loop back into the CRM"],screenshots:[{src:"assets/p9_GHL_form.png",label:"GHL intake form"},{src:"assets/p9_n8n_workflow.png",label:"n8n routing"},{src:"assets/p9_AI_agent_output.png",label:"AI classification"},{src:"assets/p9_gmail.png",label:"hot lead alert"},{src:"assets/p9_google_sheet.png",label:"lead tracker"},{src:"assets/p9_GHL_contact_list.png",label:"tagged in GHL"}]},
-  p11:{title:"Automated Client Follow-Up System — Law Firm Case Study",industry:"Legal / Any Appointment-Based Business",problem:"Law firms lose potential clients to slow, inconsistent follow-up — leads go unanswered, appointments go unconfirmed, no-shows go unrecovered, and satisfied clients are never asked for reviews. The firm owner doesn't have time to manage this manually, and doesn't want to learn new software to try.",tools:["GoHighLevel","Trigger Links","Calendars & Booking Sync","Custom Fields & Pipelines"],steps:["Built 6 interconnected sequences covering the full client lifecycle: lead follow-up, appointment reminders, no-show recovery, post-consultation nurture, long-term relationship nurture, and review requests","Built a booking-sync workflow that automatically tags and updates contact records the instant a real appointment is booked — no manual data entry anywhere in the system","Solved the core constraint — the owner never logs into GoHighLevel — using GHL Trigger Links: one email after each appointment, one click to report the outcome, CRM updates automatically behind the scenes","Engineered a workaround for GoHighLevel's lack of native workflow looping using a tag re-trigger pattern, running an indefinite long-term nurture sequence","Tested reminder timing against a real, live booking rather than simulated data — confirmed via execution logs that both 24-hour and 2-hour reminders fired at the correct times"],results:["A fully automated, zero-login follow-up system requiring no ongoing manual work from the business owner","Reminder accuracy verified with real execution logs, not just workflow logic assumed to work","Built around a tag-and-pipeline architecture that generalizes to any appointment-based business, not just law firms"],screenshots:[]},
-  p10:{title:"Med Spa Retention & Reputation System",industry:"Health & Beauty / Med Spa",problem:"Med spas live and die on repeat visits and reviews, but both fall through the cracks once the front desk gets busy. Clients who had a great visit never get asked for a review at the right moment, and clients who quietly stop booking don't get flagged until months later, if at all.",tools:["GoHighLevel"],steps:["6-stage pipeline built to mirror the real client journey: New Inquiry, Booked, Active Client, Review Requested, Lapsed-Reactivation, VIP/Member","Custom fields and tags track service type, last visit date, lifecycle status, and review status in real time","Booking calendar fires confirmation, 24hr/1hr reminder, and post-visit notifications across Email and SMS","Workflow 1 triggers when an appointment is marked Showed, waits 2 hours, checks if a review has been given, and sends a review request with a second softer ask 3 days later if needed","Workflow 2 triggers when a client is tagged as lapsed 60+ days, sends an immediate win-back SMS, waits 5 days, then checks if they rebooked before sending a follow-up offer and escalating to a 90-day tag"],results:["Both workflows tested end-to-end against a real contact through GHL's Enrollment History, confirming every wait, condition, and branch executed exactly on schedule","Confirmed GHL workflows don't halt on a failed send (e.g. no phone number provisioned) — they log it and continue, proving the automation logic is resilient, not just happy-path","Documented the one native GHL limitation found along the way: no built-in scheduled/recurring trigger for date-based checks like '60 days since X', and the fix — a lightweight n8n cron job reading the CRM via API — the same GHL-to-n8n handoff pattern used in P08 and P09, just applied to retention instead of intake"],screenshots:[{src:"assets/p10_pipeline.png",label:"pipeline stages"},{src:"assets/p10_pipeline_board.png",label:"pipeline board"},{src:"assets/p10_wf1_canvas.png",label:"review request workflow"},{src:"assets/p10_wf2_canvas.png",label:"reactivation workflow"},{src:"assets/p10_calendar_notifications.png",label:"calendar notifications"},{src:"assets/p10_tags_accumulated.png",label:"live test proof"}]}
+  p11:{title:"Automated Client Follow-Up System for Law Firms",industry:"Legal / Any Appointment-Based Business",problem:"Law firms lose potential clients to slow, inconsistent follow-up. Leads go unanswered, appointments go unconfirmed, no-shows go unrecovered, and satisfied clients are never asked for reviews. The firm owner doesn't have time to manage this manually, and doesn't want to learn new software to try.",tools:["GoHighLevel","Trigger Links","Calendars & Booking Sync","Custom Fields & Pipelines"],steps:["Built 6 interconnected sequences covering the full client lifecycle: lead follow-up, appointment reminders, no-show recovery, post-consultation nurture, long-term relationship nurture, and review requests","Built a booking-sync workflow that automatically tags and updates contact records the instant a real appointment is booked, with no manual data entry anywhere in the system","Solved the core constraint (the owner never logs into GoHighLevel) using GHL Trigger Links: one email after each appointment, one click to report the outcome, CRM updates automatically behind the scenes","Engineered a workaround for GoHighLevel's lack of native workflow looping using a tag re-trigger pattern, running an indefinite long-term nurture sequence","Tested reminder timing against a real, live booking rather than simulated data, confirmed via execution logs that both 24-hour and 2-hour reminders fired at the correct times"],results:["A fully automated, zero-login follow-up system requiring no ongoing manual work from the business owner","Reminder accuracy verified with real execution logs, not just workflow logic assumed to work","Built around a tag-and-pipeline architecture that generalizes to any appointment-based business, not just law firms"],screenshots:[]},
+  p10:{title:"Med Spa Retention & Reputation System",industry:"Health & Beauty / Med Spa",problem:"Med spas live and die on repeat visits and reviews, but both fall through the cracks once the front desk gets busy. Clients who had a great visit never get asked for a review at the right moment, and clients who quietly stop booking don't get flagged until months later, if at all.",tools:["GoHighLevel"],steps:["6-stage pipeline built to mirror the real client journey: New Inquiry, Booked, Active Client, Review Requested, Lapsed-Reactivation, VIP/Member","Custom fields and tags track service type, last visit date, lifecycle status, and review status in real time","Booking calendar fires confirmation, 24hr/1hr reminder, and post-visit notifications across Email and SMS","Workflow 1 triggers when an appointment is marked Showed, waits 2 hours, checks if a review has been given, and sends a review request if none has been given yet, followed by a second, softer ask 3 days later","Workflow 2 triggers when a client is tagged as lapsed 60+ days, sends an immediate win-back SMS, waits 5 days, then checks if they rebooked before sending a follow-up offer and escalating to a 90-day tag"],results:["Both workflows tested end-to-end against a real contact through GHL's Enrollment History, confirming every wait, condition, and branch executed exactly on schedule","Confirmed GHL workflows don't halt on a failed send (e.g. no phone number provisioned). They log it and continue, proving the automation logic is resilient, not just happy-path","Documented the one native GHL limitation found along the way: no built-in scheduled/recurring trigger for date-based checks like '60 days since X', and the fix: a lightweight n8n cron job reading the CRM via API. It is the same GHL-to-n8n handoff pattern used in the GHL Speed-to-Lead and AI Lead Qualification builds, just applied to retention instead of intake"],screenshots:[{src:"assets/p10_pipeline.png",label:"pipeline stages"},{src:"assets/p10_pipeline_board.png",label:"pipeline board"},{src:"assets/p10_wf1_canvas.png",label:"review request workflow"},{src:"assets/p10_wf2_canvas.png",label:"reactivation workflow"},{src:"assets/p10_calendar_notifications.png",label:"calendar notifications"},{src:"assets/p10_tags_accumulated.png",label:"live test proof"}]}
 };
 
 function buildPanel(id){
@@ -1064,11 +1036,11 @@ function buildPanel(id){
   const results=d.results.map(r=>`<li><span class="rd">+</span>${r}</li>`).join('');
   const shots=d.screenshots.map(s=>`<div class="ss-item" onclick="openLb('${s.src}','${s.label}');event.stopPropagation()"><img src="${s.src}" alt="${s.label}" loading="lazy"><div class="ss-label">${s.label}</div></div>`).join('');
   const tags=d.tools.map(t=>`<span class="dp-tag">${t}</span>`).join('');
-  const problem=d.problem?`<div class="dp-problem"><span class="dp-industry">${d.industry}</span><p class="dp-problem-text">${d.problem}</p></div>`:'';
+  const problem=d.problem?`<div class="dp-problem"><span class="dp-label">Scenario</span><span class="dp-industry">${d.industry}</span><p class="dp-problem-text">${d.problem}</p></div>`:'';
   const hasShots=d.screenshots && d.screenshots.length>0;
   const rightCol=hasShots?`<div><div class="dp-section"><span class="dp-label">Screenshots</span><div class="ss-grid">${shots}</div></div></div>`:'';
   const colsStyle=hasShots?'':'grid-template-columns:1fr;';
-  return `<div class="dp-header"><div><div class="dp-title">${d.title}</div><div class="dp-tags">${tags}</div></div><button class="dp-close" onclick="closePanel('${id}');event.stopPropagation()">close ✕</button></div>${problem}<div class="dp-cols" style="${colsStyle}"><div><div class="dp-section"><span class="dp-label">How it works</span><ul class="steps-list">${steps}</ul></div><div class="dp-section"><span class="dp-label">Results</span><ul class="results-list">${results}</ul></div></div>${rightCol}</div>`;
+  return `<div class="dp-header"><div><div class="dp-title">${d.title}</div><div class="dp-tags">${tags}</div></div><button class="dp-close" onclick="closePanel('${id}');event.stopPropagation()">close ✕</button></div>${problem}<div class="dp-cols" style="${colsStyle}"><div><div class="dp-section"><span class="dp-label">How it works</span><ul class="steps-list">${steps}</ul></div><div class="dp-section"><span class="dp-label">What it does (tested)</span><ul class="results-list">${results}</ul></div></div>${rightCol}</div>`;
 }
 
 let active=null;
@@ -1092,6 +1064,14 @@ function toggleCard(id,el){
     active=id;
     setTimeout(()=>panel.scrollIntoView({behavior:'smooth',block:'nearest'}),60);
   } else { closePanel(id); }
+}
+function toggleMoreBuilds(){
+  const g=document.getElementById('pgrid-more');
+  const b=document.getElementById('more-builds-btn');
+  const show=g.style.display==='none';
+  g.style.display=show?'':'none';
+  b.textContent=show?'Hide earlier builds ↑':'Show earlier builds (4) ↓';
+  if(!show&&active&&g.querySelector('[data-id="'+active+'"]'))closePanel(active);
 }
 function closePanel(id){
   const panel=document.getElementById('panel-'+id);
@@ -1130,7 +1110,7 @@ document.getElementById('inquiry-form').addEventListener('submit', function(e){
     form.reset();
     btn.textContent = 'Send inquiry';
     btn.disabled = false;
-    status.textContent = "Thanks — that's been sent. You'll get a reply by email shortly.";
+    status.textContent = "Thanks, that's been sent. You'll get a reply by email shortly.";
     status.style.display = 'block';
     status.style.color = 'var(--accent)';
   })
