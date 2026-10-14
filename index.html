@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reez San Gabriel | Automation Specialist</title>
-<meta name="description" content="n8n, Make, and Zapier automation specialist. Workflows mapped, tested, and documented before anything goes live.">
+<meta name="description" content="Automations for lead replies, reminders, request routing, CRM updates, and more. Built in GoHighLevel, n8n, Make, or Zapier, then mapped, tested, and documented.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -621,6 +621,76 @@
   .guide-link:hover{ border-color:var(--ink); background:var(--lime-soft); }
   .inline-doc{ color:var(--accent); font-weight:600; text-decoration:underline; text-underline-offset:3px; text-decoration-color:rgba(86,105,42,0.4); }
   .inline-doc:hover{ text-decoration-color:var(--accent); }
+  /* OUTCOME CARDS */
+  .outcome-stack{ background:var(--ink-2); border:1px solid var(--ink-line); border-radius:20px; padding:22px; box-shadow:0 30px 60px -30px rgba(0,0,0,0.7); }
+  .oc-head{ font-family:var(--head); font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#BDBDB4; margin-bottom:14px; }
+  .oc-list{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .oc-card{ display:flex; align-items:center; gap:12px; background:#262623; border:1px solid var(--ink-line); border-radius:14px; padding:12px 14px; }
+  .oc-card:nth-child(2){ margin-left:18px; } .oc-card:nth-child(3){ margin-left:8px; } .oc-card:nth-child(4){ margin-left:26px; }
+  .oc-icon{ width:36px; height:36px; border-radius:10px; background:var(--lime); color:var(--ink); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .oc-icon svg{ width:18px; height:18px; }
+  .oc-text{ display:flex; flex-direction:column; min-width:0; flex-grow:1; }
+  .oc-title{ font-family:var(--head); font-weight:700; font-size:0.92rem; color:#F4F4EF; }
+  .oc-sub{ font-size:0.8rem; color:#BDBDB4; }
+  .oc-time{ font-size:0.72rem; color:#8A8A82; white-space:nowrap; align-self:flex-start; }
+
+  /* AGENCY SERVICE */
+  .service-agency{ border-color:var(--ink); }
+  .service-agency .si-icon{ background:var(--lime); color:var(--ink); }
+
+  /* FILTERS */
+  .filter-row{ display:flex; flex-wrap:wrap; gap:8px; margin:4px 0 24px; }
+  .filter-chip{
+    font-family:var(--head); font-size:0.82rem; font-weight:600; min-height:42px;
+    padding:9px 16px; border-radius:999px; cursor:pointer;
+    background:var(--bg-2); color:var(--text-1); border:1.5px solid var(--border-strong);
+    transition:background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .filter-chip:hover{ border-color:var(--ink); }
+  .filter-chip[aria-pressed="true"]{ background:var(--ink); color:var(--lime); border-color:var(--ink); }
+  .filter-empty{ color:var(--text-2); margin-bottom:24px; }
+  .card-num{ text-transform:none !important; letter-spacing:0.02em !important; }
+
+  /* SLIM TOOLS ROW */
+  #stack{ padding-top:48px; padding-bottom:48px; }
+  #stack .stack-grid{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+  #stack .stack-item{ display:flex; align-items:center; gap:8px; padding:7px 14px 7px 8px; border-radius:999px; box-shadow:none; }
+  #stack .stack-item:hover{ transform:none; box-shadow:none; border-color:var(--border-strong); }
+  #stack .stack-logo{ width:22px; height:22px; margin:0; }
+  #stack .stack-logo img{ width:16px; height:16px; }
+  #stack .stack-mono{ width:22px; height:22px; border-radius:6px; font-size:0.5rem; }
+  #stack .stack-name{ font-size:0.8rem; color:var(--text-1); }
+  .sp-grid > *, .service-item > div{ min-width:0; }
+  .si-desc{ overflow-wrap:anywhere; }
+  @media(max-width:860px){ .oc-card:nth-child(n){ margin-left:0; } }
+  /* TIGHTER SECTIONS */
+  .section{ padding:52px 28px; }
+  .hero{ padding-top:80px; padding-bottom:84px; }
+  .filter-row{ margin:4px 0 8px !important; }
+  .filter-note{ font-size:0.84rem; color:var(--text-3); margin-bottom:22px; }
+  @media(max-width:860px){ .section{ padding:40px 20px; } }
+  @media(max-width:520px){ .section{ padding:36px 16px; } }
+  /* PLAYFUL OUTCOME PANEL */
+  .oc-head{ display:flex; align-items:center; gap:10px; }
+  .oc-live{ display:inline-flex; align-items:center; gap:6px; padding:3px 9px; border-radius:999px; background:rgba(194,216,138,0.14); color:var(--lime); font-size:0.68rem; letter-spacing:0.08em; }
+  .oc-pulse{ width:7px; height:7px; border-radius:50%; background:var(--lime); box-shadow:0 0 0 0 rgba(194,216,138,0.6); animation:ocpulse 1.8s ease-out infinite; }
+  @keyframes ocpulse{ 0%{box-shadow:0 0 0 0 rgba(194,216,138,0.55);} 100%{box-shadow:0 0 0 9px rgba(194,216,138,0);} }
+  .oc-list{ min-height:310px; }
+  .oc-card{ transition:transform 0.38s cubic-bezier(.2,.8,.2,1), opacity 0.38s ease, background 0.2s, margin-left 0.38s ease; }
+  .oc-card:hover{ background:#2C2C28; transform:translateX(-3px); }
+  .oc-card.oc-enter{ opacity:0; transform:translateY(-14px) scale(0.97); }
+  .oc-card.oc-exit{ opacity:0; transform:translateY(10px) scale(0.97); }
+  .oc-card:first-child .oc-icon{ animation:ocpop 0.5s ease; }
+  @keyframes ocpop{ 0%{transform:scale(0.6);} 60%{transform:scale(1.12);} 100%{transform:scale(1);} }
+  .oc-meta{ display:flex; flex-direction:column; align-items:flex-end; gap:5px; align-self:flex-start; }
+  .oc-chip{ font-size:0.66rem; font-weight:700; letter-spacing:0.04em; padding:2px 8px; border-radius:999px; background:rgba(255,255,255,0.08); color:#E6E6DE; }
+  .oc-card:nth-child(1){ margin-left:0; } .oc-card:nth-child(2){ margin-left:18px; } .oc-card:nth-child(3){ margin-left:8px; } .oc-card:nth-child(4){ margin-left:26px; }
+  .oc-card:nth-child(n+5){ display:none; }
+  @media(prefers-reduced-motion:reduce){ .oc-pulse,.oc-card:first-child .oc-icon{ animation:none; } }
+  @media(max-width:860px){ .oc-card:nth-child(n){ margin-left:0; } .oc-list{ min-height:0; } }
+
+  /* MORE BUILDS HEADING */
+  .more-head{ font-family:var(--head); font-size:1.05rem; font-weight:800; color:var(--text-1); margin:4px 0 12px; letter-spacing:-0.01em; }
 </style>
 </head>
 <body>
@@ -642,7 +712,6 @@
       <a href="#services">Services</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-      <span class="nav-clock" id="clock"></span>
     </div>
   </div>
 </nav>
@@ -653,28 +722,38 @@
     <div>
       <div class="hero-line1">Automation built right</div>
       <div class="hero-line2">Mapped, tested, and documented.</div>
-      <p class="hero-sub">I build workflows in n8n, Make, Zapier, and GoHighLevel that take the repetitive work off your plate. Every build is tested end to end and handed over with full documentation.</p>
+      <p class="hero-sub">I help businesses stop doing the same tasks by hand. New leads get a reply, clients get reminders, and your CRM stays up to date without anyone touching it.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#contact">Book a discovery call</a>
         <a class="btn btn-ghost" href="#projects">See my work</a>
       </div>
     </div>
 
-    <!-- TERMINAL -->
-    <div class="terminal">
-      <div class="terminal-bar">
-        <span class="t-dot t-dot-r"></span>
-        <span class="t-dot t-dot-y"></span>
-        <span class="t-dot t-dot-g"></span>
-        <span class="terminal-title">workflow.log</span>
-      </div>
-      <div class="terminal-body">
-        <div class="t-line" id="tl-0"><span class="t-prefix">$</span><span class="t-text dim">workflow started</span></div>
-        <div class="t-line" id="tl-1"><span class="t-prefix">✓</span><span class="t-text success">trigger received</span></div>
-        <div class="t-line" id="tl-2"><span class="t-prefix">→</span><span class="t-text">processing steps...</span></div>
-        <div class="t-line" id="tl-3"><span class="t-prefix">✓</span><span class="t-text success">all actions completed</span></div>
-        <div class="t-line" id="tl-4"><span class="t-prefix">$</span><span class="t-text label">0 manual steps, done <span class="t-cursor"></span></span></div>
-      </div>
+    <!-- OUTCOME CARDS -->
+    <div class="outcome-stack">
+      <div class="oc-head"><span class="oc-live"><span class="oc-pulse"></span>Live</span><span>What runs while you work</span></div>
+      <ul class="oc-list" id="oc-list" aria-label="Examples of automated actions">
+        <li class="oc-card">
+          <span class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg></span>
+          <span class="oc-text"><span class="oc-title">Instant reply sent</span><span class="oc-sub">New inquiry from your website form</span></span>
+          <span class="oc-meta"><span class="oc-chip">Email</span><span class="oc-time">Just now</span></span>
+        </li>
+        <li class="oc-card">
+          <span class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 13h6l-1 8 8-10h-6z"/></svg></span>
+          <span class="oc-text"><span class="oc-title">Hot lead flagged</span><span class="oc-sub">AI sorted the request and alerted your team</span></span>
+          <span class="oc-meta"><span class="oc-chip">AI</span><span class="oc-time">1 min ago</span></span>
+        </li>
+        <li class="oc-card">
+          <span class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
+          <span class="oc-text"><span class="oc-title">Reminder sent</span><span class="oc-sub">24 hours before the appointment</span></span>
+          <span class="oc-meta"><span class="oc-chip">SMS</span><span class="oc-time">4 min ago</span></span>
+        </li>
+        <li class="oc-card">
+          <span class="oc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></span>
+          <span class="oc-text"><span class="oc-title">CRM updated</span><span class="oc-sub">Contact, tags, and pipeline stage set</span></span>
+          <span class="oc-meta"><span class="oc-chip">CRM</span><span class="oc-time">9 min ago</span></span>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
@@ -698,7 +777,7 @@
         <div class="si-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
         <div>
           <div class="si-title">AI Integration</div>
-          <p class="si-desc">Add AI to your workflow for scoring, classifying, routing, or generating content. Works with Gemini, GPT-4o, and Claude.</p>
+          <p class="si-desc">Add AI to your workflow for scoring, classifying, routing, or generating content. Works with OpenAI (ChatGPT), Gemini, and Claude.</p>
         </div>
       </div>
       <div class="service-item">
@@ -713,6 +792,13 @@
         <div>
           <div class="si-title">CRM Automation</div>
           <p class="si-desc">Automate lead capture, contact creation, pipeline updates, and follow-up sequences inside HubSpot, Notion, GoHighLevel, or your existing CRM.</p>
+        </div>
+      </div>
+      <div class="service-item service-agency">
+        <div class="si-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></div>
+        <div>
+          <div class="si-title">White-label builds for agencies</div>
+          <p class="si-desc">For agencies on GoHighLevel: I build workflows inside your clients' accounts under your brand, so you sell the system and skip the setup.</p>
         </div>
       </div>
     </div>
@@ -787,29 +873,43 @@
     <div class="detail-panel" id="panel-p11" style="display:none;margin-top:22px;"></div>
   </div>
 
+  <div class="more-head">More builds by type</div>
+  <div class="filter-row" role="group" aria-label="Filter builds by type of automation">
+    <button type="button" class="filter-chip" data-filter="all" aria-pressed="true" onclick="filterBuilds('all')">All builds</button>
+    <button type="button" class="filter-chip" data-filter="leads" aria-pressed="false" onclick="filterBuilds('leads')">Lead response</button>
+    <button type="button" class="filter-chip" data-filter="appointments" aria-pressed="false" onclick="filterBuilds('appointments')">Appointments & reminders</button>
+    <button type="button" class="filter-chip" data-filter="nurture" aria-pressed="false" onclick="filterBuilds('nurture')">Follow-up & retention</button>
+    <button type="button" class="filter-chip" data-filter="reviews" aria-pressed="false" onclick="filterBuilds('reviews')">Reviews</button>
+    <button type="button" class="filter-chip" data-filter="onboarding" aria-pressed="false" onclick="filterBuilds('onboarding')">Client onboarding</button>
+    <button type="button" class="filter-chip" data-filter="ops" aria-pressed="false" onclick="filterBuilds('ops')">Internal operations</button>
+    <button type="button" class="filter-chip" data-filter="ai" aria-pressed="false" onclick="filterBuilds('ai')">AI-powered</button>
+  </div>
+  <p class="filter-note">Each build is labeled with the industry it was designed for, and every one can be adapted to yours.</p>
+  <p class="filter-empty" id="filter-empty" hidden>No builds in this category yet. Book a call and we can scope one together.</p>
+
   <div class="projects-grid" id="pgrid">
-    <div class="project-card" onclick="toggleCard('p10',this)" data-id="p10">
+    <div class="project-card" onclick="toggleCard('p10',this)" data-id="p10" data-tags="nurture reviews">
       <div class="card-thumb"><img src="assets/p10_pipeline_board.png" alt="Med Spa Retention System" loading="lazy"><span class="card-badge">GHL</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 01</div>
+        <div class="card-num">Med spa</div>
         <div class="card-title">Med Spa Retention & Reputation System</div>
         <p class="card-desc">A full client-lifecycle pipeline plus two branching workflows that ask for reviews at the right moment and win lapsed clients back before they're gone for good.</p>
         <div class="card-expand"><span id="p10-arr">↓</span>&nbsp;<span id="p10-lbl">See how it works</span></div>
       </div>
     </div>
-    <div class="project-card" onclick="toggleCard('p09',this)" data-id="p09">
+    <div class="project-card" onclick="toggleCard('p09',this)" data-id="p09" data-tags="leads ai">
       <div class="card-thumb"><img src="assets/p9_n8n_workflow.png" alt="AI Lead Routing" loading="lazy"><span class="card-badge">GHL · n8n · Gemini</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 02</div>
+        <div class="card-num">Home services · HVAC</div>
         <div class="card-title">AI Lead Qualification & Routing</div>
         <p class="card-desc">AI reads the request, sorts hot from cold, and the CRM already knows which one to call first.</p>
         <div class="card-expand"><span id="p09-arr">↓</span>&nbsp;<span id="p09-lbl">See how it works</span></div>
       </div>
     </div>
-    <div class="project-card" onclick="toggleCard('p08',this)" data-id="p08">
+    <div class="project-card" onclick="toggleCard('p08',this)" data-id="p08" data-tags="leads">
       <div class="card-thumb"><img src="assets/p8_GHL_workflow.png" alt="GHL Speed-to-Lead" loading="lazy"><span class="card-badge">GHL · n8n · Sheets</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 03</div>
+        <div class="card-num">Insurance</div>
         <div class="card-title">GHL Speed-to-Lead Automation</div>
         <p class="card-desc">New lead hits the CRM, gets an instant branded reply, and lands in the tracker before anyone touches it.</p>
         <div class="card-expand"><span id="p08-arr">↓</span>&nbsp;<span id="p08-lbl">See how it works</span></div>
@@ -818,28 +918,28 @@
     <div class="detail-panel" id="panel-p10" style="display:none;grid-column:1/-1"></div>
     <div class="detail-panel" id="panel-p09" style="display:none;grid-column:1/-1"></div>
     <div class="detail-panel" id="panel-p08" style="display:none;grid-column:1/-1"></div>
-    <div class="project-card" onclick="toggleCard('p07',this)" data-id="p07">
+    <div class="project-card" onclick="toggleCard('p07',this)" data-id="p07" data-tags="nurture">
       <div class="card-thumb"><img src="assets/p7_make.png" alt="Renewal Pipeline" loading="lazy"><span class="card-badge">Make · Sheets · Gmail</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 04</div>
+        <div class="card-num">Insurance</div>
         <div class="card-title">Insurance Renewal Reminder Pipeline</div>
         <p class="card-desc">A 7-stage countdown from 120 days to renewal day that emails clients and agents automatically, updates status in Sheets, flags missing data, and keeps running even if one row fails.</p>
         <div class="card-expand"><span id="p07-arr">↓</span>&nbsp;<span id="p07-lbl">See how it works</span></div>
       </div>
     </div>
-    <div class="project-card" onclick="toggleCard('p06',this)" data-id="p06">
+    <div class="project-card" onclick="toggleCard('p06',this)" data-id="p06" data-tags="appointments">
       <div class="card-thumb"><img src="assets/P6_n8n_WF1.png" alt="Clinic" loading="lazy"><span class="card-badge">n8n · Google Sheets · Gmail</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 05</div>
+        <div class="card-num">Dental clinic</div>
         <div class="card-title">Dental Clinic Appointment System</div>
         <p class="card-desc">Confirmation, 24-hour reminder, and no-show follow-up all run automatically. Admin updates one column, two emails fire.</p>
         <div class="card-expand"><span id="p06-arr">↓</span>&nbsp;<span id="p06-lbl">See how it works</span></div>
       </div>
     </div>
-    <div class="project-card" onclick="toggleCard('p05',this)" data-id="p05">
+    <div class="project-card" onclick="toggleCard('p05',this)" data-id="p05" data-tags="leads ai">
       <div class="card-thumb"><img src="assets/P5_Make.png" alt="Real Estate" loading="lazy"><span class="card-badge">Make · Gemini · HubSpot</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 06</div>
+        <div class="card-num">Real estate</div>
         <div class="card-title">Real Estate Speed-to-Lead</div>
         <p class="card-desc">Inquiry comes in. Within 60 seconds it is scored, saved to HubSpot, and the prospect has a reply waiting.</p>
         <div class="card-expand"><span id="p05-arr">↓</span>&nbsp;<span id="p05-lbl">See how it works</span></div>
@@ -854,28 +954,28 @@
     <button type="button" id="more-builds-btn" onclick="toggleMoreBuilds()" style="background:transparent;border:1px solid var(--border, rgba(255,255,255,0.15));color:var(--text-2);font-family:inherit;font-size:0.8rem;padding:10px 20px;border-radius:6px;cursor:pointer;">Show earlier builds (4) ↓</button>
   </div>
   <div class="projects-grid" id="pgrid-more" style="display:none;margin-top:24px;">
-    <div class="project-card" onclick="toggleCard('p01',this)" data-id="p01">
+    <div class="project-card" onclick="toggleCard('p01',this)" data-id="p01" data-tags="ops ai">
       <div class="card-thumb"><img src="assets/P1_n8n_canvas.png" alt="Ops Triage" loading="lazy"><span class="card-badge">n8n · Slack · Gemini</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 07</div>
+        <div class="card-num">Internal operations</div>
         <div class="card-title">Internal Ops Request Triage</div>
         <p class="card-desc">Staff post a message. AI reads it, classifies it, assigns a priority, and logs it. Nobody sorts manually.</p>
         <div class="card-expand"><span id="p01-arr">↓</span>&nbsp;<span id="p01-lbl">See how it works</span></div>
       </div>
     </div>
-    <div class="project-card" onclick="toggleCard('p02',this)" data-id="p02">
-      <div class="card-thumb"><img src="assets/P2_zapier.png" alt="AI Intake" loading="lazy"><span class="card-badge">Zapier · Notion · GPT-4o</span></div>
+    <div class="project-card" onclick="toggleCard('p02',this)" data-id="p02" data-tags="leads ai">
+      <div class="card-thumb"><img src="assets/P2_zapier.png" alt="AI Intake" loading="lazy"><span class="card-badge">Zapier · Notion · OpenAI</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 08</div>
+        <div class="card-num">B2B services</div>
         <div class="card-title">AI Client Intake Pipeline</div>
         <p class="card-desc">A lead submits a form. Two minutes later they have a personalized reply and the owner has an alert if it matters.</p>
         <div class="card-expand"><span id="p02-arr">↓</span>&nbsp;<span id="p02-lbl">See how it works</span></div>
       </div>
     </div>
-    <div class="project-card" onclick="toggleCard('p03',this)" data-id="p03">
+    <div class="project-card" onclick="toggleCard('p03',this)" data-id="p03" data-tags="onboarding">
       <div class="card-thumb"><img src="assets/P3_zapier.png" alt="Onboarding" loading="lazy"><span class="card-badge">Zapier · Notion · Gmail</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 09</div>
+        <div class="card-num">B2B services</div>
         <div class="card-title">Client Onboarding Sequence</div>
         <p class="card-desc">Mark someone as a client in Notion. Welcome email, checklist, and 3-day follow-up run without you touching anything.</p>
         <div class="card-expand"><span id="p03-arr">↓</span>&nbsp;<span id="p03-lbl">See how it works</span></div>
@@ -884,10 +984,10 @@
     <div class="detail-panel" id="panel-p01" style="display:none;grid-column:1/-1"></div>
     <div class="detail-panel" id="panel-p02" style="display:none;grid-column:1/-1"></div>
     <div class="detail-panel" id="panel-p03" style="display:none;grid-column:1/-1"></div>
-    <div class="project-card" onclick="toggleCard('p04',this)" data-id="p04">
+    <div class="project-card" onclick="toggleCard('p04',this)" data-id="p04" data-tags="ops ai">
       <div class="card-thumb"><img src="assets/P4_make.png" alt="Content Engine" loading="lazy"><span class="card-badge">Make · Gemini · Notion</span></div>
       <div class="card-body">
-        <div class="card-num">PROJECT 10</div>
+        <div class="card-num">Content & marketing</div>
         <div class="card-title">Content Repurposing Engine</div>
         <p class="card-desc">One raw idea becomes a LinkedIn post, X thread, and newsletter blurb in under 90 seconds.</p>
         <div class="card-expand"><span id="p04-arr">↓</span>&nbsp;<span id="p04-lbl">See how it works</span></div>
@@ -902,7 +1002,7 @@
 <!-- TECH STACK -->
 <div class="section" id="stack">
   <div class="eyebrow"><span class="eyebrow-line"></span><span class="eyebrow-text">Tools</span></div>
-  <h2 style="font-size:clamp(1.3rem,2.5vw,1.7rem);color:var(--text-1);margin-bottom:6px;">Tech stack</h2>
+  <h2 style="font-size:clamp(1.3rem,2.5vw,1.7rem);color:var(--text-1);margin-bottom:6px;">Tools I work in</h2>
   <p style="color:var(--text-2);font-size:0.88rem;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-weight:400;">Platforms I work with regularly across workflow builds.</p>
   <div class="stack-grid">
     <div class="stack-item"><div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/n8n.svg" alt="n8n" onerror="this.outerHTML='<div class=\'stack-mono\'>n8n</div>'"></div><div class="stack-name">n8n</div></div>
@@ -916,7 +1016,7 @@
     <div class="stack-item"><div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/slack.svg" alt="Slack" onerror="this.outerHTML='<div class=\'stack-mono\'>SL</div>'"></div><div class="stack-name">Slack</div></div>
     <div class="stack-item"><div class="stack-logo"><div class="stack-mono">TL</div></div><div class="stack-name">Tally</div></div>
     <div class="stack-item"><div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlegemini.svg" alt="Gemini" onerror="this.outerHTML='<div class=\'stack-mono\'>GEM</div>'"></div><div class="stack-name">Gemini</div></div>
-    <div class="stack-item"><div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg" alt="GPT-4o" onerror="this.outerHTML='<div class=\'stack-mono\'>OAI</div>'"></div><div class="stack-name">GPT-4o</div></div>
+    <div class="stack-item"><div class="stack-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/openai.svg" alt="OpenAI" onerror="this.outerHTML='<div class=\'stack-mono\'>OAI</div>'"></div><div class="stack-name">OpenAI (ChatGPT)</div></div>
   </div>
 </div>
 
@@ -999,7 +1099,7 @@
 
 <footer>
   <span>Reez San Gabriel | Automation Specialist</span>
-  <span id="footer-clock"></span>
+  <span>Based in the Philippines · Working with AU, UK, and US teams</span>
 </footer>
 
 <script>
@@ -1073,6 +1173,36 @@ function toggleMoreBuilds(){
   b.textContent=show?'Hide earlier builds ↑':'Show earlier builds (4) ↓';
   if(!show&&active&&g.querySelector('[data-id="'+active+'"]'))closePanel(active);
 }
+(function(){
+  var list=document.getElementById('oc-list'); if(!list) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var pool=[["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 4h16v12H5.2L4 17.2z\"/><path d=\"M8 9h8M8 12h5\"/></svg>", "Instant reply sent", "New inquiry from your website form", "Email"], ["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13 3L5 13h6l-1 8 8-10h-6z\"/></svg>", "Hot lead flagged", "AI sorted the request and alerted your team", "AI"], ["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6z\"/><path d=\"M10 19a2 2 0 0 0 4 0\"/></svg>", "Reminder sent", "24 hours before the appointment", "SMS"], ["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><ellipse cx=\"12\" cy=\"6\" rx=\"7\" ry=\"3\"/><path d=\"M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6\"/><path d=\"M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3\"/></svg>", "CRM updated", "Contact, tags, and pipeline stage set", "CRM"], ["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.8z\"/></svg>", "Review requested", "Sent after a happy client visit", "SMS"], ["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/><path d=\"M9 12l2 2 4-4\"/></svg>", "Renewal reminder sent", "60 days before the policy renews", "Email"], ["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 9h14M5 15h14M10 4L8 20M16 4l-2 16\"/></svg>", "Request sorted", "Staff request logged and acknowledged", "Slack"], ["<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"2\"/><path d=\"M9 12l2 2 4-4\"/></svg>", "Welcome sequence started", "New client checklist created", "Email"]], times=['Just now','1 min ago','4 min ago','9 min ago'], next=4;
+  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+  setInterval(function(){
+    var c=pool[next%pool.length]; next++;
+    var li=document.createElement('li'); li.className='oc-card oc-enter';
+    li.innerHTML='<span class="oc-icon">'+c[0]+'</span><span class="oc-text"><span class="oc-title">'+esc(c[1])+'</span><span class="oc-sub">'+esc(c[2])+'</span></span><span class="oc-meta"><span class="oc-chip">'+esc(c[3])+'</span><span class="oc-time"></span></span>';
+    list.insertBefore(li,list.firstChild);
+    var last=list.lastElementChild; last.classList.add('oc-exit');
+    setTimeout(function(){ if(last.parentNode) last.parentNode.removeChild(last); },380);
+    requestAnimationFrame(function(){ li.classList.remove('oc-enter'); });
+    var cards=list.querySelectorAll('.oc-card:not(.oc-exit)');
+    cards.forEach(function(el,i){ var t=el.querySelector('.oc-time'); if(t) t.textContent=times[i]||''; });
+  },3200);
+})();
+function filterBuilds(f){
+  document.querySelectorAll('.filter-chip').forEach(function(c){c.setAttribute('aria-pressed',c.dataset.filter===f?'true':'false');});
+  if(active)closePanel(active);
+  var shown=0;
+  document.querySelectorAll('[data-tags]').forEach(function(el){
+    var ok=f==='all'||el.dataset.tags.split(' ').indexOf(f)!==-1;
+    el.style.display=ok?'':'none'; if(ok)shown++;
+  });
+  var more=document.getElementById('pgrid-more'), btn=document.getElementById('more-builds-btn');
+  if(f==='all'){ more.style.display='none'; btn.parentNode.style.display=''; btn.textContent='Show earlier builds (4) ↓'; }
+  else { more.style.display=''; btn.parentNode.style.display='none'; }
+  document.getElementById('filter-empty').hidden=shown>0;
+}
 function closePanel(id){
   const panel=document.getElementById('panel-'+id);
   panel.style.display='none';panel.classList.remove('open');
@@ -1083,14 +1213,6 @@ function closePanel(id){
   if(active===id)active=null;
 }
 
-function updateClock(){
-  const t=new Date().toLocaleTimeString('en-US',{timeZone:'Asia/Manila',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
-  const el=document.getElementById('clock');
-  const fl=document.getElementById('footer-clock');
-  if(el)el.textContent='LOCAL '+t+' GMT+8';
-  if(fl)fl.textContent=t+' GMT+8';
-}
-updateClock();setInterval(updateClock,1000);
 
 document.getElementById('inquiry-form').addEventListener('submit', function(e){
   e.preventDefault();
